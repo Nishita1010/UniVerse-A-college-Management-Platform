@@ -1,2 +1,2 @@
-# PS3
-This is the collection of my work that has been done during my 4 month internship period.
+# UniVerse : College Management Platform
+UniVerse is a comprehensive platform designed to streamline various aspects of college management, offering a centralized solution for academic institutions to efficiently manage administrative tasks, academic activities, and student information. It aims to provide administrators, faculty, and students with a seamless experience, enhancing communication, collaboration, and productivity within the college environment.
