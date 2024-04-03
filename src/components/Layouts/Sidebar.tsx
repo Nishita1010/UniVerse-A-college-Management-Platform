@@ -147,43 +147,42 @@ const Sidebar = () => {
                                         <li>
                                             <NavLink to="../apps/studentDetails">{t('My Profile')}</NavLink>
                                         </li>
-                                        {/* <li>
-                                            <NavLink to="/components/accordions">{t('Contact Details')}</NavLink>
+                                        <li>
+                                            <NavLink to="../apps/contactDetails">{t('Contact Details')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="/components/modals">{t('Bank Details')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/cards">{t('Medical Details')}</NavLink>
+                                            <NavLink to="../apps/MedicalDetails">{t('Medical Details')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="/components/carousel">{t('Extracurricular Activities')}</NavLink>
-                                        </li> */}
+                                        </li>
                                         
                                     </ul>
                                 </AnimateHeight>
                             </li>
                             <li className="menu nav-item">
-                                <button type="button" className={`${currentMenu === 'components' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('components')}>
+                                <button type="button" className={`${currentMenu === 'component' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('component')}>
                                     <div className="flex items-center">
                                         <IconMenuComponents className="group-hover:!text-primary shrink-0" />
                                         <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Documents')}</span>
                                     </div>
 
-                                    <div className={currentMenu !== 'componenets' ? 'rtl:rotate-90 -rotate-90' : ''}>
+                                    <div className={currentMenu !== 'component' ? 'rtl:rotate-90 -rotate-90' : ''}>
                                         <IconCaretDown />
                                     </div>
                                 </button>
-
                                 <AnimateHeight duration={300} height={currentMenu === 'component' ? 'auto' : 0}>
                                     <ul className="sub-menu text-gray-500">
                                         <li>
-                                            <NavLink to="/components/tabs">{t('Upload Document')}</NavLink>
+                                            <NavLink to="../apps/Documents">{t('Upload Documents')}</NavLink>
                                         </li>
-                                        
-                                        
-                                    </ul>
-                                </AnimateHeight>
+                                        </ul>
+                                        </AnimateHeight>
+
+                               
                             </li>
                             <li className="menu nav-item">
                                 <button type="button" className={`${currentMenu === 'component' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('component')}>

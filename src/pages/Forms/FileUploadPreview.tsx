@@ -179,7 +179,7 @@ const onChange = (imageList: ImageListType, addUpdateIndex: number[] | undefined
                                             setImages2([]);
                                         }}
                                     >
-                                        ×
+                                        
                                     </button>
                                 </div>
                                 <label className="custom-file-container__custom-file"></label>
