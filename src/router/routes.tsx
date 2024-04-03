@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+// import ParentDetails from '../pages/Apps/ParentDetails';
 const Index = lazy(() => import('../pages/Index'));
 const Analytics = lazy(() => import('../pages/Analytics'));
 const Finance = lazy(() => import('../pages/Finance'));
@@ -9,13 +10,18 @@ const Notes = lazy(() => import('../pages/Apps/Notes'));
 const Contacts = lazy(() => import('../pages/Apps/Contacts'));
 const Chat = lazy(() => import('../pages/Apps/Chat'));
 const StudentDetails = lazy(() => import('../pages/Apps/StudentDetails'));
+const ContactDetails = lazy(() => import('../pages/Apps/ContactDetails'));
+const MedicalDetails = lazy(() => import('../pages/Apps/MedicalDetails'));
+
+const Documents = lazy(() => import('../pages/Apps/Documents'));
+
 const Scrumboard = lazy(() => import('../pages/Apps/Scrumboard'));
 const Calendar = lazy(() => import('../pages/Apps/Calendar'));
 const List = lazy(() => import('../pages/Apps/Invoice/List'));
 const Preview = lazy(() => import('../pages/Apps/Invoice/Preview'));
 const Add = lazy(() => import('../pages/Apps/Invoice/Add'));
 const Edit = lazy(() => import('../pages/Apps/Invoice/Edit'));
-const Tabs = lazy(() => import('../pages/Components/MyProfile'));
+// const Tabs = lazy(() => import('../pages/Components/MyProfile'));
 const Accordians = lazy(() => import('../pages/Components/Accordians'));
 const Modals = lazy(() => import('../pages/Components/Modals'));
 const Cards = lazy(() => import('../pages/Components/Cards'));
@@ -147,9 +153,19 @@ const routes = [
         element: <List />,
     },
     // Apps page
-    {  path: '/apps/StudentDetails',
-       element: < StudentDetails/>
-},
+    { 
+        path: '/apps/StudentDetails', 
+        element: <StudentDetails /> 
+    },
+    { 
+        path: '/apps/Documents', 
+        element: <Documents /> 
+    },
+    { 
+        path: '/apps/ContactDetails',
+        element: <ContactDetails /> 
+    },
+
     {
         path: '/apps/chat',
         element: <Chat />,
@@ -176,9 +192,13 @@ const routes = [
         element: <Edit />,
     },
     // components page
+    // {
+    //     path: '/components/tabs',
+    //     element: <Tabs />,
+    // },
     {
-        path: '/components/tabs',
-        element: <Tabs />,
+        path: '/apps/MedicalDetails',
+        element: <MedicalDetails />,
     },
     {
         path: '/components/accordions',
