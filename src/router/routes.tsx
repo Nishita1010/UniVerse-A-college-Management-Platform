@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import Fees from '../pages/Apps/Fees';
 // import ParentDetails from '../pages/Apps/ParentDetails';
 const Index = lazy(() => import('../pages/Index'));
 const Analytics = lazy(() => import('../pages/Analytics'));
@@ -12,8 +13,11 @@ const Chat = lazy(() => import('../pages/Apps/Chat'));
 const StudentDetails = lazy(() => import('../pages/Apps/StudentDetails'));
 const ContactDetails = lazy(() => import('../pages/Apps/ContactDetails'));
 const MedicalDetails = lazy(() => import('../pages/Apps/MedicalDetails'));
+const BankDetails = lazy(() => import('../pages/Apps/BankDetails'));
 
 const Documents = lazy(() => import('../pages/Apps/Documents'));
+const ClassSchedule = lazy(() => import('../pages/Apps/ClassSchedule'));
+const StudentMarks = lazy(() => import('../pages/Apps/StudentMarks'));
 
 const Scrumboard = lazy(() => import('../pages/Apps/Scrumboard'));
 const Calendar = lazy(() => import('../pages/Apps/Calendar'));
@@ -153,19 +157,35 @@ const routes = [
         element: <List />,
     },
     // Apps page
-    { 
-        path: '/apps/StudentDetails', 
-        element: <StudentDetails /> 
+    {
+        path: '/apps/StudentDetails',
+        element: <StudentDetails />,
     },
-    { 
-        path: '/apps/Documents', 
-        element: <Documents /> 
+    {
+        path: '/apps/Documents',
+        element: <Documents />,
     },
-    { 
+    {
         path: '/apps/ContactDetails',
-        element: <ContactDetails /> 
+        element: <ContactDetails />,
+    },
+    {
+        path: '/apps/BankDetails',
+        element: <BankDetails />,
+    },
+    {
+        path: '/apps/Fees',
+        element: <Fees />,
     },
 
+    {
+        path: '/apps/ClassSchedule',
+        element: <ClassSchedule />,
+    },
+    {
+        path: '/apps/StudentMarks',
+        element: <StudentMarks />,
+    },
     {
         path: '/apps/chat',
         element: <Chat />,
