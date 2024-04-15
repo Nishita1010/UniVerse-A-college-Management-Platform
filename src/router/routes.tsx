@@ -10,10 +10,13 @@ const Mailbox = lazy(() => import('../pages/Apps/Mailbox'));
 const Notes = lazy(() => import('../pages/Apps/Notes'));
 const Contacts = lazy(() => import('../pages/Apps/Contacts'));
 const Chat = lazy(() => import('../pages/Apps/Chat'));
+const StudentList = lazy(() => import('../pages/Apps/StudentList'));
+
 const StudentDetails = lazy(() => import('../pages/Apps/StudentDetails'));
 const ContactDetails = lazy(() => import('../pages/Apps/ContactDetails'));
 const MedicalDetails = lazy(() => import('../pages/Apps/MedicalDetails'));
 const BankDetails = lazy(() => import('../pages/Apps/BankDetails'));
+const ExtraActivities = lazy(() => import('../pages/Apps/ExtraActivities'));
 
 const Documents = lazy(() => import('../pages/Apps/Documents'));
 const ClassSchedule = lazy(() => import('../pages/Apps/ClassSchedule'));
@@ -158,6 +161,10 @@ const routes = [
     },
     // Apps page
     {
+        path: '/apps/StudentList',
+        element: <StudentList />,
+    },
+    {
         path: '/apps/StudentDetails',
         element: <StudentDetails />,
     },
@@ -173,6 +180,11 @@ const routes = [
         path: '/apps/BankDetails',
         element: <BankDetails />,
     },
+    {
+        path: '/apps/ExtraActivities',
+        element: <ExtraActivities />,
+    },
+
     {
         path: '/apps/Fees',
         element: <Fees />,

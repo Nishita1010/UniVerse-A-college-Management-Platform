@@ -14,8 +14,8 @@ const BankDetails = () => {
                     </div>
                     <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
 
-                    <div className="mt-8 px-4">
-                        <div className="mr-5">
+                    <div className="mt-8 px-8">
+                        <div className="">
                             <div className="mt-4 flex lg:flex-row flex-col">
                                 <div className="px-5 flex w-1/2">
                                     <label htmlFor="Street_Address" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">

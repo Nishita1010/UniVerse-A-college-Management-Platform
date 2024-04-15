@@ -279,13 +279,13 @@ const StudentDetails = () => {
                                                 </div>
                                             </div>
                                             {/*---------------------------------------------------Imp Details Begin--------------------------------------------- */}
-                                            <div className="mr-5">
-                                                <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                                                <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
-                                                    <h2> Important Details</h2>
-                                                </label>
+                                            <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                                            <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                                                <h2> Important Details</h2>
+                                            </label>
 
-                                                <div className="mt-4 flex lg:flex-row flex-col">
+                                            <div className="mr-5 ml-8">
+                                                <div className="mt-4 flex lg:flex-row flex-col gap-5 ">
                                                     <div className="px-5 flex w-1/3">
                                                         <label htmlFor="Aadhar_Card" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
                                                             Aadhar Card Number
@@ -308,12 +308,11 @@ const StudentDetails = () => {
                                             </div>
                                             {/*---------------------------------------------------Imp Details End--------------------------------------------- */}
                                             {/*---------------------------------------------------Course Details Begin--------------------------------------------- */}
-                                            <div className="mr-5">
-                                                <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                                                <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
-                                                    <h2>Course Details</h2>
-                                                </label>
-
+                                            <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                                            <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                                                <h2>Course Details</h2>
+                                            </label>
+                                            <div className="mr-5 ml-8">
                                                 <div className="mt-4 flex lg:flex-row flex-col">
                                                     <div className="px-5 flex ">
                                                         <label htmlFor="Aadhar_Card" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
@@ -343,19 +342,19 @@ const StudentDetails = () => {
                                             </div>
                                             {/*---------------------------------------------------Course Details End--------------------------------------------- */}
                                             {/*---------------------------------------------------Other Info Begin--------------------------------------------- */}
-                                            <div className="mr-5 ">
-                                                <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                                                <label htmlFor="permanentAdd" className=" px-5 pb-4 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
-                                                    <h2> Other Details</h2>
-                                                </label>
+                                            <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                                            <label htmlFor="permanentAdd" className=" px-5 pb-4 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                                                <h2> Other Details</h2>
+                                            </label>
 
+                                            <div className="mr-5 ml-8">
                                                 <div className="mb-5 flex grid-cols-3 gap-16 lg:flex-row flex-col">
                                                     <div>
-                                                        <form className="pl-4 items-center space-y-5 flex flex-row ">
+                                                        <form className="pl-4 font-bold items-center space-y-5 flex flex-row ">
                                                             Are you a Hostellite &nbsp;: &nbsp; &nbsp;
                                                             <div>
                                                                 <label className=" pl-2 flex  cursor-pointer">
-                                                                    <input type="radio" name="custom_radio2" className="form-radio" defaultChecked />
+                                                                    <input type="radio" name="custom_radio2" className="form-radio" />
                                                                     <span className="text-white-dark">Yes</span>
                                                                 </label>
                                                             </div>
@@ -367,26 +366,26 @@ const StudentDetails = () => {
                                                             </div>
                                                         </form>
                                                     </div>
-                                                    <form className="pl-4 items-center space-y-5 flex flex-row ">
+                                                    <form className="pl-4 font-bold items-center space-y-5 flex flex-row ">
                                                         Are you physically challenged ? &nbsp;: &nbsp; &nbsp;
                                                         <div>
                                                             <label className="pl-2 flex items-center cursor-pointer">
-                                                                <input type="radio" name="custom_radio2" className="form-radio" defaultChecked />
+                                                                <input type="radio" name="custom_radio2" className="form-radio" />
                                                                 <span className="text-white-dark">Yes</span>
                                                             </label>
                                                         </div>
                                                         <div>
-                                                            <label className=" pl-4 -mt-4 flex items-center cursor-pointer">
+                                                            <label className=" pl-4 -mt-4  flex items-center cursor-pointer">
                                                                 <input type="radio" name="custom_radio2" className="form-radio" />
                                                                 <span className="text-white-dark ">No</span>
                                                             </label>
                                                         </div>
                                                     </form>
-                                                    <form className="pl-4items-center space-y-5 flex flex-row ">
+                                                    <form className="pl-4items-center font-bold space-y-5 flex flex-row ">
                                                         Are you a foreign Student ? &nbsp;: &nbsp; &nbsp;
                                                         <div>
                                                             <label className="  pl-2 flex items-center cursor-pointer">
-                                                                <input type="radio" name="custom_radio2" className="form-radio" defaultChecked />
+                                                                <input type="radio" name="custom_radio2" className="form-radio" />
                                                                 <span className="text-white-dark">Yes</span>
                                                             </label>
                                                         </div>
@@ -399,6 +398,26 @@ const StudentDetails = () => {
                                                     </form>
                                                 </div>
                                             </div>
+
+                                            {/*------------------------------Upload Documents Begin------------------------------------------------ */}
+                                            <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                                            <label htmlFor="permanentAdd" className=" px-5 pb-4 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                                                <h2> Upload Photo and Signature</h2>
+                                            </label>
+                                            <div className="mr-5 ml-8">
+                                                <div className="flex justify-evenly mt-3 mb-3 lg:flex-row flex-col gap-4">
+                                                    <div>
+                                                        <label>Upload Your Photo</label>
+                                                        <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input " />
+                                                    </div>
+                                                    <div>
+                                                        <label>Upload Your Signature</label>
+                                                        <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {/*------------------------------Upload Documents End------------------------------------------------ */}
                                         </div>
                                     </div>
                                 )
@@ -490,7 +509,6 @@ const StudentDetails = () => {
                                                             Office Email
                                                         </label>
                                                         <input id="personalEmail" type="text" name="personalEmail" className="form-input flex-1" placeholder="Enter Personal Email" />
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -569,15 +587,13 @@ const StudentDetails = () => {
                                                             Office Email
                                                         </label>
                                                         <input id="personalEmail" type="text" name="personalEmail" className="form-input flex-1" placeholder="Enter Personal Email" />
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                                       
 
                                         {/*----------------------------Parents Details End------------------------------------ */}
-                                      
                                     </div>
                                 </div>
                             )}
@@ -587,64 +603,64 @@ const StudentDetails = () => {
                             {activeTab4 === 3 && (
                                 <>
                                     <div className="flex xl:flex-row flex-col gap-2.5">
-                                            <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
-                                                <div className="flex justify-between flex-wrap px-4">
-                                                    <div className="mb-6 lg:w-1/2 w-full">
-                                                        <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                                            Guardian Details
-                                                        </div>
+                                        <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
+                                            <div className="flex justify-between flex-wrap px-4">
+                                                <div className="mb-6 lg:w-1/2 w-full">
+                                                    <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
+                                                        Guardian Details
                                                     </div>
-                                                </div>
-                                                {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" /> */}
-                                                <div className="mt-8 px-4">
-                                                    <div className=" pl-5 flex justify-between lg:flex-row flex-col">
-                                                        <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
-                                                            <div className="mt-4 flex gap-5  lg:flex-row flex-col">
-                                                                <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                                    Full Name
-                                                                </label>
-                                                                <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter Full Name" />
-                                                                <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
-                                                                    E mail ID
-                                                                </label>
-                                                                <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter Email ID" />
-                                                            </div>
-
-                                                            <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                                                <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                                                    Phone Number
-                                                                </label>
-                                                                <MaskedInput
-                                                                    id="phoneMask"
-                                                                    type="text"
-                                                                    placeholder="Enter your Phone Number"
-                                                                    className="form-input flex-1"
-                                                                    mask={['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', ' ', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
-                                                                />
-
-                                                                <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                                    Relation with Guardian
-                                                                </label>
-                                                                <input
-                                                                    id="personalEmail"
-                                                                    type="email"
-                                                                    name="personalEmail"
-                                                                    className="form-input flex-1"
-                                                                    placeholder="Example- Aunt, Uncle, Brother etc."
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="ps-14 pe-10 flex gap-5  lg:flex-row flex-col">
-                                                    <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                        Guardian's Address
-                                                    </label>
-                                                    <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 h-20 " placeholder="Enter Guardian's Address" />
                                                 </div>
                                             </div>
+                                            {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" /> */}
+                                            <div className="mt-8 px-4">
+                                                <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                                                    <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                                        <div className="mt-4 flex gap-5  lg:flex-row flex-col">
+                                                            <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                                Full Name
+                                                            </label>
+                                                            <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter Full Name" />
+                                                            <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                                                E mail ID
+                                                            </label>
+                                                            <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter Email ID" />
+                                                        </div>
+
+                                                        <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                                            <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                                                Phone Number
+                                                            </label>
+                                                            <MaskedInput
+                                                                id="phoneMask"
+                                                                type="text"
+                                                                placeholder="Enter your Phone Number"
+                                                                className="form-input flex-1"
+                                                                mask={['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', ' ', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+                                                            />
+
+                                                            <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                                Relation with Guardian
+                                                            </label>
+                                                            <input
+                                                                id="personalEmail"
+                                                                type="email"
+                                                                name="personalEmail"
+                                                                className="form-input flex-1"
+                                                                placeholder="Example- Aunt, Uncle, Brother etc."
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="ps-14 pe-10 flex gap-5  lg:flex-row flex-col">
+                                                <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                    Guardian's Address
+                                                </label>
+                                                <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 h-20 " placeholder="Enter Guardian's Address" />
+                                            </div>
                                         </div>
+                                    </div>
                                 </>
                             )}
                         </p>
@@ -660,26 +676,6 @@ const StudentDetails = () => {
                     </div>
 
                     {/*-------------------------------------------------form wizard End---------------------------------------------------- */}
-
-                    {/*--------------------------------Bank Details Begin-------------------------------------------------*/}
-
-                   
-
-                    {/*------------------------------Bank Details End------------------------------------------------ */}
-                    {/*------------------------------Upload Documents Begin------------------------------------------------ */}
-
-                    <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                    <div className="flex justify-evenly mt-5 lg:flex-row flex-col gap-4">
-                        <div>
-                            <label>Upload Your Photo</label>
-                            <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input " />
-                        </div>
-                        <div>
-                            <label>Upload Your Signature</label>
-                            <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input" />
-                        </div>
-                    </div>
-                    {/*------------------------------Upload Documents End------------------------------------------------ */}
 
                     {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
                     <div className="mt-8 px-4">
