@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 import Fees from '../pages/Apps/Fees';
-// import ParentDetails from '../pages/Apps/ParentDetails';
 const Index = lazy(() => import('../pages/Index'));
 const Analytics = lazy(() => import('../pages/Analytics'));
 const Finance = lazy(() => import('../pages/Finance'));
@@ -20,6 +19,10 @@ const ExtraActivities = lazy(() => import('../pages/Apps/ExtraActivities'));
 
 const Documents = lazy(() => import('../pages/Apps/Documents'));
 const ClassSchedule = lazy(() => import('../pages/Apps/ClassSchedule'));
+const Courses = lazy(() => import('../pages/Apps/Courses'));
+const Attendance = lazy(() => import('../pages/Apps/Attendance'));
+
+
 const StudentMarks = lazy(() => import('../pages/Apps/StudentMarks'));
 
 const Scrumboard = lazy(() => import('../pages/Apps/Scrumboard'));
@@ -195,8 +198,16 @@ const routes = [
         element: <ClassSchedule />,
     },
     {
+        path: '/apps/Courses',
+        element: <Courses />,
+    },
+    {
         path: '/apps/StudentMarks',
         element: <StudentMarks />,
+    },
+    {
+        path: '/apps/Attendance',
+        element: <Attendance/>,
     },
     {
         path: '/apps/chat',

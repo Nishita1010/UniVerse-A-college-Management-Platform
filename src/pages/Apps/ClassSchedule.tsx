@@ -27,7 +27,7 @@ const ClassSchedule = () => {
     const [events, setEvents] = useState<any>([
         {
             id: 1,
-            title: 'All Day Event',
+            title: 'DSA Test',
             start: now.getFullYear() + '-' + getMonth(now) + '-01T14:30:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-02T14:30:00',
             className: 'danger',
@@ -35,7 +35,7 @@ const ClassSchedule = () => {
         },
         {
             id: 2,
-            title: 'Site Visit',
+            title: 'OOPs Lecture',
             start: now.getFullYear() + '-' + getMonth(now) + '-07T19:30:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-08T14:30:00',
             className: 'primary',
@@ -43,15 +43,15 @@ const ClassSchedule = () => {
         },
         {
             id: 3,
-            title: 'Product Lunching Event',
+            title: 'Java Lecture',
             start: now.getFullYear() + '-' + getMonth(now) + '-17T14:30:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-18T14:30:00',
-            className: 'info',
+            className: 'primary',
             description: 'Proin et consectetur nibh. Mauris et mollis purus. Ut nec tincidunt lacus. Nam at rutrum justo, vitae egestas dolor.',
         },
         {
             id: 4,
-            title: 'Meeting',
+            title: 'Blockchain Quiz',
             start: now.getFullYear() + '-' + getMonth(now) + '-12T10:30:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-13T10:30:00',
             className: 'danger',
@@ -62,12 +62,12 @@ const ClassSchedule = () => {
             title: 'Lunch',
             start: now.getFullYear() + '-' + getMonth(now) + '-12T15:00:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-13T15:00:00',
-            className: 'info',
+            className: 'primary',
             description: 'Integer fermentum bibendum elit in egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus.',
         },
         {
             id: 6,
-            title: 'Conference',
+            title: 'Ram Navmi',
             start: now.getFullYear() + '-' + getMonth(now) + '-12T21:30:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-13T21:30:00',
             className: 'success',
@@ -76,15 +76,15 @@ const ClassSchedule = () => {
         },
         {
             id: 7,
-            title: 'Happy Hour',
+            title: 'Major Project Lecture',
             start: now.getFullYear() + '-' + getMonth(now) + '-12T05:30:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-13T05:30:00',
-            className: 'info',
+            className: 'primary',
             description: ' odio lectus, porttitor molestie scelerisque blandit, hendrerit sed ex. Aenean malesuada iaculis erat, vitae blandit nisl accumsan ut.',
         },
         {
             id: 8,
-            title: 'Dinner',
+            title: 'Project Presentation',
             start: now.getFullYear() + '-' + getMonth(now) + '-12T20:00:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-13T20:00:00',
             className: 'danger',
@@ -92,7 +92,7 @@ const ClassSchedule = () => {
         },
         {
             id: 9,
-            title: 'Birthday Party',
+            title: 'Election Holiday',
             start: now.getFullYear() + '-' + getMonth(now) + '-27T20:00:00',
             end: now.getFullYear() + '-' + getMonth(now) + '-28T20:00:00',
             className: 'success',
@@ -100,7 +100,7 @@ const ClassSchedule = () => {
         },
         {
             id: 10,
-            title: 'New Talent Event',
+            title: 'CGDC Meeting',
             start: now.getFullYear() + '-' + getMonth(now, 1) + '-24T08:12:14',
             end: now.getFullYear() + '-' + getMonth(now, 1) + '-27T22:20:20',
             className: 'danger',
@@ -108,7 +108,7 @@ const ClassSchedule = () => {
         },
         {
             id: 11,
-            title: 'Other new',
+            title: 'P&S Lecture',
             start: now.getFullYear() + '-' + getMonth(now, -1) + '-13T08:12:14',
             end: now.getFullYear() + '-' + getMonth(now, -1) + '-16T22:20:20',
             className: 'primary',
@@ -116,7 +116,7 @@ const ClassSchedule = () => {
         },
         {
             id: 13,
-            title: 'Upcoming Event',
+            title: 'Big Data Lecture',
             start: now.getFullYear() + '-' + getMonth(now, 1) + '-15T08:12:14',
             end: now.getFullYear() + '-' + getMonth(now, 1) + '-18T22:20:20',
             className: 'primary',
@@ -400,7 +400,7 @@ const ClassSchedule = () => {
                                                     checked={params.type === 'primary'}
                                                     onChange={(e) => setParams({ ...params, type: e.target.value })}
                                                 />
-                                                <span className="ltr:pl-2 rtl:pr-2">Work</span>
+                                                <span className="ltr:pl-2 rtl:pr-2">Schedule Class</span>
                                             </label>
                                             <label className="inline-flex cursor-pointer ltr:mr-3 rtl:ml-3">
                                                 <input
@@ -411,7 +411,7 @@ const ClassSchedule = () => {
                                                     checked={params.type === 'info'}
                                                     onChange={(e) => setParams({ ...params, type: e.target.value })}
                                                 />
-                                                <span className="ltr:pl-2 rtl:pr-2">Travel</span>
+                                                <span className="ltr:pl-2 rtl:pr-2">Leave</span>
                                             </label>
                                             <label className="inline-flex cursor-pointer ltr:mr-3 rtl:ml-3">
                                                 <input
@@ -422,7 +422,7 @@ const ClassSchedule = () => {
                                                     checked={params.type === 'success'}
                                                     onChange={(e) => setParams({ ...params, type: e.target.value })}
                                                 />
-                                                <span className="ltr:pl-2 rtl:pr-2">Personal</span>
+                                                <span className="ltr:pl-2 rtl:pr-2">Holiday</span>
                                             </label>
                                             <label className="inline-flex cursor-pointer">
                                                 <input

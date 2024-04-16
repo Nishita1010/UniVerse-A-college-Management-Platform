@@ -205,13 +205,13 @@ const Sidebar = () => {
                                             <NavLink to="../apps/ClassSchedule">{t('Class Schedule')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/accordions">{t('Courses')}</NavLink>
+                                            <NavLink to="../apps/Courses">{t('Courses')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="../apps/StudentMarks">{t('Marks')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/cards">{t('Attendance')}</NavLink>
+                                            <NavLink to="../apps/Attendance">{t('Attendance')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="/components/carousel">{t('Leave Details')}</NavLink>
