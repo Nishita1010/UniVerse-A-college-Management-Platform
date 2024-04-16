@@ -144,8 +144,11 @@ const Sidebar = () => {
 
                                 <AnimateHeight duration={300} height={currentMenu === 'component' ? 'auto' : 0}>
                                     <ul className="sub-menu text-gray-500">
+                                    <li>
+                                            <NavLink to="../apps/studentList">{t('Student List')}</NavLink>
+                                        </li>
                                         <li>
-                                            <NavLink to="../apps/studentDetails">{t('My Profile')}</NavLink>
+                                            <NavLink to="../apps/studentDetails">{t('Student Admission')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="../apps/contactDetails">{t('Contact Details')}</NavLink>
@@ -157,7 +160,7 @@ const Sidebar = () => {
                                             <NavLink to="../apps/MedicalDetails">{t('Medical Details')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/carousel">{t('Extracurricular Activities')}</NavLink>
+                                            <NavLink to="../apps/ExtraActivities">{t('Extracurricular Activities')}</NavLink>
                                         </li>
                                         
                                     </ul>
@@ -202,13 +205,13 @@ const Sidebar = () => {
                                             <NavLink to="../apps/ClassSchedule">{t('Class Schedule')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/accordions">{t('Courses')}</NavLink>
+                                            <NavLink to="../apps/Courses">{t('Courses')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="../apps/StudentMarks">{t('Marks')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/cards">{t('Attendance')}</NavLink>
+                                            <NavLink to="../apps/Attendance">{t('Attendance')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="/components/carousel">{t('Leave Details')}</NavLink>

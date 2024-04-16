@@ -74,8 +74,8 @@ const MedicalDetails = () => {
                                     </div>
                                 </div>
                                 <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                                <div className="mt-8 px-4">
-                                    <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                                <div className="mt-8 px-8">
+                                    <div className=" flex justify-between lg:flex-row flex-col">
                                         <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
                                             <div className="mt-4 flex gap-5  lg:flex-row flex-col">
                                                 <label htmlFor="dob" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
@@ -108,7 +108,7 @@ const MedicalDetails = () => {
                                             </div>
 
                                             <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                                <form className="pl-4 items-center justify-items-center space-y-5 flex flex-row ">
+                                                <form className="pl-4 items-center justify-items-center  flex flex-row ">
                                                     <label className="text-bold -ml-4 ">Ailment if any &nbsp;? &nbsp; &nbsp;</label>
                                                     <div>
                                                         <label className=" pl-2 flex  cursor-pointer">
@@ -140,7 +140,7 @@ const MedicalDetails = () => {
                                                 </form>
                                             </div>
                                             <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                                <form className="pl-4 items-center justify-items-center space-y-5 flex flex-row ">
+                                                <form className="pl-4 items-center justify-items-center flex flex-row ">
                                                     <label className="text-bold -ml-4 ">
                                                         Pre existing medical, social or emotional conditions you would like us to be aware of &nbsp;? &nbsp; &nbsp;
                                                     </label>
@@ -162,7 +162,7 @@ const MedicalDetails = () => {
                                                             <label className="pl-4">
                                                                 <br />
                                                                 <input
-                                                                    className="pl-4 w-80 form-input flex-col flex-1 -mt-4"
+                                                                    className=" w-80 form-input flex-col flex-1 -mt-4"
                                                                     type="text"
                                                                     placeholder="Describe your Ailment"
                                                                     value={ailmentDescription}
@@ -178,62 +178,63 @@ const MedicalDetails = () => {
                                 </div>
 
                                 {/*---------------------------------------------------Other Info Begin--------------------------------------------- */}
-                                <div className="mr-5 ">
+                                {/* <div>
                                     <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                                    <label htmlFor="permanentAdd" className=" px-5 pb-4 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                                    {/* <label htmlFor="permanentAdd" className=" px-5 pb-4 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
                                         Other Details{' '}
                                     </label>
-
-                                    <div className="mb-5 flex grid-cols-3 gap-16 lg:flex-row flex-col">
-                                        <div>
+                                    <div className="mt-4 px-8">
+                                        <div className="mb-5 flex grid-cols-3 gap-16 lg:flex-row flex-col">
+                                            <div>
+                                                <form className="pl-4 items-center flex flex-row ">
+                                                    Are you a Hostellite &nbsp;: &nbsp; &nbsp;
+                                                    <div>
+                                                        <label className=" pl-2 flex  cursor-pointer">
+                                                            <input type="radio" name="custom_radio2" className="form-radio" />
+                                                            <span className="text-white-dark">Yes</span>
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <label className="pl-4 -mt-4 flex  cursor-pointer">
+                                                            <input type="radio" name="custom_radio2" className="form-radio" />
+                                                            <span className="text-white-dark ">No</span>
+                                                        </label>
+                                                    </div>
+                                                </form>
+                                            </div>
                                             <form className="pl-4 items-center space-y-5 flex flex-row ">
-                                                Are you a Hostellite &nbsp;: &nbsp; &nbsp;
+                                                Are you physically challenged ? &nbsp;: &nbsp; &nbsp;
                                                 <div>
-                                                    <label className=" pl-2 flex  cursor-pointer">
+                                                    <label className="pl-2 flex items-center cursor-pointer">
                                                         <input type="radio" name="custom_radio2" className="form-radio" />
                                                         <span className="text-white-dark">Yes</span>
                                                     </label>
                                                 </div>
                                                 <div>
-                                                    <label className="pl-4 -mt-4 flex  cursor-pointer">
+                                                    <label className=" pl-4 -mt-4 flex items-center cursor-pointer">
                                                         <input type="radio" name="custom_radio2" className="form-radio" />
                                                         <span className="text-white-dark ">No</span>
                                                     </label>
                                                 </div>
                                             </form>
+                                            <form className="pl-4items-center space-y-5 flex flex-row ">
+                                                Are you a foreign Student ? &nbsp;: &nbsp; &nbsp;
+                                                <div>
+                                                    <label className="  pl-2 flex items-center cursor-pointer">
+                                                        <input type="radio" name="custom_radio2" className="form-radio" defaultChecked />
+                                                        <span className="text-white-dark">Yes</span>
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <label className=" pl-4 -mt-4 flex items-center cursor-pointer">
+                                                        <input type="radio" name="custom_radio2" className="form-radio" />
+                                                        <span className="text-white-dark">No</span>
+                                                    </label>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <form className="pl-4 items-center space-y-5 flex flex-row ">
-                                            Are you physically challenged ? &nbsp;: &nbsp; &nbsp;
-                                            <div>
-                                                <label className="pl-2 flex items-center cursor-pointer">
-                                                    <input type="radio" name="custom_radio2" className="form-radio" />
-                                                    <span className="text-white-dark">Yes</span>
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <label className=" pl-4 -mt-4 flex items-center cursor-pointer">
-                                                    <input type="radio" name="custom_radio2" className="form-radio" />
-                                                    <span className="text-white-dark ">No</span>
-                                                </label>
-                                            </div>
-                                        </form>
-                                        <form className="pl-4items-center space-y-5 flex flex-row ">
-                                            Are you a foreign Student ? &nbsp;: &nbsp; &nbsp;
-                                            <div>
-                                                <label className="  pl-2 flex items-center cursor-pointer">
-                                                    <input type="radio" name="custom_radio2" className="form-radio" defaultChecked />
-                                                    <span className="text-white-dark">Yes</span>
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <label className=" pl-4 -mt-4 flex items-center cursor-pointer">
-                                                    <input type="radio" name="custom_radio2" className="form-radio" />
-                                                    <span className="text-white-dark">No</span>
-                                                </label>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                    </div> 
+                                </div> */}
                             </div>
                         </div>
                     )}
@@ -252,8 +253,8 @@ const MedicalDetails = () => {
                                 </div>
                                 <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
                                 <div className="mt-8 px-4">
-                                    <div className="mr-5">
-                                        <div className="mt-8 px-4">
+                                    <div className="">
+                                        <div className="">
                                             <div className=" pl-5 flex justify-between lg:flex-row flex-col">
                                                 <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
                                                     <div className="mt-4 flex gap-5  lg:flex-row flex-col">
@@ -288,11 +289,16 @@ const MedicalDetails = () => {
                                             </div>
                                         </div>
 
-                                        <div className="ps-14 pe-10 flex gap-5  lg:flex-row flex-col">
-                                            <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                        <div className=" mt-2 flex ml-12 mr-4 gap-5 lg:flex-row flex-col">
+                                            <label htmlFor="notes" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
                                                 Person's Address
                                             </label>
-                                            <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 h-20 " placeholder="Enter Person's Address" />
+                                            <textarea id="notes" name="notes" className="form-textarea min-h-[130px]" placeholder="Address..."></textarea>
+
+                                            {/* <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                Person's Address
+                                            </label>
+                                            <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 h-10 " placeholder="Enter Person's Address" /> */}
                                         </div>
                                     </div>
                                 </div>

@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 import Fees from '../pages/Apps/Fees';
-// import ParentDetails from '../pages/Apps/ParentDetails';
 const Index = lazy(() => import('../pages/Index'));
 const Analytics = lazy(() => import('../pages/Analytics'));
 const Finance = lazy(() => import('../pages/Finance'));
@@ -10,13 +9,20 @@ const Mailbox = lazy(() => import('../pages/Apps/Mailbox'));
 const Notes = lazy(() => import('../pages/Apps/Notes'));
 const Contacts = lazy(() => import('../pages/Apps/Contacts'));
 const Chat = lazy(() => import('../pages/Apps/Chat'));
+const StudentList = lazy(() => import('../pages/Apps/StudentList'));
+
 const StudentDetails = lazy(() => import('../pages/Apps/StudentDetails'));
 const ContactDetails = lazy(() => import('../pages/Apps/ContactDetails'));
 const MedicalDetails = lazy(() => import('../pages/Apps/MedicalDetails'));
 const BankDetails = lazy(() => import('../pages/Apps/BankDetails'));
+const ExtraActivities = lazy(() => import('../pages/Apps/ExtraActivities'));
 
 const Documents = lazy(() => import('../pages/Apps/Documents'));
 const ClassSchedule = lazy(() => import('../pages/Apps/ClassSchedule'));
+const Courses = lazy(() => import('../pages/Apps/Courses'));
+const Attendance = lazy(() => import('../pages/Apps/Attendance'));
+
+
 const StudentMarks = lazy(() => import('../pages/Apps/StudentMarks'));
 
 const Scrumboard = lazy(() => import('../pages/Apps/Scrumboard'));
@@ -158,6 +164,10 @@ const routes = [
     },
     // Apps page
     {
+        path: '/apps/StudentList',
+        element: <StudentList />,
+    },
+    {
         path: '/apps/StudentDetails',
         element: <StudentDetails />,
     },
@@ -174,6 +184,11 @@ const routes = [
         element: <BankDetails />,
     },
     {
+        path: '/apps/ExtraActivities',
+        element: <ExtraActivities />,
+    },
+
+    {
         path: '/apps/Fees',
         element: <Fees />,
     },
@@ -183,8 +198,16 @@ const routes = [
         element: <ClassSchedule />,
     },
     {
+        path: '/apps/Courses',
+        element: <Courses />,
+    },
+    {
         path: '/apps/StudentMarks',
         element: <StudentMarks />,
+    },
+    {
+        path: '/apps/Attendance',
+        element: <Attendance/>,
     },
     {
         path: '/apps/chat',

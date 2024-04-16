@@ -14,8 +14,8 @@ const ContactDetails = () => {
                     </div>
                     <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
 
-                    <div className="mt-8 px-4">
-                        <div className="mr-5">
+                    <div className="mt-8 px-8">
+                        <div className="">
                             <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
                                 Present Address
                             </label>
@@ -258,8 +258,9 @@ const ContactDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mr-5">
-                        <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                    <hr className="border-white-light dark:border-[#1b2e4b] my-10" />
+
+                    <div className="mt-8 px-8">
                         <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
                             Permanent Address
                         </label>
