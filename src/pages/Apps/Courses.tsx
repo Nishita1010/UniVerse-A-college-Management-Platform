@@ -3,15 +3,6 @@ import Dropdown from '../../components/Dropdown';
 import IconHorizontalDots from '../../components/Icon/IconHorizontalDots';
 
 const Courses = () => {
-    const [list, setList] = useState(false);
-
-    // Function to toggle the isOpen state
-    const toggleList = () => {
-        setList(!list);
-    };
-
-    // const { list, toggleList } = useCourses();
-
     const tableData = [
         {
             id: 1,
@@ -120,8 +111,7 @@ const Courses = () => {
                         </div>
                     </div>
                     <div className="px-8 flex justify-end ">
-                        <button type="button" className="btn btn-primary" onClick={toggleList}>
-                            {list ? 'Close' : 'Open'}
+                        <button type="button" className="btn btn-primary">
                             Save
                         </button>
                     </div>
