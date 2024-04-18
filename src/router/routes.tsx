@@ -21,6 +21,8 @@ const Documents = lazy(() => import('../pages/Apps/Documents'));
 const ClassSchedule = lazy(() => import('../pages/Apps/ClassSchedule'));
 const Courses = lazy(() => import('../pages/Apps/Courses'));
 const Attendance = lazy(() => import('../pages/Apps/Attendance'));
+const LeaveDetails = lazy(() => import('../pages/Apps/LeaveDetails'));
+
 
 
 const StudentMarks = lazy(() => import('../pages/Apps/StudentMarks'));
@@ -208,6 +210,10 @@ const routes = [
     {
         path: '/apps/Attendance',
         element: <Attendance/>,
+    },
+    {
+        path: '/apps/LeaveDetails',
+        element: <LeaveDetails/>,
     },
     {
         path: '/apps/chat',
