@@ -2,11 +2,11 @@ import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useEffect, useState } from 'react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../store';
-import Dropdown from '../../components/Dropdown';
-import { setPageTitle } from '../../store/themeConfigSlice';
+import { IRootState } from '../../../store';
+import Dropdown from '../../../components/Dropdown';
+import { setPageTitle } from '../../../store/themeConfigSlice';
 // import IconBell from '../../components/Icon/IconBell';
-import IconCaretDown from '../../components/Icon/IconCaretDown';
+import IconCaretDown from '../../../components/Icon/IconCaretDown';
 
 const rowData = [
     {
@@ -29,7 +29,7 @@ const rowData = [
         isActive: true,
         age: 39,
         marks: 90,
-        grade:8,
+        grade: 8,
     },
     {
         id: 2,
@@ -52,7 +52,7 @@ const rowData = [
         isActive: false,
         age: 32,
         marks: 85,
-        grade:8.3,
+        grade: 8.3,
     },
     {
         id: 3,
@@ -75,7 +75,7 @@ const rowData = [
         isActive: false,
         age: 26,
         marks: 76,
-        grade:7.1,
+        grade: 7.1,
     },
     {
         id: 4,
@@ -98,7 +98,7 @@ const rowData = [
         isActive: true,
         age: 21,
         marks: 93,
-        grade:9,
+        grade: 9,
     },
     {
         id: 5,
@@ -120,7 +120,7 @@ const rowData = [
         isActive: false,
         age: 26,
         marks: 42,
-        grade:4.1,
+        grade: 4.1,
     },
     {
         id: 6,
@@ -142,7 +142,7 @@ const rowData = [
         isActive: true,
         age: 40,
         marks: 37,
-        grade:3.6,
+        grade: 3.6,
     },
     {
         id: 7,
@@ -164,7 +164,7 @@ const rowData = [
         isActive: true,
         age: 24,
         marks: 54,
-        grade:5.2,
+        grade: 5.2,
     },
     {
         id: 8,
@@ -186,7 +186,7 @@ const rowData = [
         isActive: true,
         age: 24,
         marks: 46,
-        grade:4.3,
+        grade: 4.3,
     },
     {
         id: 9,
@@ -208,7 +208,7 @@ const rowData = [
         isActive: false,
         age: 28,
         marks: 88,
-        grade:8.6,
+        grade: 8.6,
     },
     {
         id: 10,
@@ -230,7 +230,7 @@ const rowData = [
         isActive: false,
         age: 27,
         marks: 88,
-        grade:8.6,
+        grade: 8.6,
     },
     {
         id: 11,
@@ -252,7 +252,7 @@ const rowData = [
         isActive: true,
         age: 34,
         marks: 72,
-        grade:6.99,
+        grade: 6.99,
     },
     {
         id: 12,
@@ -274,7 +274,7 @@ const rowData = [
         isActive: true,
         age: 28,
         marks: 74,
-        grade:7.1,
+        grade: 7.1,
     },
     {
         id: 13,
@@ -296,7 +296,7 @@ const rowData = [
         isActive: true,
         age: 31,
         marks: 77,
-        grade:7.5,
+        grade: 7.5,
     },
     {
         id: 14,
@@ -318,7 +318,7 @@ const rowData = [
         isActive: true,
         age: 22,
         marks: 79,
-        grade:7.7,
+        grade: 7.7,
     },
     {
         id: 15,
@@ -340,7 +340,7 @@ const rowData = [
         isActive: true,
         age: 27,
         marks: 54,
-        grade:5.2,
+        grade: 5.2,
     },
     {
         id: 16,
@@ -362,7 +362,7 @@ const rowData = [
         isActive: false,
         age: 33,
         marks: 89,
-        grade:8.7,
+        grade: 8.7,
     },
     {
         id: 17,
@@ -384,7 +384,7 @@ const rowData = [
         isActive: true,
         age: 20,
         marks: 85,
-        grade:8.3,
+        grade: 8.3,
     },
     {
         id: 18,
@@ -406,7 +406,7 @@ const rowData = [
         isActive: false,
         age: 31,
         marks: 81,
-        grade:7.9,
+        grade: 7.9,
     },
     {
         id: 19,
@@ -428,7 +428,7 @@ const rowData = [
         isActive: false,
         age: 33,
         marks: 84,
-        grade:8.2,
+        grade: 8.2,
     },
     {
         id: 20,

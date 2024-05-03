@@ -1,4 +1,6 @@
 import React from 'react';
+import MaskedInput from 'react-text-mask';
+
 
 const ContactDetails = () => {
     return (
@@ -504,6 +506,64 @@ const ContactDetails = () => {
                     </div>
                 </div>
             </div>
+            <div className="flex xl:flex-row flex-col gap-2.5">
+                            <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
+                                <div className="flex justify-between flex-wrap px-4">
+                                    <div className="mb-6 lg:w-1/2 w-full">
+                                        <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
+                                            Emergency Contact
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                                <div className="mt-8 px-4">
+                                    <div className="">
+                                        <div className="">
+                                            <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                                                <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                                    <div className="mt-4 flex gap-5  lg:flex-row flex-col">
+                                                        <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                            Full Name
+                                                        </label>
+                                                        <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter Full Name" />
+                                                        <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                                            E mail ID
+                                                        </label>
+                                                        <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter Email ID" />
+                                                    </div>
+
+                                                    <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                                        <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                                            Phone Number
+                                                        </label>
+                                                        <MaskedInput
+                                                            id="phoneMask"
+                                                            type="text"
+                                                            placeholder="Enter your Phone Number"
+                                                            className="form-input flex-1"
+                                                            mask={['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', ' ', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+                                                        />
+
+                                                        <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                            Relation with the Student
+                                                        </label>
+                                                        <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Example- Mother, Father, Brother etc." />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className=" mt-2 flex ml-12 mr-4 gap-5 lg:flex-row flex-col">
+                                            <label htmlFor="notes" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                Person's Address
+                                            </label>
+                                            <textarea id="notes" name="notes" className="form-textarea min-h-[130px]" placeholder="Address..."></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
         </>
     );
 };

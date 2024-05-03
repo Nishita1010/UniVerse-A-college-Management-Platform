@@ -144,23 +144,24 @@ const Sidebar = () => {
                                         <AnimateHeight duration={300} height={currentMenu === 'component' ? 'auto' : 0}>
                                             <ul className="sub-menu text-gray-500">
                                                 <li>
-                                                    <NavLink to="../apps/studentList">{t('Student List')}</NavLink>
+                                                    <NavLink to="../apps/studentDetails/studentList">{t('Student Details')}</NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="../apps/studentDetails">{t('Student Admission')}</NavLink>
+                                                    <NavLink to="../apps/studentDetails/studentDetails">{t('Student Admission')}</NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="../apps/contactDetails">{t('Contact Details')}</NavLink>
+                                                    <NavLink to="../apps/studentDetails/contactDetails">{t('Contact Details')}</NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="../apps/bankDetails">{t('Bank Details')}</NavLink>
+                                                    <NavLink to="../apps/studentDetails/bankDetails">{t('Bank Details')}</NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="../apps/MedicalDetails">{t('Medical Details')}</NavLink>
+                                                    <NavLink to="../apps/studentDetails/MedicalDetails">{t('Medical Details')}</NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="../apps/ExtraActivities">{t('Extracurricular Activities')}</NavLink>
+                                                    <NavLink to="../apps/Activities">{t('Extra-Curricular Activities')}</NavLink>
                                                 </li>
+                                               
                                             </ul>
                                         </AnimateHeight>
                                     </li>
@@ -213,7 +214,7 @@ const Sidebar = () => {
                                                     <NavLink to="../apps/LeaveDetails">{t('Leave Details')}</NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="/components/carousel">{t('Examination')}</NavLink>
+                                                    <NavLink to="../apps/Examination">{t('Examination')}</NavLink>
                                                 </li>
                                             </ul>
                                         </AnimateHeight>

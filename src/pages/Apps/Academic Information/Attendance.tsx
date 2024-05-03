@@ -1,14 +1,15 @@
 import { useState, Fragment, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../store';
-import { setPageTitle } from '../../store/themeConfigSlice';
-import IconX from '../../components/Icon/IconX';
-import IconPlus from '../../components/Icon/IconPlus';
+import { IRootState } from '../../../store';
+import { setPageTitle } from '../../../store/themeConfigSlice';
+// import IconX from '../../components/Icon/IconX';
+import IconPlus from '../../../components/Icon/IconPlus';
+import IconSave from '../../../components/Icon/IconSave';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
-import Dropdown from '../../components/Dropdown';
-import IconCaretDown from '../../components/Icon/IconCaretDown';
+// import Dropdown from '../../components/Dropdown';
+// import IconCaretDown from '../../components/Icon/IconCaretDown';
 
 const rowData = [
     {
@@ -560,7 +561,7 @@ const rowData = [
     },
 ];
 
-const LeaveDetails = () => {
+const Attendance = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(setPageTitle('Modals'));
@@ -608,26 +609,26 @@ const LeaveDetails = () => {
         return '';
     };
 
-    const showHideColumns = (col: any, value: any) => {
-        if (hideCols.includes(col)) {
-            setHideCols((col: any) => hideCols.filter((d: any) => d !== col));
-        } else {
-            setHideCols([...hideCols, col]);
-        }
-    };
+    // const showHideColumns = (col: any, value: any) => {
+    //     if (hideCols.includes(col)) {
+    //         setHideCols((col: any) => hideCols.filter((d: any) => d !== col));
+    //     } else {
+    //         setHideCols([...hideCols, col]);
+    //     }
+    // };
 
-    const cols = [
-        { accessor: 'id', title: 'Reg. No.' },
-        { accessor: 'firstName', title: 'Student Name' },
-        { accessor: 'lastName', title: 'Branch' },
-        { accessor: 'email', title: 'Stream' },
-        { accessor: 'course', title: 'Apply Date' },
-        { accessor: 'marks', title: 'From Date' },
-        { accessor: 'address.street', title: 'To Date' },
-        { accessor: 'age', title: 'Status' },
-        { accessor: 'dob', title: 'Approved By' },
-        { accessor: 'isActive', title: 'Action' },
-    ];
+    // const cols = [
+    //     { accessor: 'id', title: 'Reg. No.' },
+    //     { accessor: 'firstName', title: 'Student Name' },
+    //     { accessor: 'lastName', title: 'Branch' },
+    //     { accessor: 'email', title: 'Stream' },
+    //     { accessor: 'course', title: 'Apply Date' },
+    //     { accessor: 'marks', title: 'From Date' },
+    //     { accessor: 'address.street', title: 'To Date' },
+    //     { accessor: 'age', title: 'Status' },
+    //     { accessor: 'dob', title: 'Approved By' },
+    //     { accessor: 'isActive', title: 'Action' },
+    // ];
 
     useEffect(() => {
         setPage(1);
@@ -669,18 +670,18 @@ const LeaveDetails = () => {
     return (
         <>
             <div className="flex xl:flex-row flex-col gap-2.5">
-                <div className="panel px-4 flex-1 pt-6 ltr:xl:mr-6 rtl:xl:ml-6">
+                <div className="panel px-4 flex-1 pt-6  rtl:xl:ml-6">
                     <div className="flex justify-between flex-wrap px-4">
                         <div className="lg:w-1/2 w-full">
                             <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                Leave Details
+                                Select Criteria
                             </div>
                         </div>
                     </div>
                     {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" /> */}
-                    <div className="mt-4 px-4">
+                    <div className="px-4">
                         <div className="  flex justify-between lg:flex-row flex-col">
-                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6 pt-6">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6 pt-3">
                                 <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
                                     <label htmlFor="dob" className=" rtl:ml-2 w-28  mb-0">
                                         Course
@@ -700,7 +701,8 @@ const LeaveDetails = () => {
                                         <option>IX</option>
                                         <option>X</option>
                                     </select>
-
+                                </div>
+                                <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
                                     <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
                                     <select className="form-select flex-1">
                                         <option>Select...</option>
@@ -710,6 +712,8 @@ const LeaveDetails = () => {
                                         <option>D</option>
                                         <option>E</option>
                                     </select>
+                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Attendance Date</label>
+                                    <input id="gender" type="Date" name="gender" className="form-input flex-1" />
                                 </div>
                             </div>
                         </div>
@@ -719,196 +723,63 @@ const LeaveDetails = () => {
 
                     {/* <div className=" bg-blue-800 px-6 py-6 ml-200">*/}
 
-                    <div>
+                    <div className="flex float-end px-8">
                         <button type="button" onClick={() => setModal5(true)} className="btn btn-warning ">
                             <IconPlus className="mr-2 -ml-3"></IconPlus>
-                            Add
+                            Search
                         </button>
                     </div>
-
-                    <Transition appear show={modal5} as={Fragment}>
-                        <Dialog as="div" open={modal5} onClose={() => setModal5(false)}>
-                            <Transition.Child
-                                as={Fragment}
-                                enter="ease-out duration-300"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="ease-in duration-200"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                            >
-                                <div className="fixed inset-0" />
-                            </Transition.Child>
-                            <div className="fixed inset-0 z-[999] bg-[black]/60">
-                                <div className="flex min-h-screen items-start justify-center px-4">
-                                    <Transition.Child
-                                        as={Fragment}
-                                        enter="ease-out duration-300"
-                                        enterFrom="opacity-0 scale-95"
-                                        enterTo="opacity-100 scale-100"
-                                        leave="ease-in duration-200"
-                                        leaveFrom="opacity-100 scale-100"
-                                        leaveTo="opacity-0 scale-95"
-                                    >
-                                        <Dialog.Panel className="panel my-8 w-full max-w-5xl overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
-                                            <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
-                                                <h5 className="text-lg font-bold">Add Leave</h5>
-                                                <button onClick={() => setModal5(false)} type="button" className="text-white-dark hover:text-dark">
-                                                    <IconX />
-                                                </button>
-                                            </div>
-                                            {/* yaha se */}
-                                            <div className="mt-4 px-4">
-
-
-                                <div className="px-5 flex w-full">
-                                    <label htmlFor="Street_Address" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                        Full Name
-                                    </label>
-                                    <input id="Street_Address" type="text" name="Street_Address" className="form-input flex-1" placeholder="Enter Your Name" />
-                                </div>
-
-
-                        <div className="  flex justify-between lg:flex-row flex-col">
-                            <div className=" w-full ltr:lg:px-4 rtl:lg:px-4 pb-6 pt-6">
-                                <div className=" flex items-center gap-5 lg:flex-row flex-col">
-                                    <label htmlFor="dob" className=" w-28  mb-0">
-                                        Course
-                                    </label>
-                                    <input id="gender" type="text" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
-                                    <select className="-ml-4 form-select flex-1">
-                                        <option>Select...</option>
-                                        <option>I</option>
-                                        <option>II</option>
-                                        <option>III</option>
-                                        <option>IV</option>
-                                        <option>V</option>
-                                        <option>VI</option>
-                                        <option>VII</option>
-                                        <option>VIII</option>
-                                        <option>IX</option>
-                                        <option>X</option>
-                                    </select>
-
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
-                                    <select className="-ml-4 form-select flex-1">
-                                        <option>Select...</option>
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
-                                        <option>D</option>
-                                        <option>E</option>
-                                    </select>
-                                </div>
-                                <div className="mt-6 flex items-center gap-5 lg:flex-row flex-col">
-                                    <label htmlFor="dob" className=" w-28  mb-0">
-                                        Application Date
-                                    </label>
-                                    <input id="gender" type="text" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
-                                    <select className="-ml-4 form-select flex-1">
-                                        <option>Select...</option>
-                                        <option>I</option>
-                                        <option>II</option>
-                                        <option>III</option>
-                                        <option>IV</option>
-                                        <option>V</option>
-                                        <option>VI</option>
-                                        <option>VII</option>
-                                        <option>VIII</option>
-                                        <option>IX</option>
-                                        <option>X</option>
-                                    </select>
-
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
-                                    <select className="-ml-4 form-select flex-1">
-                                        <option>Select...</option>
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
-                                        <option>D</option>
-                                        <option>E</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                                            <div className="p-5">
-                                                {/* Buttons */}
-                                                <div className="mt-8 flex items-center justify-end">
-                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-outline-danger">
-                                                        Discard
-                                                    </button>
-                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4">
-                                                        Save
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </Dialog.Panel>
-                                    </Transition.Child>
-                                </div>
-                            </div>
-                        </Dialog>
-                    </Transition>
-                    {/* </div>*/}
 
                     {/* --------------------------------Add Attendance Button End-------------------------- */}
                 </div>
             </div>
 
-            <div className="panel mt-3">
-                <div className="flex md:items-center md:flex-row flex-col mb-5 gap-5">
-                    <h5 className="font-semibold text-lg dark:text-white-light">Leave Approve List</h5>
-                    <div className="flex items-center gap-5 ltr:ml-auto rtl:mr-auto">
-                        <div className="flex md:items-center md:flex-row flex-col gap-5">
-                            <div className="dropdown">
-                                <Dropdown
-                                    placement={`${isRtl ? 'bottom-end' : 'bottom-start'}`}
-                                    btnClassName="!flex items-center border font-semibold border-white-light dark:border-[#253b5c] rounded-md px-4 py-2 text-sm dark:bg-[#1b2e4b] dark:text-white-dark"
-                                    button={
-                                        <>
-                                            <span className="ltr:mr-1 rtl:ml-1">Columns</span>
-                                            <IconCaretDown className="w-5 h-5" />
-                                        </>
-                                    }
-                                >
-                                    <ul className="!min-w-[160px]">
-                                        {cols.map((col, i) => {
-                                            return (
-                                                <li
-                                                    key={i}
-                                                    className="flex flex-col"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                    }}
-                                                >
-                                                    <div className="flex items-center px-4 py-1">
-                                                        <label className="cursor-pointer mb-0">
-                                                            <input
-                                                                type="checkbox"
-                                                                checked={!hideCols.includes(col.accessor)}
-                                                                className="form-checkbox"
-                                                                defaultValue={col.accessor}
-                                                                onChange={(event: any) => {
-                                                                    setHideCols(event.target.value);
-                                                                    showHideColumns(col.accessor, event.target.checked);
-                                                                }}
-                                                            />
-                                                            <span className="ltr:ml-2 rtl:mr-2">{col.title}</span>
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                </Dropdown>
-                            </div>
-                        </div>
-                        <div className="text-right">
-                            <input type="text" className="form-input" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
-                        </div>
+            <div className="panel mt-3 px-8">
+                <div className="flex md:items-center md:flex-row flex-col mb-5 ">
+                    <h5 className="font-semibold text-lg dark:text-white-light">Attendance List</h5>
+                </div>
+                <div className="flex items-center justify-between space-x-15">
+                    <div className="flex  after:float-start w-1/5 mb-4">
+                        <input type="text" className="form-input" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                    </div>
+                    <div className="flex items-center mb-4 px-4">
+                        <button type="button" onClick={() => setModal5(true)} className="btn btn-warning ">
+                            <IconSave className="mr-2 -ml-3"></IconSave>
+                            Save Attendance
+                        </button>
+                    </div>
+                </div>
+                <div className=" mt-4 mb-6 gap-4 font-bold items-center space-y-5 flex flex-row ">
+                    Mark all students attendance as:
+                    <div>
+                        <label className="flex  cursor-pointer">
+                            <input type="radio" name="custom_radio2" className="form-radio" />
+                            <span className="">Present</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label className="pl-8 -mt-4 flex  cursor-pointer">
+                            <input type="radio" name="custom_radio2" className="form-radio" />
+                            <span className=" ">Absent</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label className="pl-8 -mt-4 flex  cursor-pointer">
+                            <input type="radio" name="custom_radio2" className="form-radio" />
+                            <span className=" ">Late</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label className="pl-8 -mt-4 flex  cursor-pointer">
+                            <input type="radio" name="custom_radio2" className="form-radio" />
+                            <span className=" ">Holiday</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label className="pl-8 -mt-4 flex  cursor-pointer">
+                            <input type="radio" name="custom_radio2" className="form-radio" />
+                            <span className=" ">Half Day</span>
+                        </label>
                     </div>
                 </div>
                 <div className="datatables">
@@ -982,4 +853,4 @@ const LeaveDetails = () => {
     );
 };
 
-export default LeaveDetails;
+export default Attendance;

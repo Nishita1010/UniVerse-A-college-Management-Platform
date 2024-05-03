@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Dropdown from '../../components/Dropdown';
-import IconHorizontalDots from '../../components/Icon/IconHorizontalDots';
+import Dropdown from '../../../components/Dropdown';
+import IconHorizontalDots from '../../../components/Icon/IconHorizontalDots';
 
 const Courses = () => {
     const tableData = [
