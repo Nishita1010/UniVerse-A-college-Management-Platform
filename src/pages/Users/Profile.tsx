@@ -54,15 +54,15 @@ const Profile = () => {
                             <ul className="mt-5 flex flex-col max-w-[160px] m-auto space-y-4 font-semibold text-white-dark">
                                 <li className="flex items-center gap-2">
                                     <IconCoffee className="shrink-0" />
-                                    Web Developer
+                                    Student
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <IconCalendar className="shrink-0" />
-                                    Jan 20, 1989
+                                    Jan 20, 2004
                                 </li>
                                 <li className="flex items-center gap-2">
                                     <IconMapPin className="shrink-0" />
-                                    New York, USA
+                                    Noida, Uttar Pradesh
                                 </li>
                                 <li>
                                     <button className="flex items-center gap-2">
@@ -73,11 +73,11 @@ const Profile = () => {
                                 <li className="flex items-center gap-2">
                                     <IconPhone />
                                     <span className="whitespace-nowrap" dir="ltr">
-                                        +1 (530) 555-12121
+                                        +91 (987) 564-3215
                                     </span>
                                 </li>
                             </ul>
-                            <ul className="mt-7 flex items-center justify-center gap-2">
+                            {/* <ul className="mt-7 flex items-center justify-center gap-2">
                                 <li>
                                     <button className="btn btn-info flex items-center justify-center rounded-full w-10 h-10 p-0">
                                         <IconTwitter className="w-5 h-5" />
@@ -93,7 +93,7 @@ const Profile = () => {
                                         <IconGithub />
                                     </button>
                                 </li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                     <div className="panel lg:col-span-2 xl:col-span-3">

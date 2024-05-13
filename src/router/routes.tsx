@@ -9,9 +9,9 @@ const Mailbox = lazy(() => import('../pages/Apps/Mailbox'));
 const Notes = lazy(() => import('../pages/Apps/Notes'));
 const Contacts = lazy(() => import('../pages/Apps/Contacts'));
 const Chat = lazy(() => import('../pages/Apps/Chat'));
-const StudentList = lazy(() => import('../pages/Apps/Student Details/StudentDetails'));
+const StudentDetails = lazy(() => import('../pages/Apps/Student Details/StudentDetails'));
 const Activities = lazy(() => import('../pages/Apps/Activities'));
-const StudentDetails = lazy(() => import('../pages/Apps/Student Details/StudentAdm'));
+const StudentAdm = lazy(() => import('../pages/Apps/Student Details/StudentAdm'));
 const ContactDetails = lazy(() => import('../pages/Apps/Student Details/ContactDetails'));
 const MedicalDetails = lazy(() => import('../pages/Apps/Student Details/MedicalDetails'));
 const BankDetails = lazy(() => import('../pages/Apps/Student Details/BankDetails'));
@@ -162,12 +162,12 @@ const routes = [
     },
     // Apps page
     {
-        path: '/apps/studentDetails/StudentList',
-        element: <StudentList />,
-    },
-    {
         path: '/apps/studentDetails/StudentDetails',
         element: <StudentDetails />,
+    },
+    {
+        path: '/apps/studentDetails/StudentAdm',
+        element: <StudentAdm />,
     },
     {
         path: '/apps/Documents',

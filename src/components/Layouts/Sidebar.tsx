@@ -144,20 +144,21 @@ const Sidebar = () => {
                                         <AnimateHeight duration={300} height={currentMenu === 'component' ? 'auto' : 0}>
                                             <ul className="sub-menu text-gray-500">
                                                 <li>
-                                                    <NavLink to="../apps/studentDetails/studentList">{t('Student Details')}</NavLink>
+                                                    <NavLink to="../apps/studentDetails/studentDetails">{t('Student Details')}</NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to="../apps/studentDetails/studentDetails">{t('Student Admission')}</NavLink>
+                                                    <NavLink to="../apps/studentDetails/studentAdm">{t('Student Admission')}</NavLink>
                                                 </li>
-                                                <li>
+                                                {/* <li>
                                                     <NavLink to="../apps/studentDetails/contactDetails">{t('Contact Details')}</NavLink>
                                                 </li>
-                                                <li>
-                                                    <NavLink to="../apps/studentDetails/bankDetails">{t('Bank Details')}</NavLink>
-                                                </li>
+                                               
                                                 <li>
                                                     <NavLink to="../apps/studentDetails/MedicalDetails">{t('Medical Details')}</NavLink>
-                                                </li>
+                                                </li> */}
+                                                {/* <li>
+                                                    <NavLink to="../apps/studentDetails/bankDetails">{t('Bank Details')}</NavLink>
+                                                </li> */}
                                                 <li>
                                                     <NavLink to="../apps/Activities">{t('Extra-Curricular Activities')}</NavLink>
                                                 </li>
@@ -165,7 +166,7 @@ const Sidebar = () => {
                                             </ul>
                                         </AnimateHeight>
                                     </li>
-                                    <li className="menu nav-item">
+                                    {/* <li className="menu nav-item">
                                         <button type="button" className={`${currentMenu === 'pages' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('pages')}>
                                             <div className="flex items-center">
                                                 <IconMenuPages className="group-hover:!text-primary shrink-0" />
@@ -183,7 +184,7 @@ const Sidebar = () => {
                                                 </li>
                                             </ul>
                                         </AnimateHeight>
-                                    </li>
+                                    </li> */}
                                     <li className="menu nav-item">
                                         <button type="button" className={`${currentMenu === 'tables' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('tables')}>
                                             <div className="flex items-center">
@@ -361,7 +362,7 @@ const Sidebar = () => {
                                 <button type="button" className={`${currentMenu === 'component' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('component')}>
                                     <div className="flex items-center">
                                         <IconMenuComponents className="group-hover:!text-primary shrink-0" />
-                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Student Details')}</span>
+                                        <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">{t('Components')}</span>
                                     </div>
 
                                     <div className={currentMenu !== 'component' ? 'rtl:rotate-90 -rotate-90' : ''}>
@@ -372,19 +373,19 @@ const Sidebar = () => {
                                 <AnimateHeight duration={300} height={currentMenu === 'component' ? 'auto' : 0}>
                                     <ul className="sub-menu text-gray-500">
                                         <li>
-                                            <NavLink to="/components/tabs">{t('My Profile')}</NavLink>
+                                            <NavLink to="/components/tabs">{t('tabs')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/accordions">{t('Contact Details')}</NavLink>
+                                            <NavLink to="/components/accordions">{t('accordians')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/modals">{t('Bank Details')}</NavLink>
+                                            <NavLink to="/components/modals">{t('modals')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/cards">{t('Medical Details')}</NavLink>
+                                            <NavLink to="/components/cards">{t('cards')}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink to="/components/carousel">{t('Extracurricular Activities')}</NavLink>
+                                            <NavLink to="/components/carousel">{t('carousel')}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink to="/components/countdown">{t('countdown')}</NavLink>
@@ -653,7 +654,7 @@ const Sidebar = () => {
                                 </AnimateHeight>
                             </li>
 
-                            <h2 className="py-3 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
+                            {/* <h2 className="py-3 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
                                 <IconMinus className="w-4 h-5 flex-none hidden" />
                                 <span>{t('user_and_pages')}</span>
                             </h2>
@@ -680,7 +681,7 @@ const Sidebar = () => {
                                         </li>
                                     </ul>
                                 </AnimateHeight>
-                            </li>
+                            </li> */}
 
                             <li className="menu nav-item">
                                 <button type="button" className={`${currentMenu === 'page' ? 'active' : ''} nav-link group w-full`} onClick={() => toggleMenu('page')}>

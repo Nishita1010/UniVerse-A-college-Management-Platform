@@ -1,45 +1,26 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { downloadExcel } from 'react-export-table-to-excel';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useState, useEffect } from 'react';
 import sortBy from 'lodash/sortBy';
-import { useDispatch, useSelector } from 'react-redux';
-import { setPageTitle } from '../../../store/themeConfigSlice';
+import IconFile from '../../../components/Icon/IconFile';
+import IconPrinter from '../../../components/Icon/IconPrinter';
 import IconTrashLines from '../../../components/Icon/IconTrashLines';
 import IconPlus from '../../../components/Icon/IconPlus';
 import IconEdit from '../../../components/Icon/IconEdit';
 import IconEye from '../../../components/Icon/IconEye';
+import IconFilter from '../../../components/Icon/IconFilter';
+
+import StudentAdm from './StudentAdm';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
+// import PersonalDetails from './PersonalDetails';
 
-const StudentList = () => {
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     dispatch(setPageTitle('Student List'));
-    // });
-
-    const criteria = () =>{
-        
-    }
-
-    const validationSchema = Yup.object().shape({
-        courses: Yup.string().required('Please select the course'),
-        section: Yup.string().required('Please select the section'),
-        attendanceDate: Yup.string().required('Please choose a date'),
-        semester: Yup.string().required('Please select the semester'),
-    });
-
-    const handleSubmit = (values, actions) => {
-        console.log('Form values:', values);
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Form submitted successfully',
-            timer: 3000,
-            showConfirmButton: false,
-        });
-
-        actions.resetForm();
+const StudentDetails = () => {
+    const [isCardVisible, setIsCardVisible] = useState(false);
+    const handleButtonClick = () => {
+        setIsCardVisible(!isCardVisible);
     };
 
     const [data, setData] = useState({
@@ -51,21 +32,142 @@ const StudentList = () => {
 
     const handleOnChange = (e) => {
         const { value, name } = e.target;
-        console.log(value, 'value');
+        // console.log(value, 'value');
         setData({
             ...data,
             [name]: value,
         });
     };
 
-    // const handleOnChange = (e) => {
-    //     const {value, name } = e.target ;
-    //     setData({
-    //         ...data, [name]:value
-    //     })
+    function handleDownloadExcel() {
+        downloadExcel({
+            fileName: 'table',
+            sheet: 'react-export-table-to-excel',
+            tablePayload: {
+                Headers,
+                body: items,
+            },
+        });
+    }
 
-    //     console.log(value, "value")
-    // }
+    const exportTable = (type: any) => {
+        let columns: any = col;
+        let records = items;
+        let filename = 'table';
+
+        let newVariable: any;
+        newVariable = window.navigator;
+
+        if (type === 'csv') {
+            let coldelimiter = ';';
+            let linedelimiter = '\n';
+            let result = columns
+                .map((d: any) => {
+                    return capitalize(d);
+                })
+                .join(coldelimiter);
+            result += linedelimiter;
+            // eslint-disable-next-line array-callback-return
+            records.map((item: any) => {
+                // eslint-disable-next-line array-callback-return
+                columns.map((d: any, index: any) => {
+                    if (index > 0) {
+                        result += coldelimiter;
+                    }
+                    let val = item[d] ? item[d] : '';
+                    result += val;
+                });
+                result += linedelimiter;
+            });
+
+            if (result == null) return;
+            if (!result.match(/^data:text\/csv/i) && !newVariable.msSaveOrOpenBlob) {
+                var data = 'data:application/csv;charset=utf-8,' + encodeURIComponent(result);
+                var link = document.createElement('a');
+                link.setAttribute('href', data);
+                link.setAttribute('download', filename + '.csv');
+                link.click();
+            } else {
+                var blob = new Blob([result]);
+                if (newVariable.msSaveOrOpenBlob) {
+                    newVariable.msSaveBlob(blob, filename + '.csv');
+                }
+            }
+        } else if (type === 'print') {
+            var rowhtml = '<p>' + filename + '</p>';
+            rowhtml +=
+                '<table style="width: 100%; " cellpadding="0" cellcpacing="0"><thead><tr style="color: #515365; background: #eff5ff; -webkit-print-color-adjust: exact; print-color-adjust: exact; "> ';
+            // eslint-disable-next-line array-callback-return
+            columns.map((d: any) => {
+                rowhtml += '<th>' + capitalize(d) + '</th>';
+            });
+            rowhtml += '</tr></thead>';
+            rowhtml += '<tbody>';
+
+            // eslint-disable-next-line array-callback-return
+            records.map((item: any) => {
+                rowhtml += '<tr>';
+                // eslint-disable-next-line array-callback-return
+                columns.map((d: any) => {
+                    let val = item[d] ? item[d] : '';
+                    rowhtml += '<td>' + val + '</td>';
+                });
+                rowhtml += '</tr>';
+            });
+            rowhtml +=
+                '<style>body {font-family:Arial; color:#495057;}p{text-align:center;font-size:18px;font-weight:bold;margin:15px;}table{ border-collapse: collapse; border-spacing: 0; }th,td{font-size:12px;text-align:left;padding: 4px;}th{padding:8px 4px;}tr:nth-child(2n-1){background:#f7f7f7; }</style>';
+            rowhtml += '</tbody></table>';
+            var winPrint: any = window.open('', '', 'left=0,top=0,width=1000,height=600,toolbar=0,scrollbars=0,status=0');
+            winPrint.document.write('<title>Print</title>' + rowhtml);
+            winPrint.document.close();
+            winPrint.focus();
+            winPrint.print();
+        } else if (type === 'txt') {
+            let coldelimiter = ',';
+            let linedelimiter = '\n';
+            let result = columns
+                .map((d: any) => {
+                    return capitalize(d);
+                })
+                .join(coldelimiter);
+            result += linedelimiter;
+            // eslint-disable-next-line array-callback-return
+            records.map((item: any) => {
+                // eslint-disable-next-line array-callback-return
+                columns.map((d: any, index: any) => {
+                    if (index > 0) {
+                        result += coldelimiter;
+                    }
+                    let val = item[d] ? item[d] : '';
+                    result += val;
+                });
+                result += linedelimiter;
+            });
+
+            if (result == null) return;
+            if (!result.match(/^data:text\/txt/i) && !newVariable.msSaveOrOpenBlob) {
+                var data1 = 'data:application/txt;charset=utf-8,' + encodeURIComponent(result);
+                var link1 = document.createElement('a');
+                link1.setAttribute('href', data1);
+                link1.setAttribute('download', filename + '.txt');
+                link1.click();
+            } else {
+                var blob1 = new Blob([result]);
+                if (newVariable.msSaveOrOpenBlob) {
+                    newVariable.msSaveBlob(blob1, filename + '.txt');
+                }
+            }
+        }
+    };
+    const capitalize = (text: any) => {
+        return text
+            .replace('_', ' ')
+            .replace('-', ' ')
+            .toLowerCase()
+            .split(' ')
+            .map((s: any) => s.charAt(0).toUpperCase() + s.substring(1))
+            .join(' ');
+    };
 
     const [items, setItems] = useState([
         {
@@ -191,7 +293,7 @@ const StudentList = () => {
     ]);
 
     const deleteRow = (id: any = null) => {
-        if (window.confirm('Are you sure want to delete selected row ?')) {
+        if (window.confirm('Are you sure ? You want to delete selected row.')) {
             if (id) {
                 setRecords(items.filter((user) => user.id !== id));
                 setInitialRecords(items.filter((user) => user.id !== id));
@@ -212,6 +314,11 @@ const StudentList = () => {
                 setPage(1);
             }
         }
+    };
+
+    const addNew = () => {
+        const navigate = useNavigate();
+        navigate('/src/pages/Apps/Student Details/PersonalDetails.tsx');
     };
 
     const [page, setPage] = useState(1);
@@ -261,214 +368,269 @@ const StudentList = () => {
 
     return (
         <>
-            <Formik
-                initialValues={{
-                    courses: '',
-                    section: '',
-                    attendanceDate: '',
-                    semester: '',
-                }}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-            >
-                {({ errors, touched, values }) => (
-                    <Form>
-                        <div className="flex xl:flex-row flex-col gap-2.5">
-                            <div className="panel px-8 col border-white-light dark:border-[#1b2e4b]">
-                                <div className="">
-                                    <div className="flex justify-between flex-wrap px-4">
-                                        <div className="lg:w-1/2 w-full">
-                                            <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                                Select Criteria
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="  flex col justify-between lg:flex-row flex-col">
-                                        <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6 pt-3">
-                                            <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
-                                                <label htmlFor="courses" className=" rtl:ml-2 w-28  mb-0">
-                                                    Course
-                                                </label>
-                                                <div className="flex-1">
-                                                    <Field as="select" className="-ml-3 form-select flex-1" value={data.courses} name="courses" onChange={handleOnChange}>
-                                                        <option value="Select Course">Select Course</option>
-                                                        <option value="B.Tech">B.Tech</option>
-                                                        <option value="BBA">BBA</option>
-                                                        <option value="M.Tech">M.Tech</option>
-                                                        <option value="MBA">MBA</option>
-                                                        <option value="PhD">PhD</option>
-                                                        <option value="Diploma">Diploma</option>
-                                                        <option value="LLB">LLB</option>
-                                                        <option value="B.Sc">B.Sc</option>
-                                                        <option value="M.Sc">M.Sc</option>
-                                                        <option value="B.Pharma">B.Pharma</option>
-                                                    </Field>
-                                                    {errors.courses && touched.courses && <div className="text-red-500 mt-1">{errors.courses}</div>}
-                                                </div>
-                                                <label className=" rtl:ml-2 w-28  mb-0">Semester</label>
-                                                <div className="flex-1">
-                                                    <Field as="select" value={data.semester} name="semester" onChange={handleOnChange} className="-ml-3 form-select flex-1">
-                                                        <option value="Select Semester">Select Semester</option>
-                                                        <option value="I">I</option>
-                                                        <option value="II">II</option>
-                                                        <option value="III">III</option>
-                                                        <option value="IV">IV</option>
-                                                        <option value="V">V</option>
-                                                        <option value="VI">VI</option>
-                                                        <option value="VII">VII</option>
-                                                        <option value="VIII">VIII</option>
-                                                        <option value="IX">IX</option>
-                                                        <option value="X">X</option>
-                                                    </Field>
-                                                    {errors.semester && touched.semester && <div className="text-red-500 mt-1">{errors.semester}</div>}
-                                                </div>
-                                            </div>
-                                            <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
-                                                <label className=" rtl:ml-2 w-28  mb-0">Section</label>
-                                                <div className="flex-1">
-                                                    <Field as="select" value={data.section} name="section" onChange={handleOnChange} className="form-select flex-1">
-                                                        <option value="Select section">Select section</option>
-                                                        <option value="A">A</option>
-                                                        <option value="B">B</option>
-                                                        <option value="C">C</option>
-                                                        <option value="D">D</option>
-                                                        <option value="E">E</option>
-                                                    </Field>
-                                                    {errors.section && touched.section && <div className="text-red-500 mt-1">{errors.section}</div>}
-                                                </div>
+            <div className="px-8 mb-6 mr-8 flex justify-end items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
+                {/* <div className="ltr:mr-3 text-primary  text-2xl flex flex-wrap font-bold rtl:ml-3">Student Details</div> */}
+                <div className=" flex gap-2 ">
+                    <Link to="/apps/studentDetails/StudentAdm" type="button" className="btn btn-primary gap-2">
+                        <IconPlus />
+                        Add
+                    </Link>
+                    <button type="button" className="btn btn-primary gap-2" onClick={handleButtonClick}>
+                        {/* {isCardVisible ? 'Hide Card' : 'Show Card'} */}
+                        <IconFilter className='text-lg'/>
+                        Filter
+                    </button>
 
-                                                <label htmlFor="attendanceDate" className="rtl:ml-2 w-28  mb-0">
-                                                    Attendance Date
-                                                </label>
-                                                <Field id="attendanceDate" type="Date" value={data.attendanceDate} name="attendanceDate" onChange={handleOnChange} className="form-input flex-1" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="button" className="btn btn-primary float-end gap-2">
-                                        Search
-                                    </button>
-                                </div>
-                                <div className="flex md:items-center md:flex-row flex-col mb-5 ">
-                                    <h5 className="text-lg my-6 font-bold text-primary m-0 " style={{ fontSize: '25px' }}>
-                                        Students List
-                                    </h5>
-                                </div>
-                                <div className="rollno-table">
-                                    <div className="mb-4.5 px-5 flex md:items-center md:flex-row flex-col gap-5">
-                                        <div className="flex items-center gap-2">
-                                            <button type="button" className="btn btn-danger gap-2" onClick={() => deleteRow()}>
-                                                <IconTrashLines />
-                                                Delete
-                                            </button>
-                                            <Link to="/apps/rollno/add" className="btn btn-primary gap-2">
+                    {/* <button type="button" className="btn btn-primary gap-2" onClick={() => handleFilter()}>
+                                    <IconTrashLines />
+                                    Filter
+                                </button> */}
+                    <button type="button" className="btn btn-danger gap-2" onClick={() => deleteRow()}>
+                        <IconTrashLines />
+                        Delete
+                    </button>
+
+                    {/* <Form action='PersonalDetails.tsx'> */}
+                    {/* <Link to={'PersonalDetails'} className="btn btn-primary gap-2">
                                                 <IconPlus />
                                                 Add New
-                                            </Link>
-                                        </div>
-                                        <div className="ltr:ml-auto rtl:mr-auto">
-                                            <input type="text" className="form-input w-auto" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
-                                        </div>
-                                    </div>
-
-                                    <div className="datatables pagination-padding">
-                                        <DataTable
-                                            className="whitespace-nowrap table-hover rollno-table"
-                                            records={records}
-                                            columns={[
-                                                {
-                                                    accessor: 'admno',
-                                                    sortable: true,
-                                                    render: ({ admno }) => (
-                                                        <NavLink to="/apps/admno/preview">
-                                                            <div className="text-primary underline hover:no-underline font-semibold">{`${admno}`}</div>
-                                                        </NavLink>
-                                                    ),
-                                                },
-                                                {
-                                                    accessor: 'rollno',
-                                                    sortable: true,
-                                                    render: ({ rollno }) => (
-                                                        <NavLink to="/apps/rollno/preview">
-                                                            <div className="text-primary underline hover:no-underline font-semibold">{`${rollno}`}</div>
-                                                        </NavLink>
-                                                    ),
-                                                },
-                                                {
-                                                    accessor: 'name',
-                                                    sortable: true,
-                                                    render: ({ name, id }) => (
-                                                        <div className="flex items-center font-semibold">
-                                                            <div className="p-0.5 bg-white-dark/30 rounded-full w-max ltr:mr-2 rtl:ml-2">
-                                                                <img className="h-8 w-8 rounded-full object-cover" src={`/assets/images/profile-${id}.jpeg`} alt="" />
-                                                            </div>
-                                                            <div>{name}</div>
-                                                        </div>
-                                                    ),
-                                                },
-                                                {
-                                                    accessor: 'email',
-                                                    sortable: true,
-                                                },
-                                                {
-                                                    accessor: 'date',
-                                                    sortable: true,
-                                                },
-                                                {
-                                                    accessor: 'amount',
-                                                    sortable: true,
-                                                    titleClassName: 'text-right',
-                                                    render: ({ amount, id }) => <div className="text-right font-semibold">{`$${amount}`}</div>,
-                                                },
-                                                {
-                                                    accessor: 'status',
-                                                    sortable: true,
-                                                    render: ({ status }) => <span className={`badge badge-outline-${status.color} `}>{status.tooltip}</span>,
-                                                },
-                                                {
-                                                    accessor: 'action',
-                                                    title: 'Actions',
-                                                    sortable: false,
-                                                    textAlignment: 'center',
-                                                    render: ({ id }) => (
-                                                        <div className="flex gap-4 items-center w-max mx-auto">
-                                                            <NavLink to="/apps/rollno/edit" className="flex hover:text-info">
-                                                                <IconEdit className="w-4.5 h-4.5" />
-                                                            </NavLink>
-                                                            <NavLink to="/apps/rollno/preview" className="flex hover:text-primary">
-                                                                <IconEye />
-                                                            </NavLink>
-                                                            {/* <NavLink to="" className="flex"> */}
-                                                            <button type="button" className="flex hover:text-danger" onClick={(e) => deleteRow(id)}>
-                                                                <IconTrashLines />
-                                                            </button>
-                                                            {/* </NavLink> */}
-                                                        </div>
-                                                    ),
-                                                },
-                                            ]}
-                                            highlightOnHover
-                                            totalRecords={initialRecords.length}
-                                            recordsPerPage={pageSize}
-                                            page={page}
-                                            onPageChange={(p) => setPage(p)}
-                                            recordsPerPageOptions={PAGE_SIZES}
-                                            onRecordsPerPageChange={setPageSize}
-                                            sortStatus={sortStatus}
-                                            onSortStatusChange={setSortStatus}
-                                            selectedRecords={selectedRecords}
-                                            onSelectedRecordsChange={setSelectedRecords}
-                                            paginationText={({ from, to, totalRecords }) => `Showing  ${from} to ${to} of ${totalRecords} entries`}
-                                        />
-                                    </div>
+                                            </Link> */}
+                    {/* </Form> */}
+                </div>
+            </div>
+            {/* <div className="xl:flex-row flex-col gap-2.5 pr-8"> */}
+                {isCardVisible && (
+                    <div className=" mb-4 panel w-full col border-white-light dark:border-[#1b2e4b]">
+                        <div className="inline-block w-full mb-2">
+                            <div className="flex justify-between flex-wrap px-4">
+                                <div className="lg:w-1/2 w-full">
+                                    <div className="text-xl -mb-6 font-bold text-primary m-0">Select Criteria</div>
                                 </div>
                             </div>
+                            <div className="mt-6 px-4">
+                        <div className=" flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                <div className="mt-4 flex gap-5  lg:flex-row flex-col">
+                                    <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                        Street Address
+                                    </label>
+                                    <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter your Address" />
+                                    <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                        Street Address
+                                    </label>
+                                    <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter your Address" />
+                                </div>
+
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="collegeEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Country
+                                    </label>
+                                    <input id="collegeEmail" type="email" name="collegeEmail" className="form-input flex-1" placeholder="Enter Country" />
+
+                                    <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        State
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter State" />
+                                </div>
+                               
+                                   {/*    <button type="submit" className="btn btn-primary mt-8 float-end">
+                                    Submit Form
+                                </button> */}
+                            </div>
                         </div>
-                    </Form>
-                    // </div>
+                    </div>
+                            
+                            {/* <div className=" flex col justify-between lg:flex-row flex-col">
+                                <div className=" w-full mt-4 ltr:lg:px-6 rtl:lg:px-6 pb-6 ">
+                                    <div className="mt-8 flex gap-4 items-center lg:flex-row flex-col">
+                                        <label htmlFor="courses" className=" w-28 ">
+                                            Course
+                                        </label>
+                                        <div className="flex-1">
+                                            <select className="-ml-3 form-select flex-1" value={data.courses} name="courses" onChange={handleOnChange}>
+                                                <option value="Select Course">Select Course</option>
+                                                <option value="B.Tech">B.Tech</option>
+                                                <option value="BBA">BBA</option>
+                                                <option value="M.Tech">M.Tech</option>
+                                                <option value="MBA">MBA</option>
+                                                <option value="PhD">PhD</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="LLB">LLB</option>
+                                                <option value="B.Sc">B.Sc</option>
+                                                <option value="M.Sc">M.Sc</option>
+                                                <option value="B.Pharma">B.Pharma</option>
+                                            </select>
+                                        </div>
+                                        <label className=" w-28">Semester</label>
+                                        <div className="flex-1">
+                                            <select value={data.semester} name="semester" onChange={handleOnChange} className="-ml-3 form-select flex-1">
+                                                <option value="Select Semester">Select Semester</option>
+                                                <option value="I">I</option>
+                                                <option value="II">II</option>
+                                                <option value="III">III</option>
+                                                <option value="IV">IV</option>
+                                                <option value="V">V</option>
+                                                <option value="VI">VI</option>
+                                                <option value="VII">VII</option>
+                                                <option value="VIII">VIII</option>
+                                                <option value="IX">IX</option>
+                                                <option value="X">X</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="mt-8 flex items-center gap-4 lg:flex-row flex-col">
+                                        <label className="w-28">Section</label>
+                                        <div className="flex-1">
+                                            <select value={data.section} name="section" onChange={handleOnChange} className="form-select flex-1">
+                                                <option value="Select section">Select section</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                            </select>
+                                        </div>
+
+                                        <label htmlFor="attendanceDate" className="w-28">
+                                            Attendance Date
+                                        </label>
+                                        <input id="attendanceDate" type="Date" value={data.attendanceDate} name="attendanceDate" onChange={handleOnChange} className="form-input flex-1" />
+                                    </div>
+                                </div>
+                            </div> */}
+                            <button className="btn btn-primary float-end gap-2">Search</button>
+                        </div>
+                    </div>
                 )}
-            </Formik>
+
+                {/* <div className="flex md:items-center md:flex-row flex-col mb-5 ">
+                                    <h5 className="text-lg my-6 font-bold text-primary m-0 " style={{ fontSize: '25px' }}>
+                                        Students Details
+                                    </h5>
+                                </div> */}
+            {/* </div> */}
+            <div className="panel flex-1 w-full px-8 col border-white-light dark:border-[#1b2e4b]">
+                <div className="rollno-table">
+                    <div className="mb-4.5 px-5 flex md:items-center md:flex-row flex-col gap-5">
+                        <div className="flex items-center flex-wrap">
+                            <button type="button" onClick={() => exportTable('csv')} className="btn btn-primary btn-sm m-1 ">
+                                <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
+                                CSV
+                            </button>
+                            <button type="button" onClick={() => exportTable('txt')} className="btn btn-primary btn-sm m-1">
+                                <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
+                                TXT
+                            </button>
+
+                            <button type="button" className="btn btn-primary btn-sm m-1" onClick={handleDownloadExcel}>
+                                <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
+                                EXCEL
+                            </button>
+
+                            <button type="button" onClick={() => exportTable('print')} className="btn btn-primary btn-sm m-1">
+                                <IconPrinter className="ltr:mr-2 rtl:ml-2" />
+                                PRINT
+                            </button>
+                        </div>
+                        <div className="ltr:ml-auto rtl:mr-auto">
+                            <input type="text" className="form-input w-auto" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                        </div>
+                    </div>
+
+                    <div className="datatables pagination-padding">
+                        <DataTable
+                            className="whitespace-nowrap table-compact rollno-table"
+                            records={records}
+                            columns={[
+                                {
+                                    accessor: 'admno',
+                                    sortable: true,
+                                    render: ({ admno }) => (
+                                        <NavLink to="/apps/admno/preview">
+                                            <div className="font-semibold">{`${admno}`}</div>
+                                        </NavLink>
+                                    ),
+                                },
+                                // {
+                                //     accessor: 'rollno',
+                                //     sortable: true,
+                                //     render: ({ rollno }) => (
+                                //         <NavLink to="/apps/rollno/preview">
+                                //             <div className="text-primary underline hover:no-underline font-semibold">{`${rollno}`}</div>
+                                //         </NavLink>
+                                //     ),
+                                // },
+                                {
+                                    accessor: 'name',
+                                    sortable: true,
+                                    render: ({ name, id }) => (
+                                        <div className="flex items-center font-semibold">
+                                            <div className="p-0.5 bg-white-dark/30 rounded-full w-max ltr:mr-2 rtl:ml-2">
+                                                <img className="h-8 w-8 rounded-full object-cover" src={`/assets/images/profile-${id}.jpeg`} alt="" />
+                                            </div>
+                                            <div>{name}</div>
+                                        </div>
+                                    ),
+                                },
+                                {
+                                    accessor: 'email',
+                                    sortable: true,
+                                },
+                                {
+                                    accessor: 'date',
+                                    sortable: true,
+                                },
+                                {
+                                    accessor: 'amount',
+                                    sortable: true,
+                                    titleClassName: 'text-right',
+                                    render: ({ amount, id }) => <div className="text-right font-semibold">{`$${amount}`}</div>,
+                                },
+                                {
+                                    accessor: 'status',
+                                    sortable: true,
+                                    render: ({ status }) => <span className={`badge badge-outline-${status.color} `}>{status.tooltip}</span>,
+                                },
+                                {
+                                    accessor: 'action',
+                                    title: 'Actions',
+                                    sortable: false,
+                                    textAlignment: 'center',
+                                    render: ({ id }) => (
+                                        <div className="flex gap-4 items-center w-max mx-auto">
+                                            <NavLink to="/apps/rollno/edit" className="flex hover:text-info">
+                                                <IconEdit className="w-4.5 h-4.5" />
+                                            </NavLink>
+                                            <NavLink to="/apps/rollno/preview" className="flex hover:text-primary">
+                                                <IconEye />
+                                            </NavLink>
+                                            {/* <NavLink to="" className="flex"> */}
+                                            <button type="button" className="flex hover:text-danger" onClick={(e) => deleteRow(id)}>
+                                                <IconTrashLines />
+                                            </button>
+                                            {/* </NavLink> */}
+                                        </div>
+                                    ),
+                                },
+                            ]}
+                            highlightOnHover
+                            totalRecords={initialRecords.length}
+                            recordsPerPage={pageSize}
+                            page={page}
+                            onPageChange={(p) => setPage(p)}
+                            recordsPerPageOptions={PAGE_SIZES}
+                            onRecordsPerPageChange={setPageSize}
+                            sortStatus={sortStatus}
+                            onSortStatusChange={setSortStatus}
+                            selectedRecords={selectedRecords}
+                            onSelectedRecordsChange={setSelectedRecords}
+                            paginationText={({ from, to, totalRecords }) => `Showing  ${from} to ${to} of ${totalRecords} entries`}
+                        />
+                    </div>
+                </div>
+            </div>
         </>
     );
 };
 
-export default StudentList;
+export default StudentDetails;

@@ -562,22 +562,22 @@ const rowData = [
 ];
 
 const Attendance = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Modals'));
-    });
-    const items = ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'];
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     dispatch(setPageTitle('Modals'));
+    // });
+    // const items = ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'];
 
-    const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
+    // const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
 
-    const [codeArr, setCodeArr] = useState<string[]>([]);
-    const toggleCode = (name: string) => {
-        if (codeArr.includes(name)) {
-            setCodeArr((value) => value.filter((d) => d !== name));
-        } else {
-            setCodeArr([...codeArr, name]);
-        }
-    };
+    // const [codeArr, setCodeArr] = useState<string[]>([]);
+    // const toggleCode = (name: string) => {
+    //     if (codeArr.includes(name)) {
+    //         setCodeArr((value) => value.filter((d) => d !== name));
+    //     } else {
+    //         setCodeArr([...codeArr, name]);
+    //     }
+    // };
     // const dispatch = useDispatch();
     // useEffect(() => {
     //     dispatch(setPageTitle('Column Chooser Table'));
@@ -597,39 +597,35 @@ const Attendance = () => {
         direction: 'asc',
     });
 
-    const [hideCols, setHideCols] = useState<any>(['age', 'dob', 'isActive']);
-
-    const formatDate = (date: any) => {
-        if (date) {
-            const dt = new Date(date);
-            const month = dt.getMonth() + 1 < 10 ? '0' + (dt.getMonth() + 1) : dt.getMonth() + 1;
-            const day = dt.getDate() < 10 ? '0' + dt.getDate() : dt.getDate();
-            return day + '/' + month + '/' + dt.getFullYear();
-        }
-        return '';
+    const [isListVisible, setIsListVisible] = useState(false);
+    const handleSearchCriteria = () => {
+        setIsListVisible(!isListVisible);
     };
 
-    // const showHideColumns = (col: any, value: any) => {
-    //     if (hideCols.includes(col)) {
-    //         setHideCols((col: any) => hideCols.filter((d: any) => d !== col));
-    //     } else {
-    //         setHideCols([...hideCols, col]);
-    //     }
-    // };
+    const [formData,setFormData]=useState({
+        course:'',
+        semester:'',
+        section:'',
+        attendance_date:''
+    })
 
-    // const cols = [
-    //     { accessor: 'id', title: 'Reg. No.' },
-    //     { accessor: 'firstName', title: 'Student Name' },
-    //     { accessor: 'lastName', title: 'Branch' },
-    //     { accessor: 'email', title: 'Stream' },
-    //     { accessor: 'course', title: 'Apply Date' },
-    //     { accessor: 'marks', title: 'From Date' },
-    //     { accessor: 'address.street', title: 'To Date' },
-    //     { accessor: 'age', title: 'Status' },
-    //     { accessor: 'dob', title: 'Approved By' },
-    //     { accessor: 'isActive', title: 'Action' },
-    // ];
 
+        const handleOnChange =(e)=>{
+                const {name,value} = e.target;
+                setFormData({
+                    ...formData,
+                    [name]:value,
+                })
+
+        }
+
+    // const [hideCols, setHideCols] = useState<any>(['age', 'dob', 'isActive']);
+            const handleSearch =()=>{
+                
+            }
+   
+
+ 
     useEffect(() => {
         setPage(1);
     }, [pageSize]);
@@ -665,7 +661,7 @@ const Attendance = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sortStatus]);
 
-    const [modal5, setModal5] = useState(false);
+    // const [modal5, setModal5] = useState(false);
 
     return (
         <>
@@ -673,23 +669,21 @@ const Attendance = () => {
                 <div className="panel px-4 flex-1 pt-6  rtl:xl:ml-6">
                     <div className="flex justify-between flex-wrap px-4">
                         <div className="lg:w-1/2 w-full">
-                            <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                Select Criteria
-                            </div>
+                            <div className="text-lg font-bold text-primary m-0">Select Criteria</div>
                         </div>
                     </div>
                     {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" /> */}
                     <div className="px-4">
                         <div className="  flex justify-between lg:flex-row flex-col">
                             <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6 pt-3">
-                                <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
-                                    <label htmlFor="dob" className=" rtl:ml-2 w-28  mb-0">
+                                <div className="mt-8 flex items-center gap-4 lg:flex-row flex-col">
+                                    <label htmlFor="course" className=" rtl:ml-2 w-28  mb-0">
                                         Course
                                     </label>
-                                    <input id="gender" type="text" name="gender" className="form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
-                                    <select className="-ml-3 form-select flex-1">
-                                        <option>Select...</option>
+                                    <input id="course" type="text" name="course" value={formData.course} className="form-input flex-1" onChange={handleOnChange} placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                    <label htmlFor='semester' className=' rtl:ml-2 w-28  mb-0'>Semester</label>
+                                    <select id='semester' name='semester' value={formData.semester} onChange={handleOnChange} className="-ml-3 form-select flex-1">
+                                        <option>Select Semester</option>
                                         <option>I</option>
                                         <option>II</option>
                                         <option>III</option>
@@ -702,9 +696,9 @@ const Attendance = () => {
                                         <option>X</option>
                                     </select>
                                 </div>
-                                <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
-                                    <select className="form-select flex-1">
+                                <div className="mt-8 flex items-center gap-4 lg:flex-row flex-col">
+                                    <label htmlFor='section' className='rtl:ml-2 w-28  mb-0'>Section</label>
+                                    <select id='section' name='section' value={formData.section} onChange={handleOnChange} className="form-select flex-1">
                                         <option>Select...</option>
                                         <option>A</option>
                                         <option>B</option>
@@ -712,8 +706,8 @@ const Attendance = () => {
                                         <option>D</option>
                                         <option>E</option>
                                     </select>
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Attendance Date</label>
-                                    <input id="gender" type="Date" name="gender" className="form-input flex-1" />
+                                    <label htmlFor='attendance_date' className='rtl:ml-2 w-28  mb-0'>Attendance Date</label>
+                                    <input id="attendance_date" name='attendance_date' value={formData.attendance_date} type="Date" onChange={handleOnChange} className="form-input flex-1" />
                                 </div>
                             </div>
                         </div>
@@ -724,8 +718,8 @@ const Attendance = () => {
                     {/* <div className=" bg-blue-800 px-6 py-6 ml-200">*/}
 
                     <div className="flex float-end px-8">
-                        <button type="button" onClick={() => setModal5(true)} className="btn btn-warning ">
-                            <IconPlus className="mr-2 -ml-3"></IconPlus>
+                        <button type="button" onClick={handleSearchCriteria} className="btn btn-primary ">
+                            {/* <IconPlus className="mr-2 -ml-3"></IconPlus> */}
                             Search
                         </button>
                     </div>
@@ -733,122 +727,138 @@ const Attendance = () => {
                     {/* --------------------------------Add Attendance Button End-------------------------- */}
                 </div>
             </div>
-
-            <div className="panel mt-3 px-8">
-                <div className="flex md:items-center md:flex-row flex-col mb-5 ">
+            {isListVisible && (
+                <div className="panel mt-3 px-8">
+                    {/* <div className="flex md:items-center md:flex-row flex-col mb-5 ">
                     <h5 className="font-semibold text-lg dark:text-white-light">Attendance List</h5>
+                </div> */}
+                    <div className="flex items-center justify-between space-x-15">
+                        <div className="flex  after:float-start w-1/5 mb-4">
+                            <input type="text" className="form-input" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                        </div>
+                        <div className="flex items-center mb-4 px-4">
+                            <button type="button" className="btn btn-primary ">
+                                <IconSave className="mr-2 -ml-3"></IconSave>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                    <div className=" mt-4 mb-6 gap-4 font-bold space-y-5 flex lg:flex-row flex-col ">
+                        Mark all students attendance as:
+                        <div>
+                            <label className="flex  cursor-pointer">
+                                <input type="radio" name="custom_radio2" className="form-radio" />
+                                <span className="">Present</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label className=" -mt-4 flex  cursor-pointer">
+                                <input type="radio" name="custom_radio2" className="form-radio" />
+                                <span className=" ">Absent</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label className=" -mt-4 flex  cursor-pointer">
+                                <input type="radio" name="custom_radio2" className="form-radio" />
+                                <span className=" ">Late</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label className=" -mt-4 flex  cursor-pointer">
+                                <input type="radio" name="custom_radio2" className="form-radio" />
+                                <span className=" ">Holiday</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label className="-mt-4 flex  cursor-pointer">
+                                <input type="radio" name="custom_radio2" className="form-radio" />
+                                <span className=" ">Half Day</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="datatables">
+                        <DataTable
+                            className="whitespace-nowrap table-hover"
+                            records={recordsData}
+                            columns={[
+                                {
+                                    accessor: 'id',
+                                    title: 'Reg. No.',
+                                    sortable: true,
+                                    // hidden: hideCols.includes('id')
+                                },
+                                {
+                                    accessor: 'firstName',
+                                    title: 'Student Name',
+                                    sortable: true,
+                                    // hidden: hideCols.includes('firstName'),
+                                },
+                                {
+                                    accessor: 'lastName',
+                                    title: 'Branch',
+                                    sortable: true,
+                                    //hidden: hideCols.includes('lastName'),
+                                },
+                                {
+                                    accessor: 'email',
+                                    title: 'Stream',
+                                    sortable: true,
+                                    // hidden: hideCols.includes('email')
+                                },
+                                {
+                                    accessor: 'course',
+                                    title: 'Apply Date',
+                                    sortable: true,
+                                    //hidden: hideCols.includes('course')
+                                },
+                                {
+                                    accessor: 'marks',
+                                    title: 'From',
+                                    sortable: true,
+                                    //  hidden: hideCols.includes('marks'),
+                                },
+                                {
+                                    accessor: 'address.street',
+                                    title: 'To',
+                                    sortable: true,
+                                    //  hidden: hideCols.includes('address.street'),
+                                },
+                                {
+                                    accessor: 'age',
+                                    title: 'Status',
+                                    sortable: true,
+                                    //   hidden: hideCols.includes('age'),
+                                },
+                                {
+                                    accessor: 'dob',
+                                    title: 'Approved By',
+                                    sortable: true,
+                                    //   hidden: hideCols.includes('dob'),
+                                    render: ({ dob }) => <div>{dob}</div>,
+                                },
+                                {
+                                    accessor: 'isActive',
+                                    title: 'Action',
+                                    sortable: true,
+                                    //   hidden: hideCols.includes('isActive'),
+                                    render: ({ isActive }) => <div className={`${isActive ? 'text-success' : 'text-danger'} capitalize`}>{isActive.toString()}</div>,
+                                },
+                            ]}
+                            highlightOnHover
+                            totalRecords={initialRecords.length}
+                            recordsPerPage={pageSize}
+                            page={page}
+                            onPageChange={(p) => setPage(p)}
+                            recordsPerPageOptions={PAGE_SIZES}
+                            onRecordsPerPageChange={setPageSize}
+                            sortStatus={sortStatus}
+                            onSortStatusChange={setSortStatus}
+                            minHeight={200}
+                            paginationText={({ from, to, totalRecords }) => `Showing  ${from} to ${to} of ${totalRecords} entries`}
+                        />
+                    </div>
                 </div>
-                <div className="flex items-center justify-between space-x-15">
-                    <div className="flex  after:float-start w-1/5 mb-4">
-                        <input type="text" className="form-input" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
-                    </div>
-                    <div className="flex items-center mb-4 px-4">
-                        <button type="button" onClick={() => setModal5(true)} className="btn btn-warning ">
-                            <IconSave className="mr-2 -ml-3"></IconSave>
-                            Save Attendance
-                        </button>
-                    </div>
-                </div>
-                <div className=" mt-4 mb-6 gap-4 font-bold items-center space-y-5 flex flex-row ">
-                    Mark all students attendance as:
-                    <div>
-                        <label className="flex  cursor-pointer">
-                            <input type="radio" name="custom_radio2" className="form-radio" />
-                            <span className="">Present</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="pl-8 -mt-4 flex  cursor-pointer">
-                            <input type="radio" name="custom_radio2" className="form-radio" />
-                            <span className=" ">Absent</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="pl-8 -mt-4 flex  cursor-pointer">
-                            <input type="radio" name="custom_radio2" className="form-radio" />
-                            <span className=" ">Late</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="pl-8 -mt-4 flex  cursor-pointer">
-                            <input type="radio" name="custom_radio2" className="form-radio" />
-                            <span className=" ">Holiday</span>
-                        </label>
-                    </div>
-                    <div>
-                        <label className="pl-8 -mt-4 flex  cursor-pointer">
-                            <input type="radio" name="custom_radio2" className="form-radio" />
-                            <span className=" ">Half Day</span>
-                        </label>
-                    </div>
-                </div>
-                <div className="datatables">
-                    <DataTable
-                        className="whitespace-nowrap table-hover"
-                        records={recordsData}
-                        columns={[
-                            { accessor: 'id', title: 'Reg. No.', sortable: true, hidden: hideCols.includes('id') },
-                            {
-                                accessor: 'firstName',
-                                title: 'Student Name',
-                                sortable: true,
-                                hidden: hideCols.includes('firstName'),
-                            },
-                            {
-                                accessor: 'lastName',
-                                title: 'Branch',
-                                sortable: true,
-                                hidden: hideCols.includes('lastName'),
-                            },
-                            { accessor: 'email', title: 'Stream', sortable: true, hidden: hideCols.includes('email') },
-                            { accessor: 'course', title: 'Apply Date', sortable: true, hidden: hideCols.includes('course') },
-                            {
-                                accessor: 'marks',
-                                title: 'From',
-                                sortable: true,
-                                hidden: hideCols.includes('marks'),
-                            },
-                            {
-                                accessor: 'address.street',
-                                title: 'To',
-                                sortable: true,
-                                hidden: hideCols.includes('address.street'),
-                            },
-                            {
-                                accessor: 'age',
-                                title: 'Status',
-                                sortable: true,
-                                hidden: hideCols.includes('age'),
-                            },
-                            {
-                                accessor: 'dob',
-                                title: 'Approved By',
-                                sortable: true,
-                                hidden: hideCols.includes('dob'),
-                                render: ({ dob }) => <div>{formatDate(dob)}</div>,
-                            },
-                            {
-                                accessor: 'isActive',
-                                title: 'Action',
-                                sortable: true,
-                                hidden: hideCols.includes('isActive'),
-                                render: ({ isActive }) => <div className={`${isActive ? 'text-success' : 'text-danger'} capitalize`}>{isActive.toString()}</div>,
-                            },
-                        ]}
-                        highlightOnHover
-                        totalRecords={initialRecords.length}
-                        recordsPerPage={pageSize}
-                        page={page}
-                        onPageChange={(p) => setPage(p)}
-                        recordsPerPageOptions={PAGE_SIZES}
-                        onRecordsPerPageChange={setPageSize}
-                        sortStatus={sortStatus}
-                        onSortStatusChange={setSortStatus}
-                        minHeight={200}
-                        paginationText={({ from, to, totalRecords }) => `Showing  ${from} to ${to} of ${totalRecords} entries`}
-                    />
-                </div>
-            </div>
+            )}
         </>
     );
 };

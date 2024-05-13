@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from '../../../components/Dropdown';
 import IconHorizontalDots from '../../../components/Icon/IconHorizontalDots';
+import IconPlus from '../../../components/Icon/IconPlus';
 
 const Courses = () => {
     const tableData = [
@@ -66,57 +67,63 @@ const Courses = () => {
         },
     ];
 
+    const [isCardVisible, setIsCardVisible] = useState(false);
+    const handleButtonChange = () => {
+        setIsCardVisible(!isCardVisible);
+    };
+
     return (
         <>
-            <div className="flex xl:flex-row flex-col gap-2.5">
-                <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
-                    <div className="flex justify-between flex-wrap px-4">
-                        <div className="mb-6 lg:w-1/2 w-full">
-                            <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                Add Course
-                            </div>
-                        </div>
-                    </div>
-                    <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                    <div className="mt-8 px-8">
-                        <div className="mt-4 flex gap-5 lg:flex-row flex-col">
-                            <label className=' className="ltr:mr-2 rtl:ml-2 w-28  mb-0"'>Course Name</label>
-                            <select className="form-select flex-1">
-                                <option>Select Course</option>
-                                <option>DSA</option>
-                                <option>Dev Ops</option>
-                                <option>Android Development</option>
-                                <option>IoT</option>
-                                <option>Computing Mathematics</option>
-                            </select>
+            <div className="px-8 mb-4  mr-8  flex items-center justify-between overflow-x-auto whitespace-nowrap p-3 text-primary ltr:xl:mr-6">
+                <div className="ltr:mr-3 text-primary  text-2xl flex justify-between flex-wrap font-bold rtl:ml-3"> Add Course </div>
+                <button className="btn -ml-2 gap-2 btn-primary" onClick={handleButtonChange}>
+                    <IconPlus />
+                    Add
+                </button>
+            </div>
+            {isCardVisible && (
+                <div className="flex xl:flex-row flex-col gap-2.5">
+                    <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
+                        <div className="mt-4 px-8">
+                            <div className="mt-4 flex gap-5 lg:flex-row flex-col">
+                                <label className=' className="ltr:mr-2 rtl:ml-2 w-28  mb-0"'>Course Name</label>
+                                <select className="form-select flex-1">
+                                    <option>Select Course</option>
+                                    <option>DSA</option>
+                                    <option>Dev Ops</option>
+                                    <option>Android Development</option>
+                                    <option>IoT</option>
+                                    <option>Computing Mathematics</option>
+                                </select>
 
-                            <label className=' className="ltr:mr-2 rtl:ml-2 w-28  mb-0"'>Course Code</label>
-                            <input id="religion" type="text" name="religion" className="form-input flex-1" placeholder="Enter Course Code" />
-                        </div>
-                        <div>
-                            <div className=" mt-6 gap-10 font-bold items-center space-y-5 flex flex-row ">
-                                <div>
-                                    <label className="flex  cursor-pointer">
-                                        <input type="radio" name="custom_radio2" className="form-radio" />
-                                        <span className="">Theory</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className="pl-8 -mt-4 flex  cursor-pointer">
-                                        <input type="radio" name="custom_radio2" className="form-radio" />
-                                        <span className=" ">Lab</span>
-                                    </label>
+                                <label className=' className="ltr:mr-2 rtl:ml-2 w-28  mb-0"'>Course Code</label>
+                                <input id="religion" type="text" name="religion" className="form-input flex-1" placeholder="Enter Course Code" />
+                            </div>
+                            <div>
+                                <div className=" mt-6 gap-10 font-bold items-center space-y-5 flex flex-row ">
+                                    <div>
+                                        <label className="flex  cursor-pointer">
+                                            <input type="radio" name="custom_radio2" className="form-radio" />
+                                            <span className="">Theory</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label className="pl-8 -mt-4 flex  cursor-pointer">
+                                            <input type="radio" name="custom_radio2" className="form-radio" />
+                                            <span className=" ">Lab</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="px-8 flex justify-end ">
-                        <button type="button" className="btn btn-primary">
-                            Save
-                        </button>
+                        <div className="px-8 flex justify-end ">
+                            <button type="button" className="btn btn-primary">
+                                Save
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
             {/* -------------------------Course List Begin---------------------------------------------- */}
 
             <div className="mt-4 flex xl:flex-row flex-col gap-2.5">

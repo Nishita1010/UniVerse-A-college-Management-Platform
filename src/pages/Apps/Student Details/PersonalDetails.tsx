@@ -5,14 +5,14 @@ const PersonalDetails = () => {
     return (
         <>
             <div className="flex xl:flex-row flex-col gap-2.5">
-                <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
-                    <div className="flex justify-between flex-wrap px-4">
-                        <div className="mb-6 lg:w-1/2 w-full">
+                <div className=" px-0 flex-1 ">
+                    {/* <div className="flex justify-between flex-wrap px-4">
+                        <div className="px-4 mb-6 lg:w-1/2 w-full">
                             <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
                                 Personal Details
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
                     <div className="mt-8 px-4">
                         <div className=" pl-5 flex justify-between lg:flex-row flex-col">
@@ -151,17 +151,35 @@ const PersonalDetails = () => {
                                     <label htmlFor="Aadhar_Card" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
                                         Aadhar Card Number
                                     </label>
-                                    <input id="Aadhar_Card" type="text" name="Aadhar_Card" className="form-input flex-1" placeholder="Enter Aadhar No." />
+                                    <MaskedInput
+                                        id="Aadhar_Card"
+                                        type="text"
+                                        placeholder="Enter Aadhar Number"
+                                        className="form-input flex-1"
+                                        mask={[/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, ' ', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, ' ', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+                                    />
                                 </div>
                                 <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
                                     <label htmlFor="PAN_card" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
                                         PAN Card Number
                                     </label>
-                                    <input id="PAN_card" type="text" name="PAN_card" className="form-input flex-1" placeholder="Enter PAN No." />
+                                    <MaskedInput
+                                        id="PAN_Card"
+                                        type="text"
+                                        placeholder="Enter PAN Number"
+                                        className="form-input flex-1 "
+                                        mask={[/[A-Z]/, /[A-Z]/, /[A-Z]/, /[A-Z]/, /[A-Z]/, ' ', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, ' ', /[A-Z]/]}
+                                    />
                                     <label htmlFor="certificate" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
                                         Residential Certificate
                                     </label>
-                                    <input id="certificate" type="file" name="certificate" className="form-input flex-1" placeholder="Upload File" />
+                                    <input
+                                        id="certificate"
+                                        type="file"
+                                        name="certificate"
+                                        className=" flex-1 form-input file:py-2.5 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                                        placeholder="Upload File"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -198,70 +216,237 @@ const PersonalDetails = () => {
                         </div>
                     </div>
 
-                    {/*---------------------------------------------------Course Details Begin--------------------------------------------- */}
-                    {/* </div> */}
-                    {/*---------------------------------------------------Course Details End--------------------------------------------- */}
-                    {/*---------------------------------------------------Other Info Begin--------------------------------------------- */}
-                    <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                    <label htmlFor="permanentAdd" className=" px-5 pb-4 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
-                        <h2> Other Details</h2>
-                    </label>
+                    {/*---------------------------------------------------Transport Details Begin--------------------------------------------- */}
 
-                    <div className="mr-5 ml-8">
-                        <div className="mb-5 flex grid-cols-3 gap-16 lg:flex-row flex-col">
-                            <div>
-                                <form className="pl-4 font-bold items-center space-y-5 flex flex-row ">
-                                    Are you a Hostellite &nbsp;: &nbsp; &nbsp;
+                    <hr className="border-white-light dark:border-[#1b2e4b] my-6 " />
+                    <div className="mt-8 px-4">
+                        <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                            <h2>Transport Details</h2>
+                        </label>
+                        <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="Aadhar_Card" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Route List
+                                    </label>
+                                    <select className="form-select flex-1">
+                                        <option value="Select Room">Select Route</option>
+
+                                        <option>Rajiv Chowk</option>
+                                        <option>Barakhamba</option>
+                                        <option>Mandi House</option>
+                                        <option>Supreme Court (Pragati Maidan)</option>
+                                        <option>Indraprastha</option>
+                                        <option>Yamuna Bank</option>
+                                        <option>Akshardham</option>
+                                        <option>Mayur Vihar Phase-1</option>
+                                        <option>Mayur Vihar Extention</option>
+                                        <option>New Ashok Nagar</option>
+                                        <option>Noida Sector 15</option>
+                                        <option>Noida Sector 16</option>
+                                        <option>Noida Sector 18</option>
+                                        <option>Botanical Garden</option>
+                                        <option>Golf Course</option>
+                                        <option>Noida City Center</option>
+                                        <option>Noida Sector 34</option>
+                                        <option>Noida Sector 52</option>
+                                        <option>Noida Sector 61</option>
+                                        <option>Noida Sector 59</option>
+                                        <option>Noida Sector 62</option>
+                                        <option>Noida Electronic City</option>
+                                    </select>
+                                    <label htmlFor="PAN_card" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Pickup Point
+                                    </label>
+                                    <input id="PAN_card" type="text" name="PAN_card" className="form-input flex-1" placeholder="Enter PickUp Point" />
+                                </div>
+                                <div className="mt-4 flex w-1/2 gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="Driving_licence" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Fee Semester
+                                    </label>
+                                    <select className="form-select flex-1">
+                                        <option value="Select Semester">Select Fee Semester</option>
+                                        <option value="I">I</option>
+                                        <option value="II">II</option>
+                                        <option value="III">III</option>
+                                        <option value="IV">IV</option>
+                                        <option value="V">V</option>
+                                        <option value="VI">VI</option>
+                                        <option value="VII">VII</option>
+                                        <option value="VIII">VIII</option>
+                                        <option value="IX">IX</option>
+                                        <option value="X">X</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/*------------------------------------Hostel Details--------------------------------------------- */}
+                    <hr className="border-white-light dark:border-[#1b2e4b] my-6 " />
+                    <div className="mt-8 px-4">
+                        <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                            <h2>Hostel Details</h2>
+                        </label>
+                        <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="Aadhar_Card" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Hostel List
+                                    </label>
+                                    <select className="form-select flex-1">
+                                        <option value="Select Hostel">Select Hostel</option>
+
+                                        <option>Boys Hostel A</option>
+                                        <option>Boys Hostel B</option>
+                                        <option>Boys Hostel C</option>
+                                        <option>Girls Hostel A</option>
+                                        <option>Girls Hostel B</option>
+                                    </select>
+                                    <label htmlFor="Driving_licence" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Room Number
+                                    </label>
+                                    <select className="form-select flex-1">
+                                        <option value="Select Room">Select Room</option>
+                                        <option value="I">1</option>
+                                        <option value="II">2</option>
+                                        <option value="III">3</option>
+                                        <option value="IV">4</option>
+                                        <option value="V">5</option>
+                                        <option value="VI">6</option>
+                                        <option value="VII">7</option>
+                                        <option value="VIII">8</option>
+                                        <option value="IX">9</option>
+                                        <option value="X">10</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* ------------------Hostel Details End----------------------------------------------- */}
+                    <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                    <div className="mt-8 px-4">
+                        <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                            <h2>Other Details</h2>
+                        </label>
+                    </div>
+                    <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                        <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                            <div className="mt-4 flex  grid grid-cols-2">
+                                <form className="pl-4 font-bold items-center space-y-5 flex lg:flex-row flex-col">
+                                    <label className="flex items-center cursor-pointer">
+                                        Are you physically challenged &nbsp;:
+                                        <div className="ml-4 flex items-center">
+                                            <input type="radio" id="yes" name="custom_radio2" className="form-radio" />
+                                            <label htmlFor="yes" className="ml-2 text-white-dark">
+                                                Yes
+                                            </label>
+                                        </div>
+                                        <div className="ml-4 flex items-center">
+                                            <input type="radio" id="no" name="custom_radio2" className="form-radio" />
+                                            <label htmlFor="no" className="ml-2 text-white-dark">
+                                                No
+                                            </label>
+                                        </div>
+                                    </label>
+                                </form>
+
+                                <form className="pl-4 font-bold items-center space-y-5 flex lg:flex-row flex-col">
+                                    <label className="flex items-center cursor-pointer">
+                                        Are you a foreign student &nbsp;:
+                                        <div className="ml-4 flex items-center">
+                                            <input type="radio" id="yes" name="custom_radio2" className="form-radio" />
+                                            <label htmlFor="yes" className="ml-2 text-white-dark">
+                                                Yes
+                                            </label>
+                                        </div>
+                                        <div className="ml-4 flex items-center">
+                                            <input type="radio" id="no" name="custom_radio2" className="form-radio" />
+                                            <label htmlFor="no" className="ml-2 text-white-dark">
+                                                No
+                                            </label>
+                                        </div>
+                                    </label>
+                                </form>
+
+                                {/* <form className="pl-4 font-bold items-center space-y-5 flex lg:flex-row flex-col">
+                                    <label className="flex items-center cursor-pointer">
+                                        Are you physically challenged?:
+                                        <div className="lg:ml-4 space-x-4 flex flex-col lg:flex-row">
+                                            <div>
+                                                <input type="radio" name="custom_radio2" className="form-radio" />
+                                                <span className="text-white-dark">Yes</span>
+                                            </div>
+                                            <div>
+                                                <input type="radio" name="custom_radio2" className="form-radio" />
+                                                <span className="text-white-dark">No</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </form> */}
+                                {/* 
+                                <form className="pl-4 items-center font-bold space-y-5 flex flex-row lg:flex-row flex-col ">
+                                    Are you a foreign Student ? &nbsp;: &nbsp; &nbsp;
                                     <div>
-                                        <label className=" pl-2 flex  cursor-pointer">
+                                        <label className="  pl-2 flex items-center cursor-pointer">
                                             <input type="radio" name="custom_radio2" className="form-radio" />
                                             <span className="text-white-dark">Yes</span>
                                         </label>
                                     </div>
                                     <div>
-                                        <label className="pl-4 -mt-4 flex  cursor-pointer">
+                                        <label className=" pl-4 -mt-4.5 flex items-center cursor-pointer">
                                             <input type="radio" name="custom_radio2" className="form-radio" />
-                                            <span className="text-white-dark ">No</span>
+                                            <span className="text-white-dark">No</span>
                                         </label>
                                     </div>
-                                </form>
+                                </form> */}
                             </div>
-                            <form className="pl-4 font-bold items-center space-y-5 flex flex-row ">
-                                Are you physically challenged ? &nbsp;: &nbsp; &nbsp;
-                                <div>
-                                    <label className="pl-2 flex items-center cursor-pointer">
-                                        <input type="radio" name="custom_radio2" className="form-radio" />
-                                        <span className="text-white-dark">Yes</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className=" pl-4 -mt-4  flex items-center cursor-pointer">
-                                        <input type="radio" name="custom_radio2" className="form-radio" />
-                                        <span className="text-white-dark ">No</span>
-                                    </label>
-                                </div>
-                            </form>
-                            <form className="pl-4items-center font-bold space-y-5 flex flex-row ">
-                                Are you a foreign Student ? &nbsp;: &nbsp; &nbsp;
-                                <div>
-                                    <label className="  pl-2 flex items-center cursor-pointer">
-                                        <input type="radio" name="custom_radio2" className="form-radio" />
-                                        <span className="text-white-dark">Yes</span>
-                                    </label>
-                                </div>
-                                <div>
-                                    <label className=" pl-4 -mt-4 flex items-center cursor-pointer">
-                                        <input type="radio" name="custom_radio2" className="form-radio" />
-                                        <span className="text-white-dark">No</span>
-                                    </label>
-                                </div>
-                            </form>
                         </div>
                     </div>
 
                     {/*------------------------------Upload Documents Begin------------------------------------------------ */}
                     <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                   
+                    <div className="mt-8 px-4">
+                        <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                            <h2>Upload Files</h2>
+                        </label>
+                        {/* <div className=" pl-5 flex justify-between lg:flex-row flex-col"> */}
+                        {/* <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6"> */}
+                        <div className="flex px-4">
+                            <div className=" mt-4 gap-5 lg:flex-row flex-col" style={{ width: '50%', padding: '0 10px' }}>
+                                <label htmlFor="photo" className="mb-3 ltr:mr-2 rtl:ml-2  mb-0">
+                                    Upload Photo &nbsp;
+                                </label>
+                                <input
+                                    id="photo"
+                                    type="file"
+                                    name="photo"
+                                    style={{ height: 'fitContent' }}
+                                    className="form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                                    placeholder=""
+                                />
+                                <span className="flex-col" style={{ color: 'red' }}>
+                                    {' '}
+                                    (Max size 20kb-50kb)
+                                </span>
+                            </div>
+
+                            <div className="mt-4 gap-5 lg:flex-row flex-col" style={{ width: '50%', padding: '0 10px' }}>
+                                <label htmlFor="signature" className="mb-3 ltr:mr-2 rtl:ml-2  mb-0">
+                                    Upload Signature &nbsp;
+                                </label>
+                                <input
+                                    id="signature"
+                                    type="file"
+                                    name="signature"
+                                    className=" form-input file:py-2 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                                    placeholder=""
+                                />
+                                <span className="flex-col " style={{ color: 'red' }}>
+                                    (Max size 20Mb)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

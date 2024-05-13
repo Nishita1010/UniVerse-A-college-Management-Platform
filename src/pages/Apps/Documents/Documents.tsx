@@ -16,20 +16,19 @@ const Documents = () => {
         setImages2(imageList as never[]);
         setImages3(imageList as never[]);
         setImages4(imageList as never[]);
-
     };
 
     return (
         <>
             <div className="flex xl:flex-row flex-col gap-2.5">
-                <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
-                    <div className="flex justify-between flex-wrap px-4">
-                        <div className="mb-6 lg:w-1/2 w-full">
-                            <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
+                <div className="px-0 flex-1 ">
+                    {/* <div className="flex justify-between flex-wrap px-4">
+                        <div className=" px-4  mb-6 lg:w-1/2 w-full">
+                            <div className=" mt-4 text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
                                 Upload Documents
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
                     {/* <div className="float-end ">
                         <button type="button" className=" mr-10 mt-2 mb-8 btn btn-primary gap-2">
@@ -46,9 +45,9 @@ const Documents = () => {
                         </button>
                     </div> */}
 
-                    <div className="mt-8 px-4">
-                        <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                            <div className="custom-file-container" data-upload-id="myFirstImage">
+                    <div className="my-10 px-10 ">
+                        {/*} <div className="mt-4 flex  gap-5 lg:flex-row flex-col"> */}
+                        {/*   <div className="custom-file-container" data-upload-id="myFirstImage">
                                 <div className="label-container">
                                     <label>12th Marksheet </label>
                                     <button
@@ -171,29 +170,53 @@ const Documents = () => {
                                         </div>
                                     )}
                                 </ImageUploading>
-                            </div>
-
-                            {/* <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">12th Marksheet</label> 
-                                <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input " />
-                                <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">10th Marksheet</label>
-                                <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input" />
-                            </div>
-                            <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document 1</label> 
-                                <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input " />
-                                <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document 2</label>
-                                <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input" />
-                            </div>
-                            <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document 3</label> 
-                                <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input " />
-                                <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document 4</label>
-                                <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input" />
                             </div> */}
+
+                        <div className="mt-4 flex  gap-8 lg:flex-row flex-col">
+                            <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">12th Marksheet</label>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpeg, .pdf"
+                                className="form-input file:py-2.5 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                            />
+                            <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">10th Marksheet</label>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpeg, .pdf"
+                                className="form-input file:py-2.5 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                            />
+                        </div>
+                        <div className="mt-4 flex  gap-8 lg:flex-row flex-col">
+                            <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document</label>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpeg, .pdf"
+                                className="form-input file:py-2.5 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                            />
+                            <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document</label>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpeg, .pdf"
+                                className="form-input file:py-2.5 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                            />
+                        </div>
+                        <div className="mt-4 flex  gap-8 lg:flex-row flex-col">
+                            <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document</label>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpeg, .pdf"
+                                className="form-input file:py-2.5 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                            />
+                            <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Document</label>
+                            <input
+                                type="file"
+                                accept="image/png, image/jpeg, .pdf"
+                                className="form-input file:py-2.5 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                            />
                         </div>
                     </div>
                 </div>
+                {/* </div> */}
             </div>
         </>
     );

@@ -62,7 +62,7 @@ const LoginCover = () => {
                             <Link to="/" className="w-8 block lg:hidden">
                                 <img src="/assets/images/logo.svg" alt="Logo" className="mx-auto w-10" />
                             </Link>
-                            <div className="dropdown ms-auto w-max">
+                            {/* <div className="dropdown ms-auto w-max">
                                 <Dropdown
                                     offset={[0, 8]}
                                     placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
@@ -100,7 +100,7 @@ const LoginCover = () => {
                                         })}
                                     </ul>
                                 </Dropdown>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="w-full max-w-[440px] lg:mt-16">
                             <div className="mb-10">
@@ -128,8 +128,11 @@ const LoginCover = () => {
                                 </div>
                                 <div>
                                     <label className="flex cursor-pointer items-center">
-                                        <input type="checkbox" className="form-checkbox bg-white dark:bg-black" />
-                                        <span className="text-white-dark">Subscribe to weekly newsletter</span>
+                                    <Link to="/auth/boxed-password-reset" className=" text-primary underline  transition hover:text-black dark:hover:text-white">
+                                    Forgot Password ?
+                                </Link>
+                                        {/* <input type="checkbox" className="form-checkbox bg-white dark:bg-black" />
+                                        <span className="text-white-dark">Subscribe to weekly newsletter</span> */}
                                     </label>
                                 </div>
                                 <button type="submit" className="btn btn-gradient !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]">
@@ -137,11 +140,11 @@ const LoginCover = () => {
                                 </button>
                             </form>
 
-                            <div className="relative my-7 text-center md:mb-9">
+                            {/* <div className="relative my-7 text-center md:mb-9">
                                 <span className="absolute inset-x-0 top-1/2 h-px w-full -translate-y-1/2 bg-white-light dark:bg-white-dark"></span>
                                 <span className="relative bg-white px-2 font-bold uppercase text-white-dark dark:bg-dark dark:text-white-light">or</span>
-                            </div>
-                            <div className="mb-10 md:mb-[60px]">
+                            </div> */}
+                            {/* <div className="mb-10 md:mb-[60px]">
                                 <ul className="flex justify-center gap-3.5 text-white">
                                     <li>
                                         <Link
@@ -180,15 +183,15 @@ const LoginCover = () => {
                                         </Link>
                                     </li>
                                 </ul>
-                            </div>
-                            <div className="text-center dark:text-white">
+                            </div> */}
+                            <div className=" mt-8 text-center dark:text-white">
                                 Don't have an account ?&nbsp;
                                 <Link to="/auth/cover-register" className="uppercase text-primary underline transition hover:text-black dark:hover:text-white">
                                     SIGN UP
                                 </Link>
                             </div>
                         </div>
-                        <p className="absolute bottom-6 w-full text-center dark:text-white">© {new Date().getFullYear()}.VRISTO All Rights Reserved.</p>
+                        <p className="absolute bottom-6 w-full text-center dark:text-white">© {new Date().getFullYear()}.Vasi Gateways All Rights Reserved.</p>
                     </div>
                 </div>
             </div>

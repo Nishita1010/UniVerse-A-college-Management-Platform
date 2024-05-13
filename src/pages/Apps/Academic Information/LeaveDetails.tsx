@@ -816,7 +816,7 @@ const LeaveDetails = () => {
                                                             <textarea id="notes" name="notes" className="form-textarea min-h-[130px]" placeholder="Mention Reason for Leave"></textarea>
                                                         </div>
 
-                                                        <div className="mr-5 mt-5 ">
+                                                        {/* <div className="mr-5 mt-5 ">
                                                             <div className=" font-bold items-center space-y-5 flex flex-row ">
                                                                 Leave Status&nbsp;: &nbsp; &nbsp;
                                                                 <div>
@@ -844,7 +844,7 @@ const LeaveDetails = () => {
                                                                     <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input " />
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> */}
                                                     </div>
                                                 </div>
                                             </div>

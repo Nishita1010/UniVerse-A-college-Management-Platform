@@ -647,9 +647,9 @@ const StudentMarks = () => {
     }, [sortStatus]);
 
     return (
-        <div>
+        <div> 
             <div className="panel flex items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
-                <div className="ltr:mr-3 text-primary  text-lg flex justify-between flex-wrap font-bold rtl:ml-3">Student Marks</div>
+                <div className="ltr:mr-3 text-primary  text-xl flex justify-between flex-wrap font-bold rtl:ml-3">Student Marks</div>
             </div>
 
             <div className="panel mt-6">
