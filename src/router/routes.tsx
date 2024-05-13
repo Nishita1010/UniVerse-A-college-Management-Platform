@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import Fees from '../pages/Apps/Fees';
+import Fees from '../pages/Apps/Fees Details/Fees';
 const Index = lazy(() => import('../pages/Index'));
 const Analytics = lazy(() => import('../pages/Analytics'));
 const Finance = lazy(() => import('../pages/Finance'));
@@ -9,26 +9,22 @@ const Mailbox = lazy(() => import('../pages/Apps/Mailbox'));
 const Notes = lazy(() => import('../pages/Apps/Notes'));
 const Contacts = lazy(() => import('../pages/Apps/Contacts'));
 const Chat = lazy(() => import('../pages/Apps/Chat'));
-const StudentList = lazy(() => import('../pages/Apps/StudentList'));
-
-const StudentDetails = lazy(() => import('../pages/Apps/StudentDetails'));
-const ContactDetails = lazy(() => import('../pages/Apps/ContactDetails'));
-const MedicalDetails = lazy(() => import('../pages/Apps/MedicalDetails'));
-const BankDetails = lazy(() => import('../pages/Apps/BankDetails'));
-const ExtraActivities = lazy(() => import('../pages/Apps/ExtraActivities'));
-
-const Documents = lazy(() => import('../pages/Apps/Documents'));
-const ClassSchedule = lazy(() => import('../pages/Apps/ClassSchedule'));
-const Courses = lazy(() => import('../pages/Apps/Courses'));
-const Attendance = lazy(() => import('../pages/Apps/Attendance'));
-const LeaveDetails = lazy(() => import('../pages/Apps/LeaveDetails'));
-
-
-
-const StudentMarks = lazy(() => import('../pages/Apps/StudentMarks'));
-
+const StudentDetails = lazy(() => import('../pages/Apps/Student Details/StudentDetails'));
+const Activities = lazy(() => import('../pages/Apps/Activities'));
+const StudentAdm = lazy(() => import('../pages/Apps/Student Details/StudentAdm'));
+const ContactDetails = lazy(() => import('../pages/Apps/Student Details/ContactDetails'));
+const MedicalDetails = lazy(() => import('../pages/Apps/Student Details/MedicalDetails'));
+const BankDetails = lazy(() => import('../pages/Apps/Student Details/BankDetails'));
+const Documents = lazy(() => import('../pages/Apps/Documents/Documents'));
+const ClassSchedule = lazy(() => import('../pages/Apps/Academic Information/ClassSchedule'));
+const Courses = lazy(() => import('../pages/Apps/Academic Information/Courses'));
+const Attendance = lazy(() => import('../pages/Apps/Academic Information/Attendance'));
+const LeaveDetails = lazy(() => import('../pages/Apps/Academic Information/LeaveDetails'));
+const Examination = lazy(() => import('../pages/Apps/Academic Information/Examination'));
+// const Examination = lazy(() => import('../pages/Apps/Examination'));
+const StudentMarks = lazy(() => import('../pages/Apps/Academic Information/StudentMarks'));
 const Scrumboard = lazy(() => import('../pages/Apps/Scrumboard'));
-const Calendar = lazy(() => import('../pages/Apps/Calendar'));
+const Calendar = lazy(() => import('../pages/Apps/Academic Information/Calendar'));
 const List = lazy(() => import('../pages/Apps/Invoice/List'));
 const Preview = lazy(() => import('../pages/Apps/Invoice/Preview'));
 const Add = lazy(() => import('../pages/Apps/Invoice/Add'));
@@ -166,32 +162,40 @@ const routes = [
     },
     // Apps page
     {
-        path: '/apps/StudentList',
-        element: <StudentList />,
+        path: '/apps/studentDetails/StudentDetails',
+        element: <StudentDetails />,
     },
     {
-        path: '/apps/StudentDetails',
-        element: <StudentDetails />,
+        path: '/apps/studentDetails/StudentAdm',
+        element: <StudentAdm />,
     },
     {
         path: '/apps/Documents',
         element: <Documents />,
     },
     {
-        path: '/apps/ContactDetails',
+        path: '/apps/studentDetails/ContactDetails',
         element: <ContactDetails />,
     },
     {
-        path: '/apps/BankDetails',
+        path: '/apps/studentDetails/BankDetails',
         element: <BankDetails />,
     },
     {
-        path: '/apps/ExtraActivities',
-        element: <ExtraActivities />,
+        path: '/apps/studentDetails/MedicalDetails',
+        element: <MedicalDetails />,
+    },
+    // {
+    //     path: '/apps/ExtraActivities',
+    //     element: <ExtraActivities />,
+    // },
+    {
+        path: '/apps/Activities',
+        element: <Activities />,
     },
 
     {
-        path: '/apps/Fees',
+        path: '/apps/feesDetails/Fees',
         element: <Fees />,
     },
 
@@ -209,11 +213,15 @@ const routes = [
     },
     {
         path: '/apps/Attendance',
-        element: <Attendance/>,
+        element: <Attendance />,
     },
     {
         path: '/apps/LeaveDetails',
-        element: <LeaveDetails/>,
+        element: <LeaveDetails />,
+    },
+    {
+        path: '/apps/Examinaiton',
+        element: <Examination />,
     },
     {
         path: '/apps/chat',
@@ -245,10 +253,7 @@ const routes = [
     //     path: '/components/tabs',
     //     element: <Tabs />,
     // },
-    {
-        path: '/apps/MedicalDetails',
-        element: <MedicalDetails />,
-    },
+ 
     {
         path: '/components/accordions',
         element: <Accordians />,

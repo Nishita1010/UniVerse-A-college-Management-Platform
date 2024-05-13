@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import MaskedInput from 'react-text-mask';
-import IconHome from '../../components/Icon/IconHome';
-import IconUser from '../../components/Icon/IconUser';
-import IconThumbUp from '../../components/Icon/IconThumbUp';
+import IconHome from '../../../components/Icon/IconHome';
+import IconUser from '../../../components/Icon/IconUser';
+// import IconThumbUp from '../../components/Icon/IconThumbUp';
 
 const MedicalDetails = () => {
     const [hasAilment, setHasAilment] = useState(false);
@@ -48,17 +48,7 @@ const MedicalDetails = () => {
                             </button>
                             <span className={`${activeTab4 === 2 ? 'text-primary ' : ''}text-center block mt-2`}>Emergency Contact</span>
                         </li>
-                        {/* <li className="mx-auto">
-                                <button
-                                    type="button"
-                                    className={`${activeTab4 === 3 ? '!border-primary !bg-primary text-white' : ''}
-                                                border-[3px] border-[#f3f2ee] bg-white dark:bg-[#253b5c] dark:border-[#1b2e4b] flex justify-center items-center w-16 h-16 rounded-full`}
-                                    onClick={() => setActiveTab4(3)}
-                                >
-                                    <IconThumbUp className="w-5 h-5" />
-                                </button>
-                                <span className={`${activeTab4 === 3 ? 'text-primary ' : ''}text-center block mt-2`}>Guardian Details</span>
-                            </li> */}
+                        
                     </ul>
                 </div>
 
@@ -102,33 +92,67 @@ const MedicalDetails = () => {
                                                 </label>
                                                 <input id="dob" type="text" name="dob" className="form-input flex-1" placeholder="Example- a mole on cheek etc." />
                                                 <label htmlFor="dob" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                                    Family History{' '}
+                                                    Family History
                                                 </label>
                                                 <input id="dob" type="text" name="dob" className="form-input flex-1" placeholder="Example- grandmother had diabetes etc." />
                                             </div>
 
-                                            <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                            <div className="mt-6 flex  gap-5 lg:flex-row flex-col">
                                                 <form className="pl-4 items-center justify-items-center  flex flex-row ">
                                                     <label className="text-bold -ml-4 ">Ailment if any &nbsp;? &nbsp; &nbsp;</label>
                                                     <div>
-                                                        <label className=" pl-2 flex  cursor-pointer">
+                                                        <label className=" pl-5 flex  cursor-pointer">
                                                             <input type="radio" value="yes" className="form-radio" checked={hasAilment} onChange={handleAilmentChange} />
                                                             <span className="text-white-dark">Yes</span>
                                                         </label>
                                                     </div>
+                                                    {hasAilment && (
+                                                        <div>
+                                                            <label className="pl-4">
+                                                                <input
+                                                                    className=" flex flex-col pl-4 w-80 h-20 form-input "
+                                                                    type="note"
+                                                                    placeholder="Describe your Ailment"
+                                                                    value={ailmentDescription}
+                                                                    onChange={handleDescriptionChange}
+                                                                />
+                                                            </label>
+                                                        </div>
+                                                    )}
                                                     <div>
-                                                        <label className="pl-4 flex  cursor-pointer">
+                                                        <label className="pl-5 flex  cursor-pointer">
                                                             <input type="radio" value="no" className="form-radio" checked={!hasAilment} onChange={handleAilmentChange} />
                                                             <span className="text-white-dark ">No</span>
                                                         </label>
                                                     </div>
 
+                                                    
+                                                </form>
+                                            </div>
+                                            <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                                <form className="pl-4 items-center justify-items-center flex flex-row ">
+                                                    <label className="text-bold -ml-4 ">
+                                                        Pre existing medical, social or emotional conditions you would like us to be aware of &nbsp;? &nbsp; &nbsp;
+                                                    </label>
+                                                    <div>
+                                                        <label className=" pl-5 flex  cursor-pointer">
+                                                            <input type="radio" value="yes" className="form-radio" checked={hasAilment} onChange={handleAilmentChange} />
+                                                            <span className="text-white-dark">Yes</span>
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <label className="pl-5 flex  cursor-pointer">
+                                                            <input type="radio" value="no" className="form-radio" checked={!hasAilment} onChange={handleAilmentChange} />
+                                                            <span className="text-white-dark ">No</span>
+                                                        </label>
+                                                    </div>
+                                                    
+
                                                     {hasAilment && (
                                                         <div>
-                                                            <label className="pl-4">
-                                                                <br />
+                                                            <label className="pl-5">
                                                                 <input
-                                                                    className="pl-4 w-80 form-input flex-col flex-1 -mt-4"
+                                                                    className=" w-full form-input flex-row flex-1 "
                                                                     type="text"
                                                                     placeholder="Describe your Ailment"
                                                                     value={ailmentDescription}
@@ -142,27 +166,61 @@ const MedicalDetails = () => {
                                             <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
                                                 <form className="pl-4 items-center justify-items-center flex flex-row ">
                                                     <label className="text-bold -ml-4 ">
-                                                        Pre existing medical, social or emotional conditions you would like us to be aware of &nbsp;? &nbsp; &nbsp;
+                                                        Physical Disability &nbsp;? &nbsp; &nbsp;
                                                     </label>
                                                     <div>
-                                                        <label className=" pl-2 flex  cursor-pointer">
+                                                        <label className=" pl-5 flex  cursor-pointer">
                                                             <input type="radio" value="yes" className="form-radio" checked={hasAilment} onChange={handleAilmentChange} />
                                                             <span className="text-white-dark">Yes</span>
                                                         </label>
                                                     </div>
                                                     <div>
-                                                        <label className="pl-4 flex  cursor-pointer">
+                                                        <label className="pl-5 flex  cursor-pointer">
                                                             <input type="radio" value="no" className="form-radio" checked={!hasAilment} onChange={handleAilmentChange} />
                                                             <span className="text-white-dark ">No</span>
                                                         </label>
                                                     </div>
+                                                    
 
                                                     {hasAilment && (
                                                         <div>
-                                                            <label className="pl-4">
-                                                                <br />
+                                                            <label className="pl-5">
                                                                 <input
-                                                                    className=" w-80 form-input flex-col flex-1 -mt-4"
+                                                                    className=" w-full form-input flex-row flex-1 "
+                                                                    type="text"
+                                                                    placeholder="Describe your Ailment"
+                                                                    value={ailmentDescription}
+                                                                    onChange={handleDescriptionChange}
+                                                                />
+                                                            </label>
+                                                        </div>
+                                                    )}
+                                                </form>
+                                            </div>
+                                            <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                                <form className="pl-4 items-center justify-items-center flex flex-row ">
+                                                    <label className="text-bold -ml-4 ">
+                                                        Any Allergy&nbsp;? &nbsp; &nbsp;
+                                                    </label>
+                                                    <div>
+                                                        <label className=" pl-5 flex  cursor-pointer">
+                                                            <input type="radio" value="yes" className="form-radio" checked={hasAilment} onChange={handleAilmentChange} />
+                                                            <span className="text-white-dark">Yes</span>
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <label className="pl-5 flex  cursor-pointer">
+                                                            <input type="radio" value="no" className="form-radio" checked={!hasAilment} onChange={handleAilmentChange} />
+                                                            <span className="text-white-dark ">No</span>
+                                                        </label>
+                                                    </div>
+                                                    
+
+                                                    {hasAilment && (
+                                                        <div>
+                                                            <label className="pl-5">
+                                                                <input
+                                                                    className=" w-full form-input flex-row flex-1 "
                                                                     type="text"
                                                                     placeholder="Describe your Ailment"
                                                                     value={ailmentDescription}
@@ -242,68 +300,7 @@ const MedicalDetails = () => {
 
                 <p className="mb-5">
                     {activeTab4 === 2 && (
-                        <div className="flex xl:flex-row flex-col gap-2.5">
-                            <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
-                                <div className="flex justify-between flex-wrap px-4">
-                                    <div className="mb-6 lg:w-1/2 w-full">
-                                        <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                            Emergency Contact
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-                                <div className="mt-8 px-4">
-                                    <div className="">
-                                        <div className="">
-                                            <div className=" pl-5 flex justify-between lg:flex-row flex-col">
-                                                <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
-                                                    <div className="mt-4 flex gap-5  lg:flex-row flex-col">
-                                                        <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                            Full Name
-                                                        </label>
-                                                        <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter Full Name" />
-                                                        <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
-                                                            E mail ID
-                                                        </label>
-                                                        <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter Email ID" />
-                                                    </div>
-
-                                                    <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                                        <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                                            Phone Number
-                                                        </label>
-                                                        <MaskedInput
-                                                            id="phoneMask"
-                                                            type="text"
-                                                            placeholder="Enter your Phone Number"
-                                                            className="form-input flex-1"
-                                                            mask={['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', ' ', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
-                                                        />
-
-                                                        <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                            Relation with the Student
-                                                        </label>
-                                                        <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Example- Mother, Father, Brother etc." />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className=" mt-2 flex ml-12 mr-4 gap-5 lg:flex-row flex-col">
-                                            <label htmlFor="notes" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                Person's Address
-                                            </label>
-                                            <textarea id="notes" name="notes" className="form-textarea min-h-[130px]" placeholder="Address..."></textarea>
-
-                                            {/* <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                Person's Address
-                                            </label>
-                                            <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 h-10 " placeholder="Enter Person's Address" /> */}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
                     )}
                 </p>
 

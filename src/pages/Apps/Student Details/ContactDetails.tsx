@@ -1,25 +1,61 @@
 import React from 'react';
+import MaskedInput from 'react-text-mask';
 
 const ContactDetails = () => {
     return (
         <>
             <div className="flex xl:flex-row flex-col gap-2.5">
-                <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
-                    <div className="flex justify-between flex-wrap px-4">
-                        <div className="mb-6 lg:w-1/2 w-full">
-                            <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                Contact Details
+                <div className="px-0 flex-1">
+                    <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+                    <div>
+                        <div className="mt-8 px-4">
+                            <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                                <h2>Present Address</h2>
+                            </label>
+                        </div>
+                        <div className="mt-6 px-4">
+                        <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                <div className="mt-4 flex gap-5  lg:flex-row flex-col">
+                                    <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                        Street Address
+                                    </label>
+                                    <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter your Address" />
+                                    <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                        Street Address
+                                    </label>
+                                    <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter your Address" />
+                                </div>
+
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="collegeEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Country
+                                    </label>
+                                    <input id="collegeEmail" type="email" name="collegeEmail" className="form-input flex-1" placeholder="Enter Country" />
+
+                                    <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        State
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter State" />
+                                </div>
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        City
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter City" />
+
+                                    <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Postal / Zip Code
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter Zip Code" />
+                                </div>
+                                   {/*    <button type="submit" className="btn btn-primary mt-8 float-end">
+                                    Submit Form
+                                </button> */}
                             </div>
                         </div>
                     </div>
-                    <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
-
-                    <div className="mt-8 px-8">
-                        <div className="">
-                            <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
-                                Present Address
-                            </label>
-
+                        {/* <div className="mt-8 px-4 pl-8">
                             <div className="mt-4 flex lg:flex-row flex-col">
                                 <div className="px-5 flex w-1/2">
                                     <label htmlFor="Street_Address" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
@@ -256,25 +292,69 @@ const ContactDetails = () => {
                                     <input id="zipcode" type="number" name="zipcode" className="form-input flex-1" placeholder="Enter Zip Code" />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <hr className="border-white-light dark:border-[#1b2e4b] my-10" />
 
-                    <div className="mt-8 px-8">
+                    <div className="mt-8 px-4">
                         <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
-                            Permanent Address
+                            <h2>Permanent Address</h2>
                         </label>
+                    </div>
+                    <div className="mt-6 px-4">
+                        <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                <div className="mt-4 flex gap-5  lg:flex-row flex-col">
+                                    <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                        Street Address
+                                    </label>
+                                    <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter your Address" />
+                                    <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                        Street Address
+                                    </label>
+                                    <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter your Address" />
+                                </div>
 
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="collegeEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Country
+                                    </label>
+                                    <input id="collegeEmail" type="email" name="collegeEmail" className="form-input flex-1" placeholder="Enter Country" />
+
+                                    <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        State
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter State" />
+                                </div>
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        City
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter City" />
+
+                                    <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Postal / Zip Code
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter Zip Code" />
+                                </div>
+{/* 
+                                <button type="submit" className="btn btn-primary mt-8 float-end">
+                                    Submit Form
+                                </button> */}
+                            </div>
+                        </div>
+                    </div>
+                    {/* <div className="mt-8 ml-4 px-4">
                         <div className="mt-4 flex lg:flex-row flex-col">
                             <div className="px-5 flex w-1/2">
                                 <label htmlFor="Street_Address" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                    Street Address Line 1
+                                    Street Address
                                 </label>
                                 <input id="Street_Address" type="text" name="Street_Address" className="form-input flex-1" placeholder="Enter your address" />
                             </div>
                             <div className="px-5 flex w-1/2">
                                 <label htmlFor="Street_Address_Line_2" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                    Street Address Line 2
+                                    Street Address
                                 </label>
                                 <input id="Street_Address_Line_2" type="text" name="Street_Address_Line_2" className="form-input flex-1" placeholder="Enter your address" />
                             </div>
@@ -499,6 +579,106 @@ const ContactDetails = () => {
                                     Postal / Zip Code
                                 </label>
                                 <input id="zipcode" type="number" name="zipcode" className="form-input flex-1" placeholder="Enter Zip Code" />
+                            </div>
+                        </div>
+                    </div> */}
+                    <hr className="border-white-light dark:border-[#1b2e4b] my-8" />
+
+                    
+                    <div className="mt-8 px-4">
+                        <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                            <h2>Emergency Contact</h2>
+                        </label>
+                    </div>
+                    <div className="mt-8 px-4">
+                        <div className=" pl-4 flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                <div className="mt-4 flex gap-5  lg:flex-row flex-col">
+                                    <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                        Full Name
+                                    </label>
+                                    <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter Full Name" />
+                                    <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                        E mail ID
+                                    </label>
+                                    <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter Email ID" />
+                                </div>
+
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Phone Number
+                                    </label>
+                                    <MaskedInput
+                                        id="phoneMask"
+                                        type="text"
+                                        placeholder="Enter your Phone Number"
+                                        className="form-input flex-1"
+                                        mask={['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', ' ', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+                                    />
+
+                                    <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                        Relation with the Student
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Example- Mother, Father, Brother etc." />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className=" mt-2 flex ml-12 mr-4 gap-5 lg:flex-row flex-col">
+                            <label htmlFor="notes" className="ltr:mr-2 rtl:ml-2 -ml-3 w-32 mb-0">
+                                Person's Address
+                            </label>
+                            <textarea id="ctnTextarea" rows={3} className=" -mt-3.5 form-textarea" placeholder="Enter Address" required></textarea>
+                        </div>
+                    </div>
+
+                    <hr className="border-white-light dark:border-[#1b2e4b] my-6" />
+
+                    <div className="mt-8 px-4">
+                        <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
+                            <h2>Bank Details</h2>
+                        </label>
+                    </div>
+                    <div className="mt-6 px-4">
+                        <div className=" pl-5 flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
+                                <div className="mt-4 flex gap-5  lg:flex-row flex-col">
+                                    <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                        Account Number
+                                    </label>
+                                    <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter First Name" />
+                                    <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                        Account Holder's Name
+                                    </label>
+                                    <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter Last Name" />
+                                </div>
+
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="collegeEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        IFSC Code
+                                    </label>
+                                    <input id="collegeEmail" type="email" name="collegeEmail" className="form-input flex-1" placeholder="Enter College Email" />
+
+                                    <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Name of the Bank
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter Personal Email" />
+                                </div>
+                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Branch Name
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter Personal Email" />
+
+                                    <label htmlFor="phoneMask" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                        Country
+                                    </label>
+                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter Personal Email" />
+                                </div>
+{/* 
+                                <button type="submit" className="btn btn-primary mt-8 float-end">
+                                    Submit Form
+                                </button> */}
                             </div>
                         </div>
                     </div>

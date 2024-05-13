@@ -1,12 +1,14 @@
-import { DataTable, DataTableSortStatus } from 'mantine-datatable';
-import { useEffect, useState } from 'react';
-import sortBy from 'lodash/sortBy';
+import { useState, Fragment, useEffect } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../store';
-import Dropdown from '../../components/Dropdown';
-import { setPageTitle } from '../../store/themeConfigSlice';
-// import IconBell from '../../components/Icon/IconBell';
-import IconCaretDown from '../../components/Icon/IconCaretDown';
+import { IRootState } from '../../../store';
+import { setPageTitle } from '../../../store/themeConfigSlice';
+import IconX from '../../../components/Icon/IconX';
+import IconPlus from '../../../components/Icon/IconPlus';
+import { DataTable, DataTableSortStatus } from 'mantine-datatable';
+import sortBy from 'lodash/sortBy';
+import Dropdown from '../../../components/Dropdown';
+import IconCaretDown from '../../../components/Icon/IconCaretDown';
 
 const rowData = [
     {
@@ -29,7 +31,7 @@ const rowData = [
         isActive: true,
         age: 39,
         marks: 90,
-        grade:8,
+        grade: 8,
     },
     {
         id: 2,
@@ -52,7 +54,7 @@ const rowData = [
         isActive: false,
         age: 32,
         marks: 85,
-        grade:8.3,
+        grade: 8.3,
     },
     {
         id: 3,
@@ -75,7 +77,7 @@ const rowData = [
         isActive: false,
         age: 26,
         marks: 76,
-        grade:7.1,
+        grade: 7.1,
     },
     {
         id: 4,
@@ -98,7 +100,7 @@ const rowData = [
         isActive: true,
         age: 21,
         marks: 93,
-        grade:9,
+        grade: 9,
     },
     {
         id: 5,
@@ -120,7 +122,7 @@ const rowData = [
         isActive: false,
         age: 26,
         marks: 42,
-        grade:4.1,
+        grade: 4.1,
     },
     {
         id: 6,
@@ -142,7 +144,7 @@ const rowData = [
         isActive: true,
         age: 40,
         marks: 37,
-        grade:3.6,
+        grade: 3.6,
     },
     {
         id: 7,
@@ -164,7 +166,7 @@ const rowData = [
         isActive: true,
         age: 24,
         marks: 54,
-        grade:5.2,
+        grade: 5.2,
     },
     {
         id: 8,
@@ -186,7 +188,7 @@ const rowData = [
         isActive: true,
         age: 24,
         marks: 46,
-        grade:4.3,
+        grade: 4.3,
     },
     {
         id: 9,
@@ -208,7 +210,7 @@ const rowData = [
         isActive: false,
         age: 28,
         marks: 88,
-        grade:8.6,
+        grade: 8.6,
     },
     {
         id: 10,
@@ -230,7 +232,7 @@ const rowData = [
         isActive: false,
         age: 27,
         marks: 88,
-        grade:8.6,
+        grade: 8.6,
     },
     {
         id: 11,
@@ -252,7 +254,7 @@ const rowData = [
         isActive: true,
         age: 34,
         marks: 72,
-        grade:6.99,
+        grade: 6.99,
     },
     {
         id: 12,
@@ -274,7 +276,7 @@ const rowData = [
         isActive: true,
         age: 28,
         marks: 74,
-        grade:7.1,
+        grade: 7.1,
     },
     {
         id: 13,
@@ -296,7 +298,7 @@ const rowData = [
         isActive: true,
         age: 31,
         marks: 77,
-        grade:7.5,
+        grade: 7.5,
     },
     {
         id: 14,
@@ -318,7 +320,7 @@ const rowData = [
         isActive: true,
         age: 22,
         marks: 79,
-        grade:7.7,
+        grade: 7.7,
     },
     {
         id: 15,
@@ -340,7 +342,7 @@ const rowData = [
         isActive: true,
         age: 27,
         marks: 54,
-        grade:5.2,
+        grade: 5.2,
     },
     {
         id: 16,
@@ -362,7 +364,7 @@ const rowData = [
         isActive: false,
         age: 33,
         marks: 89,
-        grade:8.7,
+        grade: 8.7,
     },
     {
         id: 17,
@@ -384,7 +386,7 @@ const rowData = [
         isActive: true,
         age: 20,
         marks: 85,
-        grade:8.3,
+        grade: 8.3,
     },
     {
         id: 18,
@@ -406,7 +408,7 @@ const rowData = [
         isActive: false,
         age: 31,
         marks: 81,
-        grade:7.9,
+        grade: 7.9,
     },
     {
         id: 19,
@@ -428,7 +430,7 @@ const rowData = [
         isActive: false,
         age: 33,
         marks: 84,
-        grade:8.2,
+        grade: 8.2,
     },
     {
         id: 20,
@@ -558,12 +560,28 @@ const rowData = [
     },
 ];
 
-const StudentMarks = () => {
+const LeaveDetails = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Column Chooser Table'));
+        dispatch(setPageTitle('Modals'));
     });
+    const items = ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'];
+
     const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
+
+    const [codeArr, setCodeArr] = useState<string[]>([]);
+    const toggleCode = (name: string) => {
+        if (codeArr.includes(name)) {
+            setCodeArr((value) => value.filter((d) => d !== name));
+        } else {
+            setCodeArr([...codeArr, name]);
+        }
+    };
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     dispatch(setPageTitle('Column Chooser Table'));
+    // });
+    // const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
 
     // show/hide
     const [page, setPage] = useState(1);
@@ -599,16 +617,16 @@ const StudentMarks = () => {
     };
 
     const cols = [
-        { accessor: 'id', title: 'ID' },
-        { accessor: 'firstName', title: 'First Name' },
-        { accessor: 'lastName', title: 'Last Name' },
-        { accessor: 'email', title: 'Email' },
-        { accessor: 'course', title: 'Course' },
-        { accessor: 'marks', title: 'marks' },
-        { accessor: 'address.street', title: 'Address' },
-        { accessor: 'age', title: 'Age' },
-        { accessor: 'dob', title: 'Birthdate' },
-        { accessor: 'isActive', title: 'Active' },
+        { accessor: 'id', title: 'Reg. No.' },
+        { accessor: 'firstName', title: 'Student Name' },
+        { accessor: 'lastName', title: 'Branch' },
+        { accessor: 'email', title: 'Stream' },
+        { accessor: 'course', title: 'Apply Date' },
+        { accessor: 'marks', title: 'From Date' },
+        { accessor: 'address.street', title: 'To Date' },
+        { accessor: 'age', title: 'Status' },
+        { accessor: 'dob', title: 'Approved By' },
+        { accessor: 'isActive', title: 'Action' },
     ];
 
     useEffect(() => {
@@ -646,15 +664,217 @@ const StudentMarks = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sortStatus]);
 
+    const [modal5, setModal5] = useState(false);
+
     return (
-        <div>
-            <div className="panel flex items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
-                <div className="ltr:mr-3 text-primary  text-lg flex justify-between flex-wrap font-bold rtl:ml-3">Student Marks</div>
+        <>
+            <div className="flex xl:flex-row flex-col gap-2.5">
+                <div className="panel px-4 flex-1 pt-6  rtl:xl:ml-6">
+                    <div className="flex justify-between flex-wrap px-4">
+                        <div className="lg:w-1/2 w-full">
+                            <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
+                                Leave Details
+                            </div>
+                        </div>
+                    </div>
+                    {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" /> */}
+                    <div className="px-4">
+                        <div className="  flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6 pt-3">
+                                <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
+                                    <label htmlFor="dob" className=" rtl:ml-2 w-28  mb-0">
+                                        Course
+                                    </label>
+                                    <input id="gender" type="text" name="gender" className="form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
+                                    <select className="-ml-3 form-select flex-1">
+                                        <option>Select...</option>
+                                        <option>I</option>
+                                        <option>II</option>
+                                        <option>III</option>
+                                        <option>IV</option>
+                                        <option>V</option>
+                                        <option>VI</option>
+                                        <option>VII</option>
+                                        <option>VIII</option>
+                                        <option>IX</option>
+                                        <option>X</option>
+                                    </select>
+
+                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
+                                    <select className="form-select flex-1">
+                                        <option>Select...</option>
+                                        <option>A</option>
+                                        <option>B</option>
+                                        <option>C</option>
+                                        <option>D</option>
+                                        <option>E</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* --------------------------------Add Attendance Button Begin-------------------------- */}
+
+                    {/* <div className=" bg-blue-800 px-6 py-6 ml-200">*/}
+
+                    <div className="flex float-end px-8">
+                        <button type="button" onClick={() => setModal5(true)} className="btn btn-warning ">
+                            <IconPlus className="mr-2 -ml-3"></IconPlus>
+                            Add
+                        </button>
+                    </div>
+
+                    <Transition appear show={modal5} as={Fragment}>
+                        <Dialog as="div" open={modal5} onClose={() => setModal5(false)}>
+                            <Transition.Child
+                                as={Fragment}
+                                enter="ease-out duration-300"
+                                enterFrom="opacity-0"
+                                enterTo="opacity-100"
+                                leave="ease-in duration-200"
+                                leaveFrom="opacity-100"
+                                leaveTo="opacity-0"
+                            >
+                                <div className="fixed inset-0" />
+                            </Transition.Child>
+                            <div className="fixed inset-0 z-[999] bg-[black]/60">
+                                <div className="flex min-h-screen items-start justify-center px-4">
+                                    <Transition.Child
+                                        as={Fragment}
+                                        enter="ease-out duration-300"
+                                        enterFrom="opacity-0 scale-95"
+                                        enterTo="opacity-100 scale-100"
+                                        leave="ease-in duration-200"
+                                        leaveFrom="opacity-100 scale-100"
+                                        leaveTo="opacity-0 scale-95"
+                                    >
+                                        <Dialog.Panel className="panel my-8 w-full max-w-5xl overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
+                                            <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
+                                                <h5 className="text-lg font-bold">Add Leave</h5>
+                                                <button onClick={() => setModal5(false)} type="button" className="text-white-dark hover:text-dark">
+                                                    <IconX />
+                                                </button>
+                                            </div>
+                                            {/* yaha se */}
+                                            <div className="mt-4 px-4">
+                                                <div className="px-5 flex w-full">
+                                                    <label htmlFor="Street_Address" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                                        Full Name
+                                                    </label>
+                                                    <input id="Street_Address" type="text" name="Street_Address" className="form-input flex-1" placeholder="Enter Your Name" />
+                                                </div>
+
+                                                <div className="  flex justify-between lg:flex-row flex-col">
+                                                    <div className=" w-full ltr:lg:px-4 rtl:lg:px-4 pb-6 pt-5">
+                                                        <div className=" flex items-center gap-5 lg:flex-row flex-col">
+                                                            <label htmlFor="dob" className=" w-28  mb-0">
+                                                                Course
+                                                            </label>
+                                                            <input id="gender" type="text" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
+                                                            <select className="-ml-4 form-select flex-1">
+                                                                <option>Select...</option>
+                                                                <option>I</option>
+                                                                <option>II</option>
+                                                                <option>III</option>
+                                                                <option>IV</option>
+                                                                <option>V</option>
+                                                                <option>VI</option>
+                                                                <option>VII</option>
+                                                                <option>VIII</option>
+                                                                <option>IX</option>
+                                                                <option>X</option>
+                                                            </select>
+
+                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
+                                                            <select className="-ml-4 form-select flex-1">
+                                                                <option>Select...</option>
+                                                                <option>A</option>
+                                                                <option>B</option>
+                                                                <option>C</option>
+                                                                <option>D</option>
+                                                                <option>E</option>
+                                                            </select>
+                                                        </div>
+                                                        <div className="mt-5 flex items-center gap-5 lg:flex-row flex-col">
+                                                            <label htmlFor="dob" className=" w-28  mb-0">
+                                                                Apply Date
+                                                            </label>
+                                                            <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>From Date</label>
+                                                            <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+
+                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>To Date</label>
+                                                            <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                                        </div>
+                                                        <div className=" mt-5 flex  gap-5 lg:flex-row flex-col">
+                                                            <label htmlFor="notes" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                                Reason
+                                                            </label>
+                                                            <textarea id="notes" name="notes" className="form-textarea min-h-[130px]" placeholder="Mention Reason for Leave"></textarea>
+                                                        </div>
+
+                                                        {/* <div className="mr-5 mt-5 ">
+                                                            <div className=" font-bold items-center space-y-5 flex flex-row ">
+                                                                Leave Status&nbsp;: &nbsp; &nbsp;
+                                                                <div>
+                                                                    <label className=" pl-2 flex  cursor-pointer">
+                                                                        <input type="radio" name="custom_radio2" className="form-radio" />
+                                                                        <span className="text-white-dark">Approved</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label className="pl-4 -mt-4 flex  cursor-pointer">
+                                                                        <input type="radio" name="custom_radio2" className="form-radio" />
+                                                                        <span className="text-white-dark ">Pending</span>
+                                                                    </label>
+                                                                </div>
+                                                                <div>
+                                                                    <label className=" pl-4 -mt-4 flex cursor-pointer">
+                                                                        <input type="radio" name="custom_radio2" className="form-radio" />
+                                                                        <span className="text-white-dark">disapproved</span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div className="flex mt-5 lg:flex-row flex-col gap-4">
+                                                                <div className="w-full flex gap-2">
+                                                                    <label>Attach Document</label>
+                                                                    <input type="file" accept="image/png, image/jpeg, .pdf" className="form-input " />
+                                                                </div>
+                                                            </div>
+                                                        </div> */}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="p-5">
+                                                {/* Buttons */}
+                                                <div className="mt-8 flex items-center justify-end">
+                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-outline-danger">
+                                                        Discard
+                                                    </button>
+                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4">
+                                                        Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </Dialog.Panel>
+                                    </Transition.Child>
+                                </div>
+                            </div>
+                        </Dialog>
+                    </Transition>
+                    {/* </div>*/}
+
+                    {/* --------------------------------Add Attendance Button End-------------------------- */}
+                </div>
             </div>
 
-            <div className="panel mt-6">
+            <div className="panel mt-3 pr-6">
                 <div className="flex md:items-center md:flex-row flex-col mb-5 gap-5">
-                    <h5 className="font-semibold text-lg dark:text-white-light">Lists</h5>
+                    <h5 className="font-semibold text-lg dark:text-white-light">Leave Approve List</h5>
                     <div className="flex items-center gap-5 ltr:ml-auto rtl:mr-auto">
                         <div className="flex md:items-center md:flex-row flex-col gap-5">
                             <div className="dropdown">
@@ -668,7 +888,7 @@ const StudentMarks = () => {
                                         </>
                                     }
                                 >
-                                    <ul className="!min-w-[140px]">
+                                    <ul className="!min-w-[160px]">
                                         {cols.map((col, i) => {
                                             return (
                                                 <li
@@ -710,49 +930,49 @@ const StudentMarks = () => {
                         className="whitespace-nowrap table-hover"
                         records={recordsData}
                         columns={[
-                            { accessor: 'id', title: 'ID', sortable: true, hidden: hideCols.includes('id') },
+                            { accessor: 'id', title: 'Reg. No.', sortable: true, hidden: hideCols.includes('id') },
                             {
                                 accessor: 'firstName',
-                                title: 'First Name',
+                                title: 'Student Name',
                                 sortable: true,
                                 hidden: hideCols.includes('firstName'),
                             },
                             {
                                 accessor: 'lastName',
-                                title: 'Last Name',
+                                title: 'Branch',
                                 sortable: true,
                                 hidden: hideCols.includes('lastName'),
                             },
-                            { accessor: 'email', title: 'Email', sortable: true, hidden: hideCols.includes('email') },
-                            { accessor: 'course', title: 'Course', sortable: true, hidden: hideCols.includes('course') },
+                            { accessor: 'email', title: 'Stream', sortable: true, hidden: hideCols.includes('email') },
+                            { accessor: 'course', title: 'Apply Date', sortable: true, hidden: hideCols.includes('course') },
                             {
                                 accessor: 'marks',
-                                title: 'Marks',
+                                title: 'From',
                                 sortable: true,
                                 hidden: hideCols.includes('marks'),
                             },
                             {
                                 accessor: 'address.street',
-                                title: 'Address',
+                                title: 'To',
                                 sortable: true,
                                 hidden: hideCols.includes('address.street'),
                             },
                             {
                                 accessor: 'age',
-                                title: 'Age',
+                                title: 'Status',
                                 sortable: true,
                                 hidden: hideCols.includes('age'),
                             },
                             {
                                 accessor: 'dob',
-                                title: 'Birthdate',
+                                title: 'Approved By',
                                 sortable: true,
                                 hidden: hideCols.includes('dob'),
                                 render: ({ dob }) => <div>{formatDate(dob)}</div>,
                             },
                             {
                                 accessor: 'isActive',
-                                title: 'Active',
+                                title: 'Action',
                                 sortable: true,
                                 hidden: hideCols.includes('isActive'),
                                 render: ({ isActive }) => <div className={`${isActive ? 'text-success' : 'text-danger'} capitalize`}>{isActive.toString()}</div>,
@@ -772,8 +992,8 @@ const StudentMarks = () => {
                     />
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
-export default StudentMarks;
+export default LeaveDetails;

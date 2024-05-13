@@ -1,14 +1,12 @@
-import { useState, Fragment, useEffect } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { IRootState } from '../../store';
-import { setPageTitle } from '../../store/themeConfigSlice';
-import IconX from '../../components/Icon/IconX';
-import IconPlus from '../../components/Icon/IconPlus';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
+import { useEffect, useState } from 'react';
 import sortBy from 'lodash/sortBy';
-import Dropdown from '../../components/Dropdown';
-import IconCaretDown from '../../components/Icon/IconCaretDown';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../../store';
+import Dropdown from '../../../components/Dropdown';
+import { setPageTitle } from '../../../store/themeConfigSlice';
+// import IconBell from '../../components/Icon/IconBell';
+import IconCaretDown from '../../../components/Icon/IconCaretDown';
 
 const rowData = [
     {
@@ -560,28 +558,12 @@ const rowData = [
     },
 ];
 
-const Attendance = () => {
+const StudentMarks = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(setPageTitle('Modals'));
+        dispatch(setPageTitle('Column Chooser Table'));
     });
-    const items = ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'];
-
     const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
-
-    const [codeArr, setCodeArr] = useState<string[]>([]);
-    const toggleCode = (name: string) => {
-        if (codeArr.includes(name)) {
-            setCodeArr((value) => value.filter((d) => d !== name));
-        } else {
-            setCodeArr([...codeArr, name]);
-        }
-    };
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //     dispatch(setPageTitle('Column Chooser Table'));
-    // });
-    // const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
 
     // show/hide
     const [page, setPage] = useState(1);
@@ -664,79 +646,13 @@ const Attendance = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sortStatus]);
 
-    const [modal5, setModal5] = useState(false);
-
     return (
-        <>
-            <div>
-                <div className="panel flex items-center overflow-x-auto whitespace-nowrap p-3 text-primary justify-between ">
-                    <div className="ltr:mr-3 text-primary  text-lg flex justify-between flex-wrap font-bold rtl:ml-3 px-3 py-3">Student Marks</div>
-                    {/* --------------------------------Add Attendance Button Begin-------------------------- */}
-
-                    {/* <div className=" bg-blue-800 px-6 py-6 ml-200">*/}
-
-                    <div>
-                        <button type="button" onClick={() => setModal5(true)} className="btn btn-warning ">
-                            <IconPlus className="mr-2 -ml-3"></IconPlus>
-                            Add
-                        </button>
-                    </div>
-
-                    <Transition appear show={modal5} as={Fragment}>
-                        <Dialog as="div" open={modal5} onClose={() => setModal5(false)}>
-                            <Transition.Child
-                                as={Fragment}
-                                enter="ease-out duration-300"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="ease-in duration-200"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                            >
-                                <div className="fixed inset-0" />
-                            </Transition.Child>
-                            <div className="fixed inset-0 z-[999] bg-[black]/60">
-                                <div className="flex min-h-screen items-start justify-center px-4">
-                                    <Transition.Child
-                                        as={Fragment}
-                                        enter="ease-out duration-300"
-                                        enterFrom="opacity-0 scale-95"
-                                        enterTo="opacity-100 scale-100"
-                                        leave="ease-in duration-200"
-                                        leaveFrom="opacity-100 scale-100"
-                                        leaveTo="opacity-0 scale-95"
-                                    >
-                                        <Dialog.Panel className="panel my-8 w-full max-w-5xl overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
-                                            <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
-                                                <h5 className="text-lg font-bold">Update Attendance</h5>
-                                                <button onClick={() => setModal5(false)} type="button" className="text-white-dark hover:text-dark">
-                                                    <IconX />
-                                                </button>
-                                            </div>
-                                            <div className="p-5">
-                                                {/* Buttons */}
-                                                <div className="mt-8 flex items-center justify-end">
-                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-outline-danger">
-                                                        Discard
-                                                    </button>
-                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4">
-                                                        Save
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </Dialog.Panel>
-                                    </Transition.Child>
-                                </div>
-                            </div>
-                        </Dialog>
-                    </Transition>
-                    {/* </div>*/}
-
-                    {/* --------------------------------Add Attendance Button End-------------------------- */}
-                </div>
+        <div> 
+            <div className="panel flex items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
+                <div className="ltr:mr-3 text-primary  text-xl flex justify-between flex-wrap font-bold rtl:ml-3">Student Marks</div>
             </div>
 
-            <div className="panel mt-3">
+            <div className="panel mt-6">
                 <div className="flex md:items-center md:flex-row flex-col mb-5 gap-5">
                     <h5 className="font-semibold text-lg dark:text-white-light">Lists</h5>
                     <div className="flex items-center gap-5 ltr:ml-auto rtl:mr-auto">
@@ -856,8 +772,8 @@ const Attendance = () => {
                     />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
-export default Attendance;
+export default StudentMarks;

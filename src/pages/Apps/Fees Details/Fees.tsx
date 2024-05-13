@@ -3,11 +3,11 @@ import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useState, useEffect } from 'react';
 import sortBy from 'lodash/sortBy';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPageTitle } from '../../store/themeConfigSlice';
-import IconTrashLines from '../../components/Icon/IconTrashLines';
-import IconPlus from '../../components/Icon/IconPlus';
-import IconEdit from '../../components/Icon/IconEdit';
-import IconEye from '../../components/Icon/IconEye';
+import { setPageTitle } from '../../../store/themeConfigSlice';
+import IconTrashLines from '../../../components/Icon/IconTrashLines';
+import IconPlus from '../../../components/Icon/IconPlus';
+import IconEdit from '../../../components/Icon/IconEdit';
+import IconEye from '../../../components/Icon/IconEye';
 
 const Fees = () => {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Fees = () => {
             rollno: '081451',
             name: 'Laurie Fox',
             email: 'lauriefox@company.com',
-            
+
             date: '15 Dec 2020',
             amount: '2275.45',
             status: { tooltip: 'Paid', color: 'success' },
@@ -246,7 +246,7 @@ const Fees = () => {
                             {
                                 accessor: 'admno',
                                 sortable: true,
-                                render: ({ admno}) => (
+                                render: ({ admno }) => (
                                     <NavLink to="/apps/admno/preview">
                                         <div className="text-primary underline hover:no-underline font-semibold">{`${admno}`}</div>
                                     </NavLink>
@@ -255,7 +255,7 @@ const Fees = () => {
                             {
                                 accessor: 'rollno',
                                 sortable: true,
-                                render: ({ rollno}) => (
+                                render: ({ rollno }) => (
                                     <NavLink to="/apps/rollno/preview">
                                         <div className="text-primary underline hover:no-underline font-semibold">{`${rollno}`}</div>
                                     </NavLink>
@@ -334,47 +334,6 @@ const Fees = () => {
 };
 
 export default Fees;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { useEffect, useState } from 'react';
 
@@ -512,7 +471,6 @@ export default Fees;
 //                                                 <div className="whitespace-nowrap">{data.id}</div>
 //                                             </td>
 //                                             <td>{data.particulars}</td>
-                                          
 
 //                                             <td>
 //                                                 <div className="h-1.5 bg-[#ebedf2] dark:bg-dark/40 rounded-full flex w-full">
@@ -531,7 +489,7 @@ export default Fees;
 //                                                         style={{ width: `${data.progress}` }}
 //                                                     ></div>
 //                                                 </div>
-                                                 
+
 //                                             </td>
 //                                             <td className="text-center">
 //                                                 <div className="dropdown ">

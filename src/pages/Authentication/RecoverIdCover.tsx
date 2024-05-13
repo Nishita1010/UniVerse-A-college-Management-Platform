@@ -57,45 +57,7 @@ const RecoverIdCover = () => {
                             <Link to="/" className="w-8 block lg:hidden">
                                 <img src="/assets/images/logo.svg" alt="Logo" className="mx-auto w-10" />
                             </Link>
-                            <div className="dropdown ms-auto w-max">
-                                <Dropdown
-                                    offset={[0, 8]}
-                                    placement={`${isRtl ? 'bottom-start' : 'bottom-end'}`}
-                                    btnClassName="flex items-center gap-2.5 rounded-lg border border-white-dark/30 bg-white px-2 py-1.5 text-white-dark hover:border-primary hover:text-primary dark:bg-black"
-                                    button={
-                                        <>
-                                            <div>
-                                                <img src={`/assets/images/flags/${flag.toUpperCase()}.svg`} alt="image" className="h-5 w-5 rounded-full object-cover" />
-                                            </div>
-                                            <div className="text-base font-bold uppercase">{flag}</div>
-                                            <span className="shrink-0">
-                                                <IconCaretDown />
-                                            </span>
-                                        </>
-                                    }
-                                >
-                                    <ul className="!px-2 text-dark dark:text-white-dark grid grid-cols-2 gap-2 font-semibold dark:text-white-light/90 w-[280px]">
-                                        {themeConfig.languageList.map((item: any) => {
-                                            return (
-                                                <li key={item.code}>
-                                                    <button
-                                                        type="button"
-                                                        className={`flex w-full hover:text-primary rounded-lg ${flag === item.code ? 'bg-primary/10 text-primary' : ''}`}
-                                                        onClick={() => {
-                                                            i18next.changeLanguage(item.code);
-                                                            // setFlag(item.code);
-                                                            setLocale(item.code);
-                                                        }}
-                                                    >
-                                                        <img src={`/assets/images/flags/${item.code.toUpperCase()}.svg`} alt="flag" className="w-5 h-5 object-cover rounded-full" />
-                                                        <span className="ltr:ml-3 rtl:mr-3">{item.name}</span>
-                                                    </button>
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                </Dropdown>
-                            </div>
+                         
                         </div>
                         <div className="w-full max-w-[440px] lg:mt-16">
                             <div className="mb-7">
@@ -106,7 +68,7 @@ const RecoverIdCover = () => {
                                 <div>
                                     <label htmlFor="Email">Email</label>
                                     <div className="relative text-white-dark">
-                                        <input id="Email" type="email" placeholder="Enter Email" className="form-input pl-10 placeholder:text-white-dark" />
+                                        <input id="Email" type="email" name="email" placeholder="Enter Email" className="form-input pl-10 placeholder:text-white-dark" required/>
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2">
                                             <IconMail fill={true} />
                                         </span>
@@ -117,7 +79,7 @@ const RecoverIdCover = () => {
                                 </button>
                             </form>
                         </div>
-                        <p className="absolute bottom-6 w-full text-center dark:text-white">© {new Date().getFullYear()}.VRISTO All Rights Reserved.</p>
+                        <p className="absolute bottom-6 w-full text-center dark:text-white">© {new Date().getFullYear()}.Vasi Gateways All Rights Reserved.</p>
                     </div>
                 </div>
             </div>
