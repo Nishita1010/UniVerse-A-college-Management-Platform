@@ -602,30 +602,24 @@ const Attendance = () => {
         setIsListVisible(!isListVisible);
     };
 
-    const [formData,setFormData]=useState({
-        course:'',
-        semester:'',
-        section:'',
-        attendance_date:''
-    })
+    const [formData, setFormData] = useState({
+        course: '',
+        semester: '',
+        section: '',
+        attendance_date: '',
+    });
 
-
-        const handleOnChange =(e)=>{
-                const {name,value} = e.target;
-                setFormData({
-                    ...formData,
-                    [name]:value,
-                })
-
-        }
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
 
     // const [hideCols, setHideCols] = useState<any>(['age', 'dob', 'isActive']);
-            const handleSearch =()=>{
-                
-            }
-   
+    const handleSearch = () => {};
 
- 
     useEffect(() => {
         setPage(1);
     }, [pageSize]);
@@ -665,24 +659,34 @@ const Attendance = () => {
 
     return (
         <>
+            <div className="mb-4 panel flex items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
+                <div className="ltr:mr-3 text-primary  text-xl flex justify-between flex-wrap font-bold rtl:ml-3">Attendance</div>
+            </div>
             <div className="flex xl:flex-row flex-col gap-2.5">
-                <div className="panel px-4 flex-1 pt-6  rtl:xl:ml-6">
-                    <div className="flex justify-between flex-wrap px-4">
-                        <div className="lg:w-1/2 w-full">
-                            <div className="text-lg font-bold text-primary m-0">Select Criteria</div>
-                        </div>
-                    </div>
-                    {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" /> */}
-                    <div className="px-4">
+                <div className="panel px-4 flex-1  rtl:xl:ml-6">
+                    <div className="mt-2 px-4">
+                        <div className=" flex justify-between lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-4">
+                                {/* <div className="px-4">
                         <div className="  flex justify-between lg:flex-row flex-col">
-                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6 pt-3">
-                                <div className="mt-8 flex items-center gap-4 lg:flex-row flex-col">
+                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-4 "> */}
+                                <div className="mt-2 flex  gap-4 lg:flex-row flex-col">
                                     <label htmlFor="course" className=" rtl:ml-2 w-28  mb-0">
                                         Course
                                     </label>
-                                    <input id="course" type="text" name="course" value={formData.course} className="form-input flex-1" onChange={handleOnChange} placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                    <label htmlFor='semester' className=' rtl:ml-2 w-28  mb-0'>Semester</label>
-                                    <select id='semester' name='semester' value={formData.semester} onChange={handleOnChange} className="-ml-3 form-select flex-1">
+                                    <input
+                                        id="course"
+                                        type="text"
+                                        name="course"
+                                        value={formData.course}
+                                        className="form-input flex-1"
+                                        onChange={handleOnChange}
+                                        placeholder="Ex. B.Tech CSE, ME, LLB etc."
+                                    />
+                                    <label htmlFor="semester" className=" rtl:ml-2 w-28  mb-0">
+                                        Semester
+                                    </label>
+                                    <select id="semester" name="semester" value={formData.semester} onChange={handleOnChange} className="-ml-3 form-select flex-1">
                                         <option>Select Semester</option>
                                         <option>I</option>
                                         <option>II</option>
@@ -696,9 +700,11 @@ const Attendance = () => {
                                         <option>X</option>
                                     </select>
                                 </div>
-                                <div className="mt-8 flex items-center gap-4 lg:flex-row flex-col">
-                                    <label htmlFor='section' className='rtl:ml-2 w-28  mb-0'>Section</label>
-                                    <select id='section' name='section' value={formData.section} onChange={handleOnChange} className="form-select flex-1">
+                                <div className="mt-4 flex gap-4 lg:flex-row flex-col">
+                                    <label htmlFor="section" className="rtl:ml-2 w-28  mb-0">
+                                        Section
+                                    </label>
+                                    <select id="section" name="section" value={formData.section} onChange={handleOnChange} className="form-select flex-1">
                                         <option>Select...</option>
                                         <option>A</option>
                                         <option>B</option>
@@ -706,8 +712,10 @@ const Attendance = () => {
                                         <option>D</option>
                                         <option>E</option>
                                     </select>
-                                    <label htmlFor='attendance_date' className='rtl:ml-2 w-28  mb-0'>Attendance Date</label>
-                                    <input id="attendance_date" name='attendance_date' value={formData.attendance_date} type="Date" onChange={handleOnChange} className="form-input flex-1" />
+                                    <label htmlFor="attendance_date" className="rtl:ml-2 w-28  mb-0">
+                                        Attendance Date
+                                    </label>
+                                    <input id="attendance_date" name="attendance_date" value={formData.attendance_date} type="Date" onChange={handleOnChange} className="form-input flex-1" />
                                 </div>
                             </div>
                         </div>

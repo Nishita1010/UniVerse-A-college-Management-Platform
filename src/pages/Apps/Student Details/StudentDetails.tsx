@@ -3,19 +3,14 @@ import { downloadExcel } from 'react-export-table-to-excel';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import { useState, useEffect } from 'react';
 import sortBy from 'lodash/sortBy';
+import Dropdown from '../../../components/Dropdown';
+import IconHorizontalDots from '../../../components/Icon/IconHorizontalDots';
 import IconFile from '../../../components/Icon/IconFile';
 import IconPrinter from '../../../components/Icon/IconPrinter';
 import IconTrashLines from '../../../components/Icon/IconTrashLines';
 import IconPlus from '../../../components/Icon/IconPlus';
-import IconEdit from '../../../components/Icon/IconEdit';
-import IconEye from '../../../components/Icon/IconEye';
-import IconFilter from '../../../components/Icon/IconFilter';
 
-import StudentAdm from './StudentAdm';
-import { Field, Form, Formik } from 'formik';
-import * as Yup from 'yup';
-import Swal from 'sweetalert2';
-// import PersonalDetails from './PersonalDetails';
+import IconFilter from '../../../components/Icon/IconFilter';
 
 const StudentDetails = () => {
     const [isCardVisible, setIsCardVisible] = useState(false);
@@ -24,8 +19,8 @@ const StudentDetails = () => {
     };
 
     const [data, setData] = useState({
-        courses: '',
-        section: '',
+        course: '',
+        branch: '',
         attendanceDate: '',
         semester: '',
     });
@@ -50,9 +45,20 @@ const StudentDetails = () => {
         });
     }
 
+    function handleDownloadExcel() {
+        downloadExcel({
+            fileName: 'table',
+            sheet: 'react-export-table-to-excel',
+            tablePayload: {
+                header,
+                body: rowData,
+            },
+        });
+    }
+
     const exportTable = (type: any) => {
         let columns: any = col;
-        let records = items;
+        let records = rowData;
         let filename = 'table';
 
         let newVariable: any;
@@ -159,6 +165,7 @@ const StudentDetails = () => {
             }
         }
     };
+
     const capitalize = (text: any) => {
         return text
             .replace('_', ' ')
@@ -172,12 +179,13 @@ const StudentDetails = () => {
     const [items, setItems] = useState([
         {
             id: 1,
-            admno: '235689',
+            AdmnNo: '235689',
             rollno: '081451',
-            name: 'Laurie Fox',
-            email: 'lauriefox@company.com',
-            courses: 'B.Tech',
-            section: 'A',
+            Name: 'Laurie Fox',
+            Email: 'lauriefox@company.com',
+            course: 'CSE',
+            branch: 'B.Tech',
+            phone: '9874563210',
             attendanceDate: '02.05.24',
             semester: 'II',
             date: '15 Dec 2020',
@@ -187,12 +195,14 @@ const StudentDetails = () => {
         },
         {
             id: 2,
-            admno: '235687',
+            AdmnNo: '235687',
             rollno: '081452',
-            name: 'Alexander Gray',
-            email: 'alexGray3188@gmail.com',
-            courses: 'LLB',
-            section: 'A',
+            Name: 'Alexander Gray',
+            Email: 'alexGray3188@gmail.com',
+            course: 'Criminal Lawer',
+            branch: 'LLB',
+            phone: '9861563210',
+
             attendanceDate: '02.05.24',
             semester: 'II',
             date: '20 Dec 2020',
@@ -202,12 +212,14 @@ const StudentDetails = () => {
         },
         {
             id: 3,
-            admno: '205689',
+            AdmnNo: '205689',
             rollno: '081681',
-            name: 'James Taylor',
-            email: 'jamestaylor468@gmail.com',
-            courses: 'M.Tech',
-            section: 'A',
+            Name: 'James Taylor',
+            Email: 'jamestaylor468@gmail.com',
+            course: 'ME',
+            branch: 'M.Tech',
+            phone: '9874563820',
+
             semester: 'II',
             attendanceDate: '02.05.24',
             date: '27 Dec 2020',
@@ -217,12 +229,14 @@ const StudentDetails = () => {
         },
         {
             id: 4,
-            admno: '237689',
+            AdmnNo: '237689',
             rollno: '082693',
-            name: 'Grace Roberts',
-            email: 'graceRoberts@company.com',
-            courses: 'MBA',
-            section: 'A',
+            Name: 'Grace Roberts',
+            Email: 'graceRoberts@company.com',
+            course: 'Business Analytics',
+            branch: 'MBA',
+            phone: '9874563660',
+
             attendanceDate: '02.05.24',
             semester: 'II',
             date: '31 Dec 2020',
@@ -232,12 +246,14 @@ const StudentDetails = () => {
         },
         {
             id: 5,
-            admno: '2365439',
+            AdmnNo: '2365439',
             rollno: '084743',
-            name: 'Donna Rogers',
-            email: 'donnaRogers@hotmail.com',
-            courses: 'BBA',
-            section: 'A',
+            Name: 'Donna Rogers',
+            Email: 'donnaRogers@hotmail.com',
+            course: 'HR',
+            branch: 'BBA',
+            phone: '9114563210',
+
             attendanceDate: '02.05.24',
             semester: 'II',
             date: '03 Jan 2021',
@@ -247,12 +263,14 @@ const StudentDetails = () => {
         },
         {
             id: 6,
-            admno: '2356789',
+            AdmnNo: '2356789',
             rollno: '086643',
-            name: 'Amy Diaz',
-            email: 'amy968@gmail.com',
-            courses: 'B.Tech',
-            section: 'A',
+            Name: 'Amy Diaz',
+            Email: 'amy968@gmail.com',
+            course: 'ECE',
+            branch: 'B.Tech',
+            phone: '9874569630',
+
             attendanceDate: '02.05.24',
             semester: 'II',
             date: '14 Jan 2020',
@@ -262,12 +280,14 @@ const StudentDetails = () => {
         },
         {
             id: 7,
-            admno: '905689',
+            AdmnNo: '905689',
             rollno: '086773',
-            name: 'Nia Hillyer',
-            email: 'niahillyer666@comapny.com',
-            courses: 'M.Tech',
-            section: 'A',
+            Name: 'Nia Hillyer',
+            Email: 'niahillyer666@comapny.com',
+            course: 'CSE',
+            branch: 'M.Tech',
+            phone: '9234563210',
+
             attendanceDate: '02.05.24',
             semester: 'II',
             date: '20 Jan 2021',
@@ -277,12 +297,14 @@ const StudentDetails = () => {
         },
         {
             id: 8,
-            admno: '251689',
+            AdmnNo: '251689',
             rollno: '087916',
-            name: 'Mary McDonald',
-            email: 'maryDonald007@gamil.com',
-            courses: 'MBA',
-            section: 'A',
+            Name: 'Mary McDonald',
+            Email: 'maryDonald007@gamil.com',
+            course: 'HR',
+            branch: 'MBA',
+            phone: '9852563210',
+
             attendanceDate: '02.05.24',
             semester: 'II',
             date: '25 Jan 2021',
@@ -290,6 +312,7 @@ const StudentDetails = () => {
             status: { tooltip: 'Pending', color: 'danger' },
             profile: 'profile-1.jpeg',
         },
+
     ]);
 
     const deleteRow = (id: any = null) => {
@@ -350,9 +373,9 @@ const StudentDetails = () => {
             return items.filter((item) => {
                 return (
                     item.rollno.toLowerCase().includes(search.toLowerCase()) ||
-                    item.name.toLowerCase().includes(search.toLowerCase()) ||
-                    item.email.toLowerCase().includes(search.toLowerCase()) ||
-                    item.date.toLowerCase().includes(search.toLowerCase()) ||
+                    item.Name.toLowerCase().includes(search.toLowerCase()) ||
+                    item.Email.toLowerCase().includes(search.toLowerCase()) ||
+                    item.course.toLowerCase().includes(search.toLowerCase()) ||
                     item.amount.toLowerCase().includes(search.toLowerCase()) ||
                     item.status.tooltip.toLowerCase().includes(search.toLowerCase())
                 );
@@ -360,87 +383,87 @@ const StudentDetails = () => {
         });
     }, [search]);
 
+    const [recordsData, setRecordsData] = useState(initialRecords);
+
     useEffect(() => {
         const data2 = sortBy(initialRecords, sortStatus.columnAccessor);
         setRecords(sortStatus.direction === 'desc' ? data2.reverse() : data2);
         setPage(1);
     }, [sortStatus]);
 
+    const formatDate = (date: any) => {
+        if (date) {
+            const dt = new Date(date);
+            const month = dt.getMonth() + 1 < 10 ? '0' + (dt.getMonth() + 1) : dt.getMonth() + 1;
+            const day = dt.getDate() < 10 ? '0' + dt.getDate() : dt.getDate();
+            return day + '/' + month + '/' + dt.getFullYear();
+        }
+        return '';
+    };
+    // useEffect(() => {
+    //     const data = sortBy(initialRecords, sortStatus.columnAccessor);
+    //     setInitialRecords(sortStatus.direction === 'desc' ? data.reverse() : data);
+    //     setPage(1);
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [sortStatus]);
+
     return (
         <>
-            <div className="px-8 mb-6 mr-8 flex justify-end items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
-                {/* <div className="ltr:mr-3 text-primary  text-2xl flex flex-wrap font-bold rtl:ml-3">Student Details</div> */}
-                <div className=" flex gap-2 ">
-                    <Link to="/apps/studentDetails/StudentAdm" type="button" className="btn btn-primary gap-2">
+            <div className="mb-4 panel flex justify-between items-center overflow-x-auto whitespace-nowrap p-2 text-primary">
+                <div className=" ltr:mr-3 text-primary  text-xl flex justify-between flex-wrap font-bold rtl:ml-3">Student List</div>
+                <div className=" flex gap-0.5 ">
+                    <Link to="/apps/studentDetails/StudentAdm" type="button" className="btn-sm m-1 btn btn-primary gap-2">
                         <IconPlus />
                         Add
                     </Link>
-                    <button type="button" className="btn btn-primary gap-2" onClick={handleButtonClick}>
-                        {/* {isCardVisible ? 'Hide Card' : 'Show Card'} */}
-                        <IconFilter className='text-lg'/>
+                    <button type="button" className="btn btn-primary gap-2 btn-sm m-1" onClick={handleButtonClick}>
+                        <IconFilter className="text-lg" />
                         Filter
                     </button>
-
-                    {/* <button type="button" className="btn btn-primary gap-2" onClick={() => handleFilter()}>
-                                    <IconTrashLines />
-                                    Filter
-                                </button> */}
-                    <button type="button" className="btn btn-danger gap-2" onClick={() => deleteRow()}>
+                    <button type="button" className="btn btn-danger gap-2 btn-sm m-1" onClick={() => deleteRow()}>
                         <IconTrashLines />
                         Delete
                     </button>
-
-                    {/* <Form action='PersonalDetails.tsx'> */}
-                    {/* <Link to={'PersonalDetails'} className="btn btn-primary gap-2">
-                                                <IconPlus />
-                                                Add New
-                                            </Link> */}
-                    {/* </Form> */}
                 </div>
             </div>
-            {/* <div className="xl:flex-row flex-col gap-2.5 pr-8"> */}
-                {isCardVisible && (
-                    <div className=" mb-4 panel w-full col border-white-light dark:border-[#1b2e4b]">
-                        <div className="inline-block w-full mb-2">
-                            <div className="flex justify-between flex-wrap px-4">
-                                <div className="lg:w-1/2 w-full">
-                                    <div className="text-xl -mb-6 font-bold text-primary m-0">Select Criteria</div>
-                                </div>
-                            </div>
-                            <div className="mt-6 px-4">
-                        <div className=" flex justify-between lg:flex-row flex-col">
-                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6">
-                                <div className="mt-4 flex gap-5  lg:flex-row flex-col">
-                                    <label htmlFor="Firstname" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                        Street Address
-                                    </label>
-                                    <input id="Firstname" type="text" name="Firstname" className="form-input flex-1 " placeholder="Enter your Address" />
-                                    <label htmlFor="lastName" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
-                                        Street Address
-                                    </label>
-                                    <input id="lastName" type="text" name="lastName" className="form-input flex-1" placeholder="Enter your Address" />
-                                </div>
 
-                                <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
-                                    <label htmlFor="collegeEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                        Country
-                                    </label>
-                                    <input id="collegeEmail" type="email" name="collegeEmail" className="form-input flex-1" placeholder="Enter Country" />
+            {isCardVisible && (
+                <div className=" mb-4 panel w-full col border-white-light dark:border-[#1b2e4b]">
+                    <div className="inline-block w-full">
+                        <div className="mt-2 px-4">
+                            <div className=" flex justify-between lg:flex-row flex-col">
+                                <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-4">
+                                    <div className="mt-2 flex gap-5  lg:flex-row flex-col">
+                                        <label htmlFor=" Course" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                            Course
+                                        </label>
+                                        <input id=" Course" type="text" name=" Course" className="form-input flex-1 " placeholder="Enter Course" />
+                                        <label htmlFor="semester" className="ltr:mr-2 rtl:ml-2 w-28 mb-0 ">
+                                            Semester
+                                        </label>
+                                        <input id="semester" type="text" name="semester" className="form-input flex-1" placeholder="Enter Semester" />
+                                    </div>
 
-                                    <label htmlFor="personalEmail" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                        State
-                                    </label>
-                                    <input id="personalEmail" type="email" name="personalEmail" className="form-input flex-1" placeholder="Enter State" />
-                                </div>
-                               
-                                   {/*    <button type="submit" className="btn btn-primary mt-8 float-end">
+                                    <div className="mt-4 flex  gap-5 lg:flex-row flex-col">
+                                        <label htmlFor=" section" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                            Section
+                                        </label>
+                                        <input id="section" type="text" name="section" className="form-input flex-1" placeholder="Enter Section" />
+
+                                        <label htmlFor="date" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                            Date
+                                        </label>
+                                        <input id="date" type="date" name="date" className="form-input flex-1" placeholder="Enter Date" />
+                                    </div>
+
+                                    {/*    <button type="submit" className="btn btn-primary mt-8 float-end">
                                     Submit Form
                                 </button> */}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                            
-                            {/* <div className=" flex col justify-between lg:flex-row flex-col">
+
+                        {/* <div className=" flex col justify-between lg:flex-row flex-col">
                                 <div className=" w-full mt-4 ltr:lg:px-6 rtl:lg:px-6 pb-6 ">
                                     <div className="mt-8 flex gap-4 items-center lg:flex-row flex-col">
                                         <label htmlFor="courses" className=" w-28 ">
@@ -498,20 +521,14 @@ const StudentDetails = () => {
                                     </div>
                                 </div>
                             </div> */}
-                            <button className="btn btn-primary float-end gap-2">Search</button>
-                        </div>
+                        <button className="btn btn-primary float-end gap-2">Search</button>
                     </div>
-                )}
+                </div>
+            )}
 
-                {/* <div className="flex md:items-center md:flex-row flex-col mb-5 ">
-                                    <h5 className="text-lg my-6 font-bold text-primary m-0 " style={{ fontSize: '25px' }}>
-                                        Students Details
-                                    </h5>
-                                </div> */}
-            {/* </div> */}
-            <div className="panel flex-1 w-full px-8 col border-white-light dark:border-[#1b2e4b]">
-                <div className="rollno-table">
-                    <div className="mb-4.5 px-5 flex md:items-center md:flex-row flex-col gap-5">
+            <div>
+                <div className="panel mt-6">
+                    <div className="flex md:items-center justify-between md:flex-row flex-col mb-4.5 gap-5">
                         <div className="flex items-center flex-wrap">
                             <button type="button" onClick={() => exportTable('csv')} className="btn btn-primary btn-sm m-1 ">
                                 <IconFile className="w-5 h-5 ltr:mr-2 rtl:ml-2" />
@@ -532,88 +549,67 @@ const StudentDetails = () => {
                                 PRINT
                             </button>
                         </div>
-                        <div className="ltr:ml-auto rtl:mr-auto">
-                            <input type="text" className="form-input w-auto" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
-                        </div>
-                    </div>
 
-                    <div className="datatables pagination-padding">
+                        <input type="text" className="form-input w-auto" placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
+                    </div>
+                    <div className="datatables">
                         <DataTable
-                            className="whitespace-nowrap table-compact rollno-table"
-                            records={records}
+                            highlightOnHover
+                            className="whitespace-nowrap table-hover"
+                            records={recordsData}
                             columns={[
+                                { accessor: 'AdmnNo', title: 'Admn No', sortable: true },
+
                                 {
-                                    accessor: 'admno',
+                                    accessor: 'Name',
+                                    title: 'Name',
                                     sortable: true,
-                                    render: ({ admno }) => (
-                                        <NavLink to="/apps/admno/preview">
-                                            <div className="font-semibold">{`${admno}`}</div>
-                                        </NavLink>
+                                    render: ({ Name }) => (
+                                        <a href={"/apps/StudentDetails/StudentProfile"} className="text-primary hover:underline">
+                                            {Name}
+                                        </a>
                                     ),
                                 },
+                                { accessor: 'Email', title: 'E-mail', sortable: true },
+                                { accessor: 'branch', title: 'Branch', sortable: true },
+                                { accessor: 'course', title: 'Course', sortable: true },
+
+                                // { accessor: ' course', title: 'Course', sortable: true },
                                 // {
-                                //     accessor: 'rollno',
+                                //     accessor: 'dob',
+                                //     title: 'Start Date',
                                 //     sortable: true,
-                                //     render: ({ rollno }) => (
-                                //         <NavLink to="/apps/rollno/preview">
-                                //             <div className="text-primary underline hover:no-underline font-semibold">{`${rollno}`}</div>
-                                //         </NavLink>
-                                //     ),
+                                //     render: ({ date}) => <div>{formatDate(date)}</div>,
                                 // },
+                                { accessor: 'phone', title: 'Mobile No', sortable: true },
                                 {
-                                    accessor: 'name',
+                                    accessor: '',
+                                    title: 'Action',
                                     sortable: true,
-                                    render: ({ name, id }) => (
-                                        <div className="flex items-center font-semibold">
-                                            <div className="p-0.5 bg-white-dark/30 rounded-full w-max ltr:mr-2 rtl:ml-2">
-                                                <img className="h-8 w-8 rounded-full object-cover" src={`/assets/images/profile-${id}.jpeg`} alt="" />
-                                            </div>
-                                            <div>{name}</div>
-                                        </div>
-                                    ),
-                                },
-                                {
-                                    accessor: 'email',
-                                    sortable: true,
-                                },
-                                {
-                                    accessor: 'date',
-                                    sortable: true,
-                                },
-                                {
-                                    accessor: 'amount',
-                                    sortable: true,
-                                    titleClassName: 'text-right',
-                                    render: ({ amount, id }) => <div className="text-right font-semibold">{`$${amount}`}</div>,
-                                },
-                                {
-                                    accessor: 'status',
-                                    sortable: true,
-                                    render: ({ status }) => <span className={`badge badge-outline-${status.color} `}>{status.tooltip}</span>,
-                                },
-                                {
-                                    accessor: 'action',
-                                    title: 'Actions',
-                                    sortable: false,
-                                    textAlignment: 'center',
-                                    render: ({ id }) => (
-                                        <div className="flex gap-4 items-center w-max mx-auto">
-                                            <NavLink to="/apps/rollno/edit" className="flex hover:text-info">
-                                                <IconEdit className="w-4.5 h-4.5" />
-                                            </NavLink>
-                                            <NavLink to="/apps/rollno/preview" className="flex hover:text-primary">
-                                                <IconEye />
-                                            </NavLink>
-                                            {/* <NavLink to="" className="flex"> */}
-                                            <button type="button" className="flex hover:text-danger" onClick={(e) => deleteRow(id)}>
-                                                <IconTrashLines />
-                                            </button>
-                                            {/* </NavLink> */}
+                                    render: () => (
+                                        <div className="dropdown">
+                                            <Dropdown offset={[0, 5]} button={<IconHorizontalDots className="opacity-70 m-auto" />}>
+                                                <ul>
+                                                    <li>
+                                                    <Link to="/apps/StudentDetails/StudentAdm">
+
+                                                        <button type="button">Edit</button>
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <Link to="/apps/StudentDetails/StudentProfile">
+                                                            <button type="button">View</button>
+                                                        </Link>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button">Delete</button>
+                                                    </li>
+                                                </ul>
+                                            </Dropdown>
                                         </div>
                                     ),
                                 },
                             ]}
-                            highlightOnHover
                             totalRecords={initialRecords.length}
                             recordsPerPage={pageSize}
                             page={page}
@@ -622,8 +618,7 @@ const StudentDetails = () => {
                             onRecordsPerPageChange={setPageSize}
                             sortStatus={sortStatus}
                             onSortStatusChange={setSortStatus}
-                            selectedRecords={selectedRecords}
-                            onSelectedRecordsChange={setSelectedRecords}
+                            minHeight={200}
                             paginationText={({ from, to, totalRecords }) => `Showing  ${from} to ${to} of ${totalRecords} entries`}
                         />
                     </div>
