@@ -21,7 +21,7 @@ const StudentAdm = () => {
                     <div className="inline-block w-full mb-6">
                         <div className="relative z-[1]">
                             <div
-                                className={`${activeTab4 === 1 ? 'w-[9%]' : activeTab4 === 2 ? 'w-[35%]' : activeTab4 === 3 ? 'w-[65%]' : activeTab4 === 4 ? 'w-[85%]' : ''}
+                                className={`${activeTab4 === 1 ? 'w-[9%]' : activeTab4 === 2 ? 'w-[35%]' : activeTab4 === 3 ? 'w-[60%]' : activeTab4 === 4 ? 'w-[85%]' : ''}
                                         bg-primary w-[15%] h-1 absolute ltr:left-0 rtl:right-0 top-[30px] m-auto -z-[1] transition-[width]`}
                             ></div>
                             <ul className="mb-5 grid grid-cols-4">

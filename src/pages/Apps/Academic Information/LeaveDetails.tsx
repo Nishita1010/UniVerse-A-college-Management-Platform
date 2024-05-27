@@ -1,10 +1,12 @@
 import { useState, Fragment, useEffect } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import IconPlus from '../../../components/Icon/IconPlus';
+import IconFilter from '../../../components/Icon/IconFilter';
 import { Dialog, Transition } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '../../../store';
 import { setPageTitle } from '../../../store/themeConfigSlice';
 import IconX from '../../../components/Icon/IconX';
-import IconPlus from '../../../components/Icon/IconPlus';
 import { DataTable, DataTableSortStatus } from 'mantine-datatable';
 import sortBy from 'lodash/sortBy';
 import Dropdown from '../../../components/Dropdown';
@@ -561,10 +563,11 @@ const rowData = [
 ];
 
 const LeaveDetails = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Modals'));
-    });
+    const [isCardVisible, setIsCardVisible] = useState(false);
+    const handleButtonClick = () => {
+        setIsCardVisible(!isCardVisible);
+    };
+
     const items = ['carousel1.jpeg', 'carousel2.jpeg', 'carousel3.jpeg'];
 
     const isRtl = useSelector((state: IRootState) => state.themeConfig.rtlClass) === 'rtl' ? true : false;
@@ -665,158 +668,128 @@ const LeaveDetails = () => {
     }, [sortStatus]);
 
     const [modal5, setModal5] = useState(false);
+    const addLeave = () => {
+        setModal5(true);
+        console.log('setting modal5');
+    };
 
     return (
         <>
-            <div className="flex xl:flex-row flex-col gap-2.5">
-                <div className="panel px-4 flex-1 pt-6  rtl:xl:ml-6">
-                    <div className="flex justify-between flex-wrap px-4">
-                        <div className="lg:w-1/2 w-full">
-                            <div className="text-lg font-bold text-primary m-0" style={{ fontSize: '25px' }}>
-                                Leave Details
-                            </div>
-                        </div>
-                    </div>
-                    {/* <hr className="border-white-light dark:border-[#1b2e4b] my-6" /> */}
-                    <div className="px-4">
-                        <div className="  flex justify-between lg:flex-row flex-col">
-                            <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-6 pt-3">
-                                <div className="mt-8 flex items-center gap-5 lg:flex-row flex-col">
-                                    <label htmlFor="dob" className=" rtl:ml-2 w-28  mb-0">
-                                        Course
-                                    </label>
-                                    <input id="gender" type="text" name="gender" className="form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
-                                    <select className="-ml-3 form-select flex-1">
-                                        <option>Select...</option>
-                                        <option>I</option>
-                                        <option>II</option>
-                                        <option>III</option>
-                                        <option>IV</option>
-                                        <option>V</option>
-                                        <option>VI</option>
-                                        <option>VII</option>
-                                        <option>VIII</option>
-                                        <option>IX</option>
-                                        <option>X</option>
-                                    </select>
+            <div className=" mb-4 panel flex  justify-between items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
+                <div className="ltr:mr-3 text-primary  text-xl flex justify-between flex-wrap font-bold rtl:ml-3">Leave Details </div>
+                <div className=" flex gap-2 ">
+                    <button type="button" onClick={addLeave} className="btn btn-primary ">
+                        <IconPlus className="mr-2 -ml-3"></IconPlus>
+                        Apply Leave
+                    </button>
 
-                                    <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
-                                    <select className="form-select flex-1">
-                                        <option>Select...</option>
-                                        <option>A</option>
-                                        <option>B</option>
-                                        <option>C</option>
-                                        <option>D</option>
-                                        <option>E</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* --------------------------------Add Attendance Button Begin-------------------------- */}
-
-                    {/* <div className=" bg-blue-800 px-6 py-6 ml-200">*/}
-
-                    <div className="flex float-end px-8">
-                        <button type="button" onClick={() => setModal5(true)} className="btn btn-warning ">
-                            <IconPlus className="mr-2 -ml-3"></IconPlus>
-                            Add
-                        </button>
-                    </div>
-
-                    <Transition appear show={modal5} as={Fragment}>
-                        <Dialog as="div" open={modal5} onClose={() => setModal5(false)}>
-                            <Transition.Child
-                                as={Fragment}
-                                enter="ease-out duration-300"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="ease-in duration-200"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                            >
-                                <div className="fixed inset-0" />
-                            </Transition.Child>
-                            <div className="fixed inset-0 z-[999] bg-[black]/60">
-                                <div className="flex min-h-screen items-start justify-center px-4">
-                                    <Transition.Child
-                                        as={Fragment}
-                                        enter="ease-out duration-300"
-                                        enterFrom="opacity-0 scale-95"
-                                        enterTo="opacity-100 scale-100"
-                                        leave="ease-in duration-200"
-                                        leaveFrom="opacity-100 scale-100"
-                                        leaveTo="opacity-0 scale-95"
-                                    >
-                                        <Dialog.Panel className="panel my-8 w-full max-w-5xl overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
-                                            <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
-                                                <h5 className="text-lg font-bold">Add Leave</h5>
-                                                <button onClick={() => setModal5(false)} type="button" className="text-white-dark hover:text-dark">
-                                                    <IconX />
-                                                </button>
+                    <button type="button" className="btn btn-primary gap-2  " onClick={handleButtonClick}>
+                        {/* {isCardVisible ? 'Hide Card' : 'Show Card'} */}
+                        <IconFilter className="text-lg" />
+                        Filter
+                    </button>
+                </div>
+            </div>
+            {modal5 && (
+                <Transition appear show={modal5} as={Fragment}>
+                    <Dialog as="div" open={modal5} onClose={() => setModal5(false)}>
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out duration-300"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="ease-in duration-200"
+                            leaveFrom="opacity-100"
+                            leaveTo="opacity-0"
+                        >
+                            <div className="fixed inset-0" />
+                        </Transition.Child>
+                        <div className="fixed inset-0 z-[999] bg-[black]/60">
+                            <div className="flex min-h-screen items-start justify-center px-4">
+                                <Transition.Child
+                                    as={Fragment}
+                                    enter="ease-out duration-300"
+                                    enterFrom="opacity-0 scale-95"
+                                    enterTo="opacity-100 scale-100"
+                                    leave="ease-in duration-200"
+                                    leaveFrom="opacity-100 scale-100"
+                                    leaveTo="opacity-0 scale-95"
+                                >
+                                    <Dialog.Panel className="panel my-8 w-full max-w-5xl overflow-hidden rounded-lg border-0 p-0 text-black dark:text-white-dark">
+                                        <div className="flex items-center justify-between bg-[#fbfbfb] px-5 py-3 dark:bg-[#121c2c]">
+                                            <h5 className="text-lg font-bold">Apply Leave</h5>
+                                            <button onClick={() => setModal5(false)} type="button" className="text-white-dark hover:text-dark">
+                                                <IconX />
+                                            </button>
+                                        </div>
+                                        {/* yaha se */}
+                                        <div className="mt-4 px-4">
+                                            <div className="px-5 flex w-full">
+                                                <label htmlFor="Street_Address" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                                    Full Name
+                                                </label>
+                                                <input id="Street_Address" type="text" name="Street_Address" className="form-input flex-1" placeholder="Enter Your Name" />
                                             </div>
-                                            {/* yaha se */}
-                                            <div className="mt-4 px-4">
-                                                <div className="px-5 flex w-full">
-                                                    <label htmlFor="Street_Address" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
-                                                        Full Name
-                                                    </label>
-                                                    <input id="Street_Address" type="text" name="Street_Address" className="form-input flex-1" placeholder="Enter Your Name" />
-                                                </div>
 
-                                                <div className="  flex justify-between lg:flex-row flex-col">
-                                                    <div className=" w-full ltr:lg:px-4 rtl:lg:px-4 pb-6 pt-5">
-                                                        <div className=" flex items-center gap-5 lg:flex-row flex-col">
-                                                            <label htmlFor="dob" className=" w-28  mb-0">
-                                                                Course
-                                                            </label>
-                                                            <input id="gender" type="text" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
-                                                            <select className="-ml-4 form-select flex-1">
-                                                                <option>Select...</option>
-                                                                <option>I</option>
-                                                                <option>II</option>
-                                                                <option>III</option>
-                                                                <option>IV</option>
-                                                                <option>V</option>
-                                                                <option>VI</option>
-                                                                <option>VII</option>
-                                                                <option>VIII</option>
-                                                                <option>IX</option>
-                                                                <option>X</option>
-                                                            </select>
+                                            <div className="  flex justify-between lg:flex-row flex-col">
+                                                <div className=" w-full ltr:lg:px-4 rtl:lg:px-4 pb-6 pt-5">
+                                                    <div className=" flex items-center gap-3 lg:flex-row flex-col">
+                                                        <label htmlFor="dob" className=" w-28  mb-0">
+                                                            Course
+                                                        </label>
+                                                        <input id="gender" type="text" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                                        <label className=' className=" rtl:ml-2 w-28  mb-0"'>Semester</label>
+                                                        <select className="-ml-4 form-select flex-1">
+                                                            <option>Select...</option>
+                                                            <option>I</option>
+                                                            <option>II</option>
+                                                            <option>III</option>
+                                                            <option>IV</option>
+                                                            <option>V</option>
+                                                            <option>VI</option>
+                                                            <option>VII</option>
+                                                            <option>VIII</option>
+                                                            <option>IX</option>
+                                                            <option>X</option>
+                                                        </select>
 
-                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
-                                                            <select className="-ml-4 form-select flex-1">
-                                                                <option>Select...</option>
-                                                                <option>A</option>
-                                                                <option>B</option>
-                                                                <option>C</option>
-                                                                <option>D</option>
-                                                                <option>E</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="mt-5 flex items-center gap-5 lg:flex-row flex-col">
-                                                            <label htmlFor="dob" className=" w-28  mb-0">
-                                                                Apply Date
-                                                            </label>
-                                                            <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>From Date</label>
-                                                            <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                                        <label className=' className=" rtl:ml-2 w-28  mb-0"'>Section</label>
+                                                        <select className="-ml-4 form-select flex-1">
+                                                            <option>Select...</option>
+                                                            <option>A</option>
+                                                            <option>B</option>
+                                                            <option>C</option>
+                                                            <option>D</option>
+                                                            <option>E</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className="mt-5 flex items-center gap-3 lg:flex-row flex-col">
+                                                        <label htmlFor="dob" className=" w-28  mb-0">
+                                                            Apply Date
+                                                        </label>
+                                                        <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                                        <label className=' className=" rtl:ml-2 w-28  mb-0"'>From Date</label>
+                                                        <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
 
-                                                            <label className=' className=" rtl:ml-2 w-28  mb-0"'>To Date</label>
-                                                            <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
-                                                        </div>
-                                                        <div className=" mt-5 flex  gap-5 lg:flex-row flex-col">
-                                                            <label htmlFor="notes" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
-                                                                Reason
-                                                            </label>
-                                                            <textarea id="notes" name="notes" className="form-textarea min-h-[130px]" placeholder="Mention Reason for Leave"></textarea>
-                                                        </div>
+                                                        <label className=' className=" rtl:ml-2 w-28  mb-0"'>To Date</label>
+                                                        <input id="gender" type="date" name="gender" className="-ml-2 form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                                    </div>
+                                                    <div className=" mt-5 flex  gap-3 lg:flex-row flex-col">
+                                                        <label htmlFor="notes" className="ltr:mr-2 rtl:ml-2 w-28 mb-0">
+                                                            Reason
+                                                        </label>
+                                                        <textarea id="notes" name="notes" className="form-textarea min-h-[130px]" placeholder="Mention Reason for Leave"></textarea>
+                                                    </div>
+                                                    <div className="mt-4 flex gap-3 lg:flex-row flex-col">
+                                                        <label className="ltr:mr-2 rtl:ml-2 w-28  mb-0">Upload Document</label>
+                                                        <input
+                                                            type="file"
+                                                            accept="image/png, image/jpeg, .pdf"
+                                                            className="form-input file:py-4 file:px-4 file:border-0 file:font-semibold p-0 file:bg-primary/90 ltr:file:mr-5 rtl:file-ml-5 file:text-white file:hover:bg-primary"
+                                                        />
+                                                    </div>
 
-                                                        {/* <div className="mr-5 mt-5 ">
+                                                    {/* <div className="mr-5 mt-5 ">
                                                             <div className=" font-bold items-center space-y-5 flex flex-row ">
                                                                 Leave Status&nbsp;: &nbsp; &nbsp;
                                                                 <div>
@@ -845,32 +818,82 @@ const LeaveDetails = () => {
                                                                 </div>
                                                             </div>
                                                         </div> */}
-                                                    </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div className="p-5">
-                                                {/* Buttons */}
-                                                <div className="mt-8 flex items-center justify-end">
-                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-outline-danger">
-                                                        Discard
-                                                    </button>
-                                                    <button onClick={() => setModal5(false)} type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4">
-                                                        Save
-                                                    </button>
-                                                </div>
+                                        <div className="p-5">
+                                            {/* Buttons */}
+                                            <div className="mt-8 flex items-center justify-end">
+                                                <button onClick={() => setModal5(false)} type="button" className="btn btn-outline-danger">
+                                                    Discard
+                                                </button>
+                                                <button onClick={() => setModal5(false)} type="button" className="btn btn-primary ltr:ml-4 rtl:mr-4">
+                                                    Save
+                                                </button>
                                             </div>
-                                        </Dialog.Panel>
-                                    </Transition.Child>
+                                        </div>
+                                    </Dialog.Panel>
+                                </Transition.Child>
+                            </div>
+                        </div>
+                    </Dialog>
+                </Transition>
+            )}
+            {isCardVisible && (
+                <div className="flex xl:flex-row flex-col">
+                    <div className="panel px-4 flex-1 rtl:xl:ml-6">
+                        <div className="px-4">
+                            <div className=" flex justify-between lg:flex-row ">
+                                <div className=" w-full ltr:lg:px-6 rtl:lg:px-6 pb-2 pt-3">
+                                    <div className=" flex gap-3 items-center lg:flex-row flex-col grid-col-3 ">
+                                        <label htmlFor="dob" className="  rtl:ml-2 w-20  mb-0">
+                                            Course
+                                        </label>
+                                        <input id="gender" type="text" name="gender" className="form-input flex-1" placeholder="Ex. B.Tech CSE, ME, LLB etc." />
+                                        <label className=' className=" rtl:ml-2 w-20  mb-0"'>Semester</label>
+                                        <select className="-ml-3 form-select flex-1">
+                                            <option>Select...</option>
+                                            <option>I</option>
+                                            <option>II</option>
+                                            <option>III</option>
+                                            <option>IV</option>
+                                            <option>V</option>
+                                            <option>VI</option>
+                                            <option>VII</option>
+                                            <option>VIII</option>
+                                            <option>IX</option>
+                                            <option>X</option>
+                                        </select>
+
+                                        <label className=' className=" rtl:ml-2 w-20  mb-0"'>Section</label>
+                                        <select className="form-select flex-1">
+                                            <option>Select...</option>
+                                            <option>A</option>
+                                            <option>B</option>
+                                            <option>C</option>
+                                            <option>D</option>
+                                            <option>E</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </Dialog>
-                    </Transition>
-                    {/* </div>*/}
+                        </div>
 
-                    {/* --------------------------------Add Attendance Button End-------------------------- */}
+                        {/* --------------------------------Add Attendance Button Begin-------------------------- */}
+
+                        {/* <div className=" bg-blue-800 px-6 py-6 ml-200">*/}
+
+                        <div className="mt-2 flex float-end px-8">
+                            <Link to="" type="button" className=" btn btn-primary gap-2">
+                                Search
+                            </Link>
+                        </div>
+
+                        {/* --------------------------------Add Attendance Button End-------------------------- */}
+                    </div>
                 </div>
-            </div>
+            )}
 
             <div className="panel mt-3 pr-6">
                 <div className="flex md:items-center md:flex-row flex-col mb-5 gap-5">

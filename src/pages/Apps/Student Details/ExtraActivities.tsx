@@ -200,11 +200,7 @@ const ExtraActivities = () => {
 
 const col = ['id', 'activity', 'type', 'Organization', 'CertificateorAchievements', 'admno', 'rollno', 'name','email','date','amount','status','profile'];
 
-const Export = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(setPageTitle('Export Table'));
-    });
+
     const [page, setPage] = useState(1);
     const PAGE_SIZES = [10, 20, 30, 50, 100];
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
@@ -463,7 +459,6 @@ const Export = () => {
             </div>
         </div>
     );
-};
 };
 export default ExtraActivities ; 
 

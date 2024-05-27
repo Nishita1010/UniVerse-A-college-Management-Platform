@@ -74,13 +74,17 @@ const Courses = () => {
 
     return (
         <>
-            <div className="px-8 mb-4  mr-8  flex items-center justify-between overflow-x-auto whitespace-nowrap p-3 text-primary ltr:xl:mr-6">
-                <div className="ltr:mr-3 text-primary  text-2xl flex justify-between flex-wrap font-bold rtl:ml-3"> Add Course </div>
+            <div className="mb-4 panel flex justify-between overflow-x-auto whitespace-nowrap p-3 text-primary">
+                <div className="ltr:mr-3 text-primary  text-xl flex justify-between flex-wrap font-bold rtl:ml-3">Courses</div>
                 <button className="btn -ml-2 gap-2 btn-primary" onClick={handleButtonChange}>
                     <IconPlus />
                     Add
                 </button>
             </div>
+            {/* <div className="px-8 mb-4  mr-8  flex items-center justify-between overflow-x-auto whitespace-nowrap p-3 text-primary ltr:xl:mr-6">
+                <div className="ltr:mr-3 text-primary  text-2xl flex justify-between flex-wrap font-bold rtl:ml-3"> Add Course </div>
+              
+            </div> */}
             {isCardVisible && (
                 <div className="flex xl:flex-row flex-col gap-2.5">
                     <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
@@ -128,12 +132,6 @@ const Courses = () => {
 
             <div className="mt-4 flex xl:flex-row flex-col gap-2.5">
                 <div className="panel px-0 flex-1 py-6 ltr:xl:mr-6 rtl:xl:ml-6">
-                    <div className="mt-8 px-8">
-                        <label htmlFor="permanentAdd" className=" px-5 text-primary font-bold flex-1 ltr:mr-2 rtl:ml-2 w-1/4 mb-0 text-lg">
-                            Courses
-                        </label>
-                    </div>
-
                     <div className="px-8 mt-8 table-responsive mb-5">
                         <table>
                             <thead>

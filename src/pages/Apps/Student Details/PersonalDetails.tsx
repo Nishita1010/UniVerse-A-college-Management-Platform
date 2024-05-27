@@ -167,10 +167,10 @@ const PersonalDetails = () => {
                                         id="PAN_Card"
                                         type="text"
                                         placeholder="Enter PAN Number"
-                                        className="form-input flex-1 "
+                                        className="form-input flex-1  "
                                         mask={[/[A-Z]/, /[A-Z]/, /[A-Z]/, /[A-Z]/, /[A-Z]/, ' ', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, ' ', /[A-Z]/]}
                                     />
-                                    <label htmlFor="certificate" className="ltr:mr-2 rtl:ml-2 w-28  mb-0">
+                                    <label htmlFor="certificate" className="ltr:mr-2 w-28  mb-0">
                                         Residential Certificate
                                     </label>
                                     <input

@@ -1,28 +1,79 @@
 import { lazy } from 'react';
 import Fees from '../pages/Apps/Fees Details/Fees';
+import SearchFeePayment from '../pages/Apps/Fees Details/SearchFeePayment';
+// import Fees from '../pages/Apps/Fees Details/Fees';
+
+const EmpDetails = lazy(() => import('../pages/Apps/EmpDetails'));
+const EmpAdd = lazy(() => import('../pages/Apps/Human Resource/Employee/EmpAdd'));
+
+const TeacherAttendance = lazy(() => import('../pages/Apps/Human Resource/TeacherAttendance/TeacherAttendance'));
+const Department = lazy(() => import('../pages/Apps/Human Resource/Department/Department'));
+const Designation = lazy(() => import('../pages/Apps/Human Resource/Designation/Designation'));
+const ApplyLeave = lazy(() => import('../pages/Apps/Human Resource/ApproveLeave/ApplyLeave'));
+const ApproveLeave = lazy(() => import('../pages/Apps/Human Resource/ApproveLeave/ApproveLeave'));
+const LeaveType = lazy(() => import('../pages/Apps/Human Resource/LeaveType/LeaveType'));
+const TeachersRating = lazy(() => import('../pages/Apps/Human Resource/TeachersRating/TeachersRating'));
+const Payroll = lazy(() => import('../pages/Apps/Human Resource/Payroll/Payroll'));
 const Index = lazy(() => import('../pages/Index'));
+const SearchDueFee = lazy(() => import('../pages/Apps/Fees Details/SearchDueFee'));
+const FeesReminder = lazy(() => import('../pages/Apps/Fees Details/FeesReminder'));
+const OfflineBankPayments = lazy(() => import('../pages/Apps/Fees Details/OfflineBankPayments'));
+const FeesMaster = lazy(() => import('../pages/Apps/Fees Details/FeesMaster'));
+
 const Analytics = lazy(() => import('../pages/Analytics'));
 const Finance = lazy(() => import('../pages/Finance'));
-const Crypto = lazy(() => import('../pages/Crypto'));
-const Todolist = lazy(() => import('../pages/Apps/Todolist'));
-const Mailbox = lazy(() => import('../pages/Apps/Mailbox'));
-const Notes = lazy(() => import('../pages/Apps/Notes'));
-const Contacts = lazy(() => import('../pages/Apps/Contacts'));
-const Chat = lazy(() => import('../pages/Apps/Chat'));
+// const Crypto = lazy(() => import('../pages/Crypto'));
+// const Todolist = lazy(() => import('../pages/Apps/Todolist'));
+// const Mailbox = lazy(() => import('../pages/Apps/Mailbox'));
+// const Notes = lazy(() => import('../pages/Apps/Notes'));
+// const Contacts = lazy(() => import('../pages/Apps/Contacts'));
+// const Chat = lazy(() => import('../pages/Apps/Chat'));
+
+//Platform main components
 const StudentDetails = lazy(() => import('../pages/Apps/Student Details/StudentDetails'));
 const Activities = lazy(() => import('../pages/Apps/Activities'));
 const StudentAdm = lazy(() => import('../pages/Apps/Student Details/StudentAdm'));
 const ContactDetails = lazy(() => import('../pages/Apps/Student Details/ContactDetails'));
 const MedicalDetails = lazy(() => import('../pages/Apps/Student Details/MedicalDetails'));
 const BankDetails = lazy(() => import('../pages/Apps/Student Details/BankDetails'));
+const StudentProfile = lazy(() => import('../pages/Apps/Student Details/StudentProfile'));
+
+//const Fees = lazy(() => import('../pages/Apps/Fees Details/Fees'));
+
 const Documents = lazy(() => import('../pages/Apps/Documents/Documents'));
 const ClassSchedule = lazy(() => import('../pages/Apps/Academic Information/ClassSchedule'));
 const Courses = lazy(() => import('../pages/Apps/Academic Information/Courses'));
 const Attendance = lazy(() => import('../pages/Apps/Academic Information/Attendance'));
 const LeaveDetails = lazy(() => import('../pages/Apps/Academic Information/LeaveDetails'));
 const Examination = lazy(() => import('../pages/Apps/Academic Information/Examination'));
-// const Examination = lazy(() => import('../pages/Apps/Examination'));
+// const Examination = lazy(() => import('../pages/Apps/Academic Information/Examination'));
+const Profile = lazy(() => import('../pages/Users/Profile'));
+const AccountSetting = lazy(() => import('../pages/Users/AccountSetting'));
+
+//const EmpDetails = lazy(() => import('../pages/Apps/EmpDetails'));
+//const TeachersAttendance = lazy(() => import('../pages/Apps/Human Resource/Attendance/Attendance'));
+//const TeachersRating = lazy(() => import('../pages/Apps/Human Resource/TeachersRating/TeachersRating'));
+
+//const Department = lazy(() => import('../pages/Apps/Human Resource/Department/Department'));
+//const Designation = lazy(() => import('../pages/Apps/Human Resource/Designation/Designation'));
+//const ApplyLeave = lazy(() => import('../pages/Apps/Human Resource/ApproveLeave/ApplyLeave'));
+// const ApplyLeaveForm = lazy(() => import('../pages/Apps/Human Resource/ApproveLeave/ApplyLeaveForm'));
+//const Payroll = lazy(() => import('../pages/Apps/Human Resource/Payroll/Payroll'));
+const LoginCover = lazy(() => import('../pages/Authentication/LoginCover'));
+const RegisterCover = lazy(() => import('../pages/Authentication/RegisterCover'));
+const RecoverIdCover = lazy(() => import('../pages/Authentication/RecoverIdCover'));
+const UnlockCover = lazy(() => import('../pages/Authentication/UnlockCover'));
 const StudentMarks = lazy(() => import('../pages/Apps/Academic Information/StudentMarks'));
+
+// const Examination = lazy(() => import('../pages/Apps/Examination'));
+// const LoginBoxed = lazy(() => import('../pages/Authentication/LoginBoxed'));
+// const RegisterBoxed = lazy(() => import('../pages/Authentication/RegisterBoxed'));
+// const UnlockBoxed = lazy(() => import('../pages/Authentication/UnlockBox'));
+// const RecoverIdBoxed = lazy(() => import('../pages/Authentication/RecoverIdBox'));
+
+//Platform main components end-------------------------------------------------------------
+
+const About = lazy(() => import('../pages/About'));
 const Scrumboard = lazy(() => import('../pages/Apps/Scrumboard'));
 const Calendar = lazy(() => import('../pages/Apps/Academic Information/Calendar'));
 const List = lazy(() => import('../pages/Apps/Invoice/List'));
@@ -76,8 +127,7 @@ const Checkbox = lazy(() => import('../pages/DataTables/Checkbox'));
 const RangeSearch = lazy(() => import('../pages/DataTables/RangeSearch'));
 const Export = lazy(() => import('../pages/DataTables/Export'));
 const ColumnChooser = lazy(() => import('../pages/DataTables/ColumnChooser'));
-const Profile = lazy(() => import('../pages/Users/Profile'));
-const AccountSetting = lazy(() => import('../pages/Users/AccountSetting'));
+
 const KnowledgeBase = lazy(() => import('../pages/Pages/KnowledgeBase'));
 const ContactUsBoxed = lazy(() => import('../pages/Pages/ContactUsBoxed'));
 const ContactUsCover = lazy(() => import('../pages/Pages/ContactUsCover'));
@@ -88,15 +138,7 @@ const ERROR404 = lazy(() => import('../pages/Pages/Error404'));
 const ERROR500 = lazy(() => import('../pages/Pages/Error500'));
 const ERROR503 = lazy(() => import('../pages/Pages/Error503'));
 const Maintenence = lazy(() => import('../pages/Pages/Maintenence'));
-const LoginBoxed = lazy(() => import('../pages/Authentication/LoginBoxed'));
-const RegisterBoxed = lazy(() => import('../pages/Authentication/RegisterBoxed'));
-const UnlockBoxed = lazy(() => import('../pages/Authentication/UnlockBox'));
-const RecoverIdBoxed = lazy(() => import('../pages/Authentication/RecoverIdBox'));
-const LoginCover = lazy(() => import('../pages/Authentication/LoginCover'));
-const RegisterCover = lazy(() => import('../pages/Authentication/RegisterCover'));
-const RecoverIdCover = lazy(() => import('../pages/Authentication/RecoverIdCover'));
-const UnlockCover = lazy(() => import('../pages/Authentication/UnlockCover'));
-const About = lazy(() => import('../pages/About'));
+
 const Error = lazy(() => import('../components/Error'));
 const Charts = lazy(() => import('../pages/Charts'));
 const FormBasic = lazy(() => import('../pages/Forms/Basic'));
@@ -116,51 +158,7 @@ const DateRangePicker = lazy(() => import('../pages/Forms/DateRangePicker'));
 const Clipboard = lazy(() => import('../pages/Forms/Clipboard'));
 
 const routes = [
-    // dashboard
-    {
-        path: '/',
-        element: <Index />,
-    },
-    // {
-    //     path: '/index',
-    //     element: <Index />,
-    // },
-    // analytics page
-    {
-        path: '/analytics',
-        element: <Analytics />,
-    },
-    // finance page
-    {
-        path: '/finance',
-        element: <Finance />,
-    },
-    // crypto page
-    {
-        path: '/crypto',
-        element: <Crypto />,
-    },
-    {
-        path: '/apps/todolist',
-        element: <Todolist />,
-    },
-    {
-        path: '/apps/notes',
-        element: <Notes />,
-    },
-    {
-        path: '/apps/contacts',
-        element: <Contacts />,
-    },
-    {
-        path: '/apps/mailbox',
-        element: <Mailbox />,
-    },
-    {
-        path: '/apps/invoice/list',
-        element: <List />,
-    },
-    // Apps page
+    //Apps
     {
         path: '/apps/studentDetails/StudentDetails',
         element: <StudentDetails />,
@@ -178,6 +176,10 @@ const routes = [
         element: <ContactDetails />,
     },
     {
+        path: '/apps/studentDetails/StudentProfile',
+        element: <StudentProfile />,
+    },
+    {
         path: '/apps/studentDetails/BankDetails',
         element: <BankDetails />,
     },
@@ -185,18 +187,34 @@ const routes = [
         path: '/apps/studentDetails/MedicalDetails',
         element: <MedicalDetails />,
     },
-    // {
-    //     path: '/apps/ExtraActivities',
-    //     element: <ExtraActivities />,
-    // },
     {
         path: '/apps/Activities',
         element: <Activities />,
     },
 
     {
-        path: '/apps/feesDetails/Fees',
+        path: '/apps/Fees_Details/Fees',
         element: <Fees />,
+    },
+    {
+        path: '/apps/Fees_Details/SearchFeePayment',
+        element: <SearchFeePayment />,
+    },
+    {
+        path: '/apps/Fees_Details/SearchDueFee',
+        element: <SearchDueFee />,
+    },
+    {
+        path: '/apps/Fees_Details/FeesReminder',
+        element: <FeesReminder />,
+    },
+    {
+        path: '/apps/Fees_Details/OfflineBankPayments',
+        element: <OfflineBankPayments />,
+    },
+    {
+        path: '/apps/Fees_Details/FeesMaster',
+        element: <FeesMaster />,
     },
 
     {
@@ -220,235 +238,54 @@ const routes = [
         element: <LeaveDetails />,
     },
     {
-        path: '/apps/Examinaiton',
+        path: '/apps/Examination',
         element: <Examination />,
     },
-    {
-        path: '/apps/chat',
-        element: <Chat />,
-    },
-    {
-        path: '/apps/scrumboard',
-        element: <Scrumboard />,
-    },
-    {
-        path: '/apps/calendar',
-        element: <Calendar />,
-    },
-    // preview page
-    {
-        path: '/apps/invoice/preview',
-        element: <Preview />,
-    },
-    {
-        path: '/apps/invoice/add',
-        element: <Add />,
-    },
-    {
-        path: '/apps/invoice/edit',
-        element: <Edit />,
-    },
-    // components page
-    // {
-    //     path: '/components/tabs',
-    //     element: <Tabs />,
-    // },
- 
-    {
-        path: '/components/accordions',
-        element: <Accordians />,
-    },
-    {
-        path: '/components/modals',
-        element: <Modals />,
-    },
-    {
-        path: '/components/cards',
-        element: <Cards />,
-    },
-    {
-        path: '/components/carousel',
-        element: <Carousel />,
-    },
-    {
-        path: '/components/countdown',
-        element: <Countdown />,
-    },
-    {
-        path: '/components/counter',
-        element: <Counter />,
-    },
-    {
-        path: '/components/sweetalert',
-        element: <SweetAlert />,
-    },
-    {
-        path: '/components/timeline',
-        element: <Timeline />,
-    },
-    {
-        path: '/components/notifications',
-        element: <Notification />,
-    },
-    {
-        path: '/components/media-object',
-        element: <MediaObject />,
-    },
-    {
-        path: '/components/list-group',
-        element: <ListGroup />,
-    },
-    {
-        path: '/components/pricing-table',
-        element: <PricingTable />,
-    },
-    {
-        path: '/components/lightbox',
-        element: <LightBox />,
-    },
-    // elements page
-    {
-        path: '/elements/alerts',
-        element: <Alerts />,
-    },
-    {
-        path: '/elements/avatar',
-        element: <Avatar />,
-    },
-    {
-        path: '/elements/badges',
-        element: <Badges />,
-    },
-    {
-        path: '/elements/breadcrumbs',
-        element: <Breadcrumbs />,
-    },
-    {
-        path: '/elements/buttons',
-        element: <Buttons />,
-    },
-    {
-        path: '/elements/buttons-group',
-        element: <Buttongroups />,
-    },
-    {
-        path: '/elements/color-library',
-        element: <Colorlibrary />,
-    },
-    {
-        path: '/elements/dropdown',
-        element: <DropdownPage />,
-    },
-    {
-        path: '/elements/infobox',
-        element: <Infobox />,
-    },
-    {
-        path: '/elements/jumbotron',
-        element: <Jumbotron />,
-    },
-    {
-        path: '/elements/loader',
-        element: <Loader />,
-    },
-    {
-        path: '/elements/pagination',
-        element: <Pagination />,
-    },
-    {
-        path: '/elements/popovers',
-        element: <Popovers />,
-    },
-    {
-        path: '/elements/progress-bar',
-        element: <Progressbar />,
-    },
-    {
-        path: '/elements/search',
-        element: <Search />,
-    },
-    {
-        path: '/elements/tooltips',
-        element: <Tooltip />,
-    },
-    {
-        path: '/elements/treeview',
-        element: <Treeview />,
-    },
-    {
-        path: '/elements/typography',
-        element: <Typography />,
-    },
 
-    // charts page
+    // teacher Module
     {
-        path: '/charts',
-        element: <Charts />,
-    },
-    // widgets page
-    {
-        path: '/widgets',
-        element: <Widgets />,
-    },
-    //  font-icons page
-    {
-        path: '/font-icons',
-        element: <FontIcons />,
-    },
-    //  Drag And Drop page
-    {
-        path: '/dragndrop',
-        element: <DragAndDrop />,
-    },
-    //  Tables page
-    {
-        path: '/tables',
-        element: <Tables />,
-    },
-    // Data Tables
-    {
-        path: '/datatables/basic',
-        element: <Basic />,
+        path: '/apps/employeelist',
+        element: <EmpDetails />,
     },
     {
-        path: '/datatables/advanced',
-        element: <Advanced />,
+        path: '/apps/human_resource/empadd',
+        element: <EmpAdd />,
     },
     {
-        path: '/datatables/skin',
-        element: <Skin />,
+        path: '/apps/human_resource/teacherattendance',
+        element: <TeacherAttendance />,
+    },
+    // {
+    //     path: '/apps/studentsDetails',
+    //     element: <StudentDetails />,
+    // },
+    {
+        path: '/apps/human_resource/department',
+        element: <Department />,
     },
     {
-        path: '/datatables/order-sorting',
-        element: <OrderSorting />,
+        path: '/apps/human_resource/designation',
+        element: <Designation />,
     },
     {
-        path: '/datatables/multi-column',
-        element: <MultiColumn />,
+        path: '/apps/human_resource/applyLeave',
+        element: <ApplyLeave />,
     },
+    // {
+    //     path: 'apps/human_resource/applyLeaveForm',
+    //     element: <ApplyLeaveForm />,
+    // },
     {
-        path: '/datatables/multiple-tables',
-        element: <MultipleTables />,
+        path: '/apps/human_resource/approveLeave',
+        element: <ApproveLeave />,
     },
+    // {
+    //     path: 'apps/human_resource/leaveReqForm',
+    //     element: <LeaveReqForm />,
+    // },
     {
-        path: '/datatables/alt-pagination',
-        element: <AltPagination />,
-    },
-    {
-        path: '/datatables/checkbox',
-        element: <Checkbox />,
-    },
-    {
-        path: '/datatables/range-search',
-        element: <RangeSearch />,
-    },
-    {
-        path: '/datatables/export',
-        element: <Export />,
-    },
-    {
-        path: '/datatables/column-chooser',
-        element: <ColumnChooser />,
+        path: '/apps/human_resource/leaveType',
+        element: <LeaveType />,
     },
     // Users page
     {
@@ -458,76 +295,6 @@ const routes = [
     {
         path: '/users/user-account-settings',
         element: <AccountSetting />,
-    },
-    // pages
-    {
-        path: '/pages/knowledge-base',
-        element: <KnowledgeBase />,
-    },
-    {
-        path: '/pages/contact-us-boxed',
-        element: <ContactUsBoxed />,
-        layout: 'blank',
-    },
-    {
-        path: '/pages/contact-us-cover',
-        element: <ContactUsCover />,
-        layout: 'blank',
-    },
-    {
-        path: '/pages/faq',
-        element: <Faq />,
-    },
-    {
-        path: '/pages/coming-soon-boxed',
-        element: <ComingSoonBoxed />,
-        layout: 'blank',
-    },
-    {
-        path: '/pages/coming-soon-cover',
-        element: <ComingSoonCover />,
-        layout: 'blank',
-    },
-    {
-        path: '/pages/error404',
-        element: <ERROR404 />,
-        layout: 'blank',
-    },
-    {
-        path: '/pages/error500',
-        element: <ERROR500 />,
-        layout: 'blank',
-    },
-    {
-        path: '/pages/error503',
-        element: <ERROR503 />,
-        layout: 'blank',
-    },
-    {
-        path: '/pages/maintenence',
-        element: <Maintenence />,
-        layout: 'blank',
-    },
-    //Authentication
-    {
-        path: '/auth/boxed-signin',
-        element: <LoginBoxed />,
-        layout: 'blank',
-    },
-    {
-        path: '/auth/boxed-signup',
-        element: <RegisterBoxed />,
-        layout: 'blank',
-    },
-    {
-        path: '/auth/boxed-lockscreen',
-        element: <UnlockBoxed />,
-        layout: 'blank',
-    },
-    {
-        path: '/auth/boxed-password-reset',
-        element: <RecoverIdBoxed />,
-        layout: 'blank',
     },
     {
         path: '/auth/cover-login',
@@ -549,77 +316,436 @@ const routes = [
         element: <RecoverIdCover />,
         layout: 'blank',
     },
+    {
+        path: '/apps/human_resource/teachersrating',
+        element: <TeachersRating />,
+    },
+    {
+        path: '/apps/human_resource/payroll',
+        element: <Payroll />,
+    },
+    // dashboard
+    {
+        path: '/',
+        element: <Index />,
+    },
+    {
+        path: '/index',
+        element: <Index />,
+    },
+    // analytics page
+    // {
+    //     path: '/analytics',
+    //     element: <Analytics />,
+    // },
+    // finance page
+    // {
+    //     path: '/finance',
+    //     element: <Finance />,
+    // },
+    // crypto page
+    // {
+    //     path: '/crypto',
+    //     element: <Crypto />,
+    // },
+    // {
+    //     path: '/apps/todolist',
+    //     element: <Todolist />,
+    // },
+    // {
+    //     path: '/apps/notes',
+    //     element: <Notes />,
+    // },
+    // {
+    //     path: '/apps/contacts',
+    //     element: <Contacts />,
+    // },
+    // {
+    //     path: '/apps/mailbox',
+    //     element: <Mailbox />,
+    // },
+    // {
+    //     path: '/apps/invoice/list',
+    //     element: <List />,
+    // },
+
+    //Apps page
+
+    // {
+    //     path: '/apps/ExtraActivities',
+    //     element: <ExtraActivities />,
+    // },
+
+    // {
+    //     path: '/apps/chat',
+    //     element: <Chat />,
+    // },
+    // {
+    //     path: '/apps/scrumboard',
+    //     element: <Scrumboard />,
+    // },
+    // {
+    //     path: '/apps/calendar',
+    //     element: <Calendar />,
+    // },
+    // // preview page
+    // {
+    //     path: '/apps/invoice/preview',
+    //     element: <Preview />,
+    // },
+    // {
+    //     path: '/apps/invoice/add',
+    //     element: <Add />,
+    // },
+    // {
+    //     path: '/apps/invoice/edit',
+    //     element: <Edit />,
+    // },
+    // components page
+    // {
+    //     path: '/components/tabs',
+    //     element: <Tabs />,
+    // },
+
+    // {
+    //     path: '/components/accordions',
+    //     element: <Accordians />,
+    // },
+    // {
+    //     path: '/components/modals',
+    //     element: <Modals />,
+    // },
+    // {
+    //     path: '/components/cards',
+    //     element: <Cards />,
+    // },
+    // {
+    //     path: '/components/carousel',
+    //     element: <Carousel />,
+    // },
+    // {
+    //     path: '/components/countdown',
+    //     element: <Countdown />,
+    // },
+    // {
+    //     path: '/components/counter',
+    //     element: <Counter />,
+    // },
+    // {
+    //     path: '/components/sweetalert',
+    //     element: <SweetAlert />,
+    // },
+    // {
+    //     path: '/components/timeline',
+    //     element: <Timeline />,
+    // },
+    // {
+    //     path: '/components/notifications',
+    //     element: <Notification />,
+    // },
+    // {
+    //     path: '/components/media-object',
+    //     element: <MediaObject />,
+    // },
+    // {
+    //     path: '/components/list-group',
+    //     element: <ListGroup />,
+    // },
+    // {
+    //     path: '/components/pricing-table',
+    //     element: <PricingTable />,
+    // },
+    // {
+    //     path: '/components/lightbox',
+    //     element: <LightBox />,
+    // },
+    // // elements page
+    // {
+    //     path: '/elements/alerts',
+    //     element: <Alerts />,
+    // },
+    // {
+    //     path: '/elements/avatar',
+    //     element: <Avatar />,
+    // },
+    // {
+    //     path: '/elements/badges',
+    //     element: <Badges />,
+    // },
+    // {
+    //     path: '/elements/breadcrumbs',
+    //     element: <Breadcrumbs />,
+    // },
+    // {
+    //     path: '/elements/buttons',
+    //     element: <Buttons />,
+    // },
+    // {
+    //     path: '/elements/buttons-group',
+    //     element: <Buttongroups />,
+    // },
+    // {
+    //     path: '/elements/color-library',
+    //     element: <Colorlibrary />,
+    // },
+    // {
+    //     path: '/elements/dropdown',
+    //     element: <DropdownPage />,
+    // },
+    // {
+    //     path: '/elements/infobox',
+    //     element: <Infobox />,
+    // },
+    // {
+    //     path: '/elements/jumbotron',
+    //     element: <Jumbotron />,
+    // },
+    // {
+    //     path: '/elements/loader',
+    //     element: <Loader />,
+    // },
+    // {
+    //     path: '/elements/pagination',
+    //     element: <Pagination />,
+    // },
+    // {
+    //     path: '/elements/popovers',
+    //     element: <Popovers />,
+    // },
+    // {
+    //     path: '/elements/progress-bar',
+    //     element: <Progressbar />,
+    // },
+    // {
+    //     path: '/elements/search',
+    //     element: <Search />,
+    // },
+    // {
+    //     path: '/elements/tooltips',
+    //     element: <Tooltip />,
+    // },
+    // {
+    //     path: '/elements/treeview',
+    //     element: <Treeview />,
+    // },
+    // {
+    //     path: '/elements/typography',
+    //     element: <Typography />,
+    // },
+
+    // charts page
+    // {
+    //     path: '/charts',
+    //     element: <Charts />,
+    // },
+    // // widgets page
+    // {
+    //     path: '/widgets',
+    //     element: <Widgets />,
+    // },
+    // //  font-icons page
+    // {
+    //     path: '/font-icons',
+    //     element: <FontIcons />,
+    // },
+    // //  Drag And Drop page
+    // {
+    //     path: '/dragndrop',
+    //     element: <DragAndDrop />,
+    // },
+    // //  Tables page
+    // {
+    //     path: '/tables',
+    //     element: <Tables />,
+    // },
+    // // Data Tables
+    // {
+    //     path: '/datatables/basic',
+    //     element: <Basic />,
+    // },
+    // {
+    //     path: '/datatables/advanced',
+    //     element: <Advanced />,
+    // },
+    // {
+    //     path: '/datatables/skin',
+    //     element: <Skin />,
+    // },
+    // {
+    //     path: '/datatables/order-sorting',
+    //     element: <OrderSorting />,
+    // },
+    // {
+    //     path: '/datatables/multi-column',
+    //     element: <MultiColumn />,
+    // },
+    // {
+    //     path: '/datatables/multiple-tables',
+    //     element: <MultipleTables />,
+    // },
+    // {
+    //     path: '/datatables/alt-pagination',
+    //     element: <AltPagination />,
+    // },
+    // {
+    //     path: '/datatables/checkbox',
+    //     element: <Checkbox />,
+    // },
+    // {
+    //     path: '/datatables/range-search',
+    //     element: <RangeSearch />,
+    // },
+    // {
+    //     path: '/datatables/export',
+    //     element: <Export />,
+    // },
+    // {
+    //     path: '/datatables/column-chooser',
+    //     element: <ColumnChooser />,
+    // },
+
+    // pages
+    // {
+    //     path: '/pages/knowledge-base',
+    //     element: <KnowledgeBase />,
+    // },
+    // {
+    //     path: '/pages/contact-us-boxed',
+    //     element: <ContactUsBoxed />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/pages/contact-us-cover',
+    //     element: <ContactUsCover />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/pages/faq',
+    //     element: <Faq />,
+    // },
+    // {
+    //     path: '/pages/coming-soon-boxed',
+    //     element: <ComingSoonBoxed />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/pages/coming-soon-cover',
+    //     element: <ComingSoonCover />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/pages/error404',
+    //     element: <ERROR404 />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/pages/error500',
+    //     element: <ERROR500 />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/pages/error503',
+    //     element: <ERROR503 />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/pages/maintenence',
+    //     element: <Maintenence />,
+    //     layout: 'blank',
+    // },
+    //Authentication
+    // {
+    //     path: '/auth/boxed-signin',
+    //     element: <LoginBoxed />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/auth/boxed-signup',
+    //     element: <RegisterBoxed />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/auth/boxed-lockscreen',
+    //     element: <UnlockBoxed />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '/auth/boxed-password-reset',
+    //     element: <RecoverIdBoxed />,
+    //     layout: 'blank',
+    // },
+
     //forms page
-    {
-        path: '/forms/basic',
-        element: <FormBasic />,
-    },
-    {
-        path: '/forms/input-group',
-        element: <FormInputGroup />,
-    },
-    {
-        path: '/forms/layouts',
-        element: <FormLayouts />,
-    },
-    {
-        path: '/forms/validation',
-        element: <Validation />,
-    },
-    {
-        path: '/forms/input-mask',
-        element: <InputMask />,
-    },
-    {
-        path: '/forms/select2',
-        element: <Select2 />,
-    },
-    {
-        path: '/forms/touchspin',
-        element: <Touchspin />,
-    },
-    {
-        path: '/forms/checkbox-radio',
-        element: <CheckBoxRadio />,
-    },
-    {
-        path: '/forms/switches',
-        element: <Switches />,
-    },
-    {
-        path: '/forms/wizards',
-        element: <Wizards />,
-    },
-    {
-        path: '/forms/file-upload',
-        element: <FileUploadPreview />,
-    },
-    {
-        path: '/forms/quill-editor',
-        element: <QuillEditor />,
-    },
-    {
-        path: '/forms/markdown-editor',
-        element: <MarkDownEditor />,
-    },
-    {
-        path: '/forms/date-picker',
-        element: <DateRangePicker />,
-    },
-    {
-        path: '/forms/clipboard',
-        element: <Clipboard />,
-    },
-    {
-        path: '/about',
-        element: <About />,
-        layout: 'blank',
-    },
-    {
-        path: '*',
-        element: <Error />,
-        layout: 'blank',
-    },
+    // {
+    //     path: '/forms/basic',
+    //     element: <FormBasic />,
+    // },
+    // {
+    //     path: '/forms/input-group',
+    //     element: <FormInputGroup />,
+    // },
+    // {
+    //     path: '/forms/layouts',
+    //     element: <FormLayouts />,
+    // },
+    // {
+    //     path: '/forms/validation',
+    //     element: <Validation />,
+    // },
+    // {
+    //     path: '/forms/input-mask',
+    //     element: <InputMask />,
+    // },
+    // {
+    //     path: '/forms/select2',
+    //     element: <Select2 />,
+    // },
+    // {
+    //     path: '/forms/touchspin',
+    //     element: <Touchspin />,
+    // },
+    // {
+    //     path: '/forms/checkbox-radio',
+    //     element: <CheckBoxRadio />,
+    // },
+    // {
+    //     path: '/forms/switches',
+    //     element: <Switches />,
+    // },
+    // {
+    //     path: '/forms/wizards',
+    //     element: <Wizards />,
+    // },
+    // {
+    //     path: '/forms/file-upload',
+    //     element: <FileUploadPreview />,
+    // },
+    // {
+    //     path: '/forms/quill-editor',
+    //     element: <QuillEditor />,
+    // },
+    // {
+    //     path: '/forms/markdown-editor',
+    //     element: <MarkDownEditor />,
+    // },
+    // {
+    //     path: '/forms/date-picker',
+    //     element: <DateRangePicker />,
+    // },
+    // {
+    //     path: '/forms/clipboard',
+    //     element: <Clipboard />,
+    // },
+    // {
+    //     path: '/about',
+    //     element: <About />,
+    //     layout: 'blank',
+    // },
+    // {
+    //     path: '*',
+    //     element: <Error />,
+    //     layout: 'blank',
+    // },
 ];
 
 export { routes };
